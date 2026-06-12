@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawzn Visual Studio — Diseño & Desarrollo Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="logo-mark">P</span>
+        <span class="logo-text">awzn<span class="logo-dim"> Visual Studio</span></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#por-que">Nosotros</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto" class="nav__cta">Contacto</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">Nosotros</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <div class="hero__badge reveal">Agencia de Diseño & Desarrollo</div>
+      <h1 class="hero__title reveal reveal--delay-1">
+        Webs que<br />
+        <span class="gradient-text">convierten visitas</span><br />
+        en clientes
+      </h1>
+      <p class="hero__sub reveal reveal--delay-2">
+        Diseñamos y desarrollamos experiencias digitales premium para negocios que quieren crecer. Sin templates. Sin límites.
+      </p>
+      <div class="hero__actions reveal reveal--delay-3">
+        <a href="#contacto" class="btn btn--primary">Hablemos</a>
+        <a href="#servicios" class="btn btn--ghost">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Lo que hacemos</p>
+        <h2 class="section-title">Soluciones digitales <span class="gradient-text">a medida</span></h2>
+        <p class="section-sub">Cada proyecto es único. Trabajamos contigo para crear exactamente lo que tu negocio necesita.</p>
+      </div>
+      <div class="services__grid">
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Diseño Web Premium</h3>
+          <p>Interfaces únicas, centradas en la conversión. Cada píxel diseñado para que tu marca destaque y tus visitantes actúen.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Desarrollo a Medida</h3>
+          <p>Aplicaciones web y sitios de alto rendimiento. Código limpio, rápido y escalable para proyectos de cualquier tamaño.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3>Branding & Identidad Visual</h3>
+          <p>Logos, paletas de color y sistemas visuales que comunican quién eres antes de que el usuario lea una sola palabra.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>SEO & Posicionamiento</h3>
+          <p>Estrategias técnicas y de contenido para que Google te encuentre antes que a tu competencia. Resultados medibles.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <h3>Tiendas Online</h3>
+          <p>E-commerce diseñado para vender. Integraciones de pago, gestión de inventario y experiencia de compra optimizada.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Consultoría Digital</h3>
+          <p>Analizamos tu presencia online y trazamos el camino más rentable para que tu negocio crezca en el entorno digital.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ PAWZN -->
+  <section class="why" id="por-que">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Por qué elegirnos</p>
+        <h2 class="section-title">No somos una agencia <span class="gradient-text">más</span></h2>
+      </div>
+      <div class="why__grid">
+        <div class="why-card reveal">
+          <div class="why-card__num">01</div>
+          <h3>Diseño sin templates</h3>
+          <p>Cada web que entregamos es completamente original. No usamos plantillas. Tu negocio merece una identidad única.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card__num">02</div>
+          <h3>Resultados, no promesas</h3>
+          <p>Trabajamos con métricas reales: velocidad de carga, conversión, posicionamiento. Entregamos datos, no palabras.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card__num">03</div>
+          <h3>Comunicación directa</h3>
+          <p>Hablas directamente con quien hace el trabajo. Sin intermediarios, sin malentendidos, sin sorpresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Preguntas frecuentes</p>
+        <h2 class="section-title">Todo lo que <span class="gradient-text">necesitas saber</span></h2>
+      </div>
+      <div class="faq__list reveal">
+
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>¿Cuánto tiempo tarda en estar lista mi web?</span>
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Depende del alcance del proyecto. Una landing page puede estar lista en 1–2 semanas. Un sitio corporativo completo o una tienda online puede llevar entre 3 y 8 semanas. Te damos un calendario detallado antes de comenzar.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>¿Qué me diferencia de contratar a un freelance?</span>
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Con Pawzn Visual Studio tienes diseño, desarrollo y estrategia en un mismo lugar. No tendrás que coordinar a tres personas distintas ni asumir que el diseño y el código vayan desconectados. Entregamos el proyecto completo.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>¿Necesito tener el contenido listo antes de empezar?</span>
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No es obligatorio, pero sí acelera el proceso. Podemos ayudarte a estructurar los textos y orientarte sobre qué imágenes usar. Lo importante es que la información sobre tu negocio sea real: nunca inventamos datos.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>¿Hay permanencia o contratos largos?</span>
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No. Trabajamos por proyecto o con acuerdos de mantenimiento mensuales sin permanencia. Si en algún momento decides no continuar, te entregamos todos los archivos y accesos sin problema.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>¿Puedo hacer cambios después de entregar el proyecto?</span>
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Sí. Incluimos un período de revisiones dentro del proyecto. Para cambios posteriores, ofrecemos planes de mantenimiento o los gestionamos como proyectos puntuales según la magnitud.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact__inner reveal">
+        <div class="contact__text">
+          <p class="section-label">Contacto</p>
+          <h2 class="section-title">¿Listo para <span class="gradient-text">empezar?</span></h2>
+          <p class="contact__desc">Cuéntanos tu proyecto. Sin compromisos, sin formularios interminables. Una conversación es suficiente para saber si podemos ayudarte.</p>
+          <div class="contact__links">
+            <a href="mailto:contacto@pawzn.com" class="contact__link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              contacto@pawzn.com
+            </a>
+          </div>
+          <div class="contact__socials">
+            <a href="https://bsky.app/profile/pawzn.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.077 1.242.51 3.423c-.317 1.22-.162 3.876.308 5.28.53 1.58 1.885 2.944 3.445 3.22-2.33.405-4.342 1.637-4.342 3.977 0 2.648 1.96 5.3 6.286 5.3 2.607 0 4.31-1.197 5.793-2.93C13.69 20.07 15.393 21.2 18 21.2c4.326 0 6.286-2.652 6.286-5.3 0-2.34-2.012-3.572-4.342-3.977 1.56-.276 2.915-1.64 3.445-3.22.47-1.404.625-4.06.308-5.28-.567-2.18-2.056-2.48-4.692-.618C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/monica-rodriguez-188956415/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@monicarodriguez3310" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact__form" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Tu email" required />
+          </div>
+          <div class="form-group">
+            <select id="service">
+              <option value="" disabled selected>¿Qué necesitas?</option>
+              <option>Diseño Web Premium</option>
+              <option>Desarrollo a Medida</option>
+              <option>Branding & Identidad Visual</option>
+              <option>SEO & Posicionamiento</option>
+              <option>Tienda Online</option>
+              <option>Consultoría Digital</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Cuéntanos tu proyecto..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a href="#" class="nav__logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">awzn<span class="logo-dim"> Visual Studio</span></span>
+        </a>
+        <p>Diseño & Desarrollo Web · Madrid, España</p>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 Pawzn Visual Studio. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Aviso legal</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
