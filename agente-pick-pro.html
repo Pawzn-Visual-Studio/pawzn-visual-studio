@@ -106,67 +106,162 @@ main{max-width:970px;margin:0 auto;padding:22px 16px}
 
 /* DASHBOARD */
 .dash-hero{
-  background:linear-gradient(135deg,#1c1500 0%,#100e00 40%,#0a0c10 100%);
-  border:1px solid #f5c84230;border-radius:16px;
-  padding:32px 28px;margin-bottom:18px;position:relative;overflow:hidden;
-  box-shadow:0 0 60px #f5c84215,0 2px 30px #00000060
+  background:linear-gradient(145deg,#1c1500 0%,#0f0c02 45%,#080a10 100%);
+  border:1px solid #f5c84228;border-radius:20px;
+  padding:0;margin-bottom:16px;position:relative;overflow:hidden;
+  box-shadow:0 0 80px #f5c84212,0 4px 40px #00000080
 }
 .dash-hero::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 90% 70% at 50% -10%,#f5c84214,transparent 60%);
+  background:radial-gradient(ellipse 100% 80% at 50% -20%,#f5c84218,transparent 65%);
   pointer-events:none
 }
+/* animated corner glow */
 .dash-hero::after{
-  content:'⚡';position:absolute;right:28px;bottom:-10px;
-  font-size:110px;opacity:.05;line-height:1;
-  animation:floatIcon 6s ease-in-out infinite
+  content:'';position:absolute;right:-60px;bottom:-60px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,#f5c84215,transparent 70%);
+  animation:heroGlow 5s ease-in-out infinite;pointer-events:none
 }
-@keyframes floatIcon{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(5deg)}}
-.dash-greeting{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:1.2px;
-  text-transform:uppercase;margin-bottom:6px;opacity:.85}
-.dash-title{font-size:30px;font-weight:900;letter-spacing:-.6px;margin-bottom:4px;
-  background:linear-gradient(135deg,var(--text) 60%,var(--gold));
+@keyframes heroGlow{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+
+.dash-hero-top{
+  padding:26px 28px 0;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:12px;flex-wrap:wrap
+}
+.dash-hero-meta{flex:1}
+.dash-greeting{font-size:10px;color:var(--gold);font-weight:800;letter-spacing:1.4px;
+  text-transform:uppercase;margin-bottom:5px;opacity:.9}
+.dash-title{font-size:28px;font-weight:900;letter-spacing:-.5px;margin-bottom:2px;
+  background:linear-gradient(135deg,#fff8e8 40%,var(--gold));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.dash-subtitle{font-size:13px;color:var(--muted);margin-bottom:22px;font-weight:500}
-
-.best-pick-card{
-  background:linear-gradient(135deg,#1e1700,#120f00);
-  border:1px solid #f5c84240;border-radius:12px;padding:18px;
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  box-shadow:inset 0 0 30px #f5c84206,0 4px 20px #00000040;
-  transition:box-shadow .2s
+.dash-subtitle{font-size:12px;color:var(--muted);font-weight:500}
+.dash-live-time{
+  background:#0e0c08;border:1px solid var(--border);border-radius:9px;
+  padding:8px 13px;font-size:12px;font-weight:700;color:var(--muted);
+  white-space:nowrap;flex-shrink:0
 }
-.best-pick-card:hover{box-shadow:inset 0 0 30px #f5c84210,0 6px 28px #00000060}
-.best-pick-badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;
-  font-size:10px;font-weight:900;padding:4px 11px;border-radius:20px;letter-spacing:.8px;
-  white-space:nowrap;box-shadow:0 2px 10px #f5c84240}
-.best-pick-matchup{font-size:15px;font-weight:800;flex:1;min-width:140px;letter-spacing:-.2px}
-.best-pick-pick{color:var(--gold);font-size:20px;font-weight:900;letter-spacing:-.3px}
-.best-pick-conf{font-size:11px;color:var(--muted);margin-top:3px}
 
-/* ── Stat box animado */
-.stat-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);
-  padding:16px;text-align:center;transition:all .2s;cursor:default}
-.stat-box:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 22px #f5c84215}
-.stat-val{font-size:26px;font-weight:900;line-height:1;letter-spacing:-.5px;transition:color .3s}
-.stat-label{font-size:10px;color:var(--muted);margin-top:5px;text-transform:uppercase;
+/* Best pick hero card inside dashboard */
+.dash-best-section{padding:18px 28px 26px}
+.dash-best-label{
+  font-size:9px;font-weight:800;color:var(--gold);letter-spacing:1.2px;
+  text-transform:uppercase;margin-bottom:10px;opacity:.8
+}
+.dash-pick-showcase{
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+  background:#0a0800;border:1px solid #f5c84235;border-radius:14px;
+  padding:18px 20px;box-shadow:inset 0 0 40px #f5c84208;
+  transition:box-shadow .2s;cursor:default
+}
+.dash-pick-showcase:hover{box-shadow:inset 0 0 40px #f5c84215,0 6px 24px #00000060}
+.dash-pick-sport-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.dash-pick-sport-chip{font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.4px}
+.dash-pick-matchup-txt{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.dash-pick-name{font-size:26px;font-weight:900;color:var(--gold);letter-spacing:-.4px;line-height:1}
+.dash-pick-conf-row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.dash-odds-pill{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;font-size:16px;font-weight:900;
+  padding:8px 18px;border-radius:12px;letter-spacing:-.3px;
+  box-shadow:0 4px 16px #f5c84235;white-space:nowrap;align-self:center
+}
+.dash-best-ev{
+  background:linear-gradient(135deg,#0a2016,#05120a);
+  border:1px solid #10b98135;border-radius:14px;
+  padding:14px 18px;margin-top:10px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap
+}
+
+/* KPI STRIP */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.stat-box{
+  background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  padding:16px 12px;text-align:center;transition:all .22s;cursor:default;
+  position:relative;overflow:hidden
+}
+.stat-box::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% -20%,var(--stat-glow,#f5c84210),transparent);
+  pointer-events:none
+}
+.stat-box:hover{border-color:var(--stat-border,var(--gold));transform:translateY(-3px);
+  box-shadow:0 8px 24px var(--stat-shadow,#f5c84218)}
+.stat-icon{font-size:18px;margin-bottom:6px;line-height:1}
+.stat-val{font-size:24px;font-weight:900;line-height:1;letter-spacing:-.5px}
+.stat-label{font-size:9px;color:var(--muted);margin-top:5px;text-transform:uppercase;
   letter-spacing:.7px;font-weight:700}
 
-.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
-.stat-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);
-  padding:14px;text-align:center;transition:border-color .2s}
-.stat-box:hover{border-color:#f5c84230}
-.stat-val{font-size:24px;font-weight:900;line-height:1;letter-spacing:-.5px}
-.stat-label{font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;
-  letter-spacing:.6px;font-weight:600}
+/* TOP PICKS MINI STRIP */
+.top-picks-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.top-pick-mini{
+  background:var(--s1);border:1px solid var(--border);border-radius:12px;
+  padding:14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden
+}
+.top-pick-mini::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--sport-color,var(--gold));opacity:.7
+}
+.top-pick-mini:hover{border-color:var(--sport-color,var(--gold));
+  box-shadow:0 6px 20px #00000040;transform:translateY(-2px)}
+.tpm-sport{font-size:10px;font-weight:700;margin-bottom:6px}
+.tpm-pick{font-size:15px;font-weight:900;letter-spacing:-.2px;margin-bottom:4px}
+.tpm-meta{font-size:10px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.tpm-rank{
+  position:absolute;top:10px;right:10px;width:20px;height:20px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:50%;
+  font-size:9px;font-weight:900;color:#000;display:flex;align-items:center;justify-content:center
+}
 
-.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.quick-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);
-  padding:18px;text-align:center;cursor:pointer;transition:all .2s}
-.quick-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 20px #f5c84215}
-.quick-icon{font-size:26px;margin-bottom:7px}
-.quick-label{font-size:12px;font-weight:700;color:var(--muted)}
-.quick-desc{font-size:11px;color:var(--muted);margin-top:3px;opacity:.7}
+/* QUICK GRID */
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.quick-card{
+  background:var(--s2);border:1px solid var(--border);border-radius:14px;
+  padding:16px 14px;cursor:pointer;transition:all .2s;
+  position:relative;overflow:hidden
+}
+.quick-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,var(--qc-glow,#f5c84210),transparent);
+  pointer-events:none;opacity:0;transition:opacity .2s
+}
+.quick-card:hover::after{opacity:1}
+.quick-card:hover{border-color:var(--qc-border,var(--gold));transform:translateY(-3px);
+  box-shadow:0 8px 24px var(--qc-shadow,#f5c84215)}
+.quick-icon{font-size:24px;margin-bottom:8px;line-height:1}
+.quick-label{font-size:12px;font-weight:800;color:var(--text);letter-spacing:-.1px}
+.quick-desc{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.4}
+.quick-stat{
+  font-size:11px;font-weight:700;margin-top:8px;
+  color:var(--qc-accent,var(--gold));letter-spacing:.1px
+}
+
+/* DASH ALERTS BANNER */
+.dash-alerts-banner{
+  background:linear-gradient(135deg,#200a0a,#0e0505);
+  border:1px solid #ef444435;border-radius:12px;
+  padding:12px 16px;margin-bottom:14px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;
+  transition:border-color .2s
+}
+.dash-alerts-banner:hover{border-color:#ef444460}
+
+/* light mode overrides */
+body.light .dash-pick-showcase{background:#fffbeb;border-color:#b8860b40}
+body.light .dash-best-ev{background:#f0fdf4;border-color:#10b98130}
+body.light .dash-live-time{background:var(--s1)}
+
+@media(max-width:600px){
+  .dash-hero-top{padding:18px 18px 0}
+  .dash-best-section{padding:14px 18px 20px}
+  .dash-pick-name{font-size:22px}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .top-picks-strip{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(hover:none){
+  .stat-box:hover,.quick-card:hover,.top-pick-mini:hover{transform:none;box-shadow:none}
+}
 
 /* PICKS */
 .toolbar{display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
@@ -477,6 +572,303 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
 
 /* ── SHARE CANVAS (hidden) */
 #share-canvas{display:none}
+
+/* ── PREDICTOR */
+.pred-teams-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start;margin-bottom:14px}
+.pred-team-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.pred-team-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.6px;margin-bottom:10px}
+.pred-vs{display:flex;align-items:center;justify-content:center;padding-top:28px;
+  font-size:13px;font-weight:800;color:var(--muted)}
+.form-toggles{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.form-toggle{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);
+  background:var(--s2);color:var(--muted);font-size:10px;font-weight:800;cursor:pointer;
+  transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center}
+.form-toggle.tog-W{background:#0a2016;color:var(--green);border-color:#10b98150}
+.form-toggle.tog-L{background:#200a0a;color:var(--red);border-color:#ef444450}
+.factor-row{display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.factor-row:last-child{border:none}
+.factor-label{color:var(--muted);font-weight:500}
+.factor-value{font-weight:800}
+.factor-bar-wrap{width:80px;height:5px;background:var(--s2);border-radius:3px;overflow:hidden;margin-left:10px}
+.factor-bar-fill{height:100%;border-radius:3px}
+.pred-result-hero{
+  background:linear-gradient(135deg,#1c1500 0%,#0e0c00 60%,#0a0c10 100%);
+  border:1px solid #f5c84240;border-radius:14px;padding:28px;
+  text-align:center;margin-bottom:14px;position:relative;overflow:hidden;
+  box-shadow:0 0 40px #f5c84210
+}
+.pred-result-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,#f5c84214,transparent 60%);
+  pointer-events:none
+}
+.pred-pick-label{font-size:10px;font-weight:800;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.pred-pick-name{font-size:36px;font-weight:900;color:var(--gold);letter-spacing:-.5px;margin-bottom:4px}
+.pred-pick-sub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.pred-conf-big{font-size:54px;font-weight:900;line-height:1;letter-spacing:-2px}
+.pred-conf-label{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.8px}
+.pred-pills-row{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.extra-btn{display:flex;align-items:center;gap:8px;padding:10px 12px;
+  border-radius:9px;border:1px solid var(--border);background:var(--s2);
+  cursor:pointer;font-family:inherit;color:var(--muted);font-size:12px;font-weight:600;
+  transition:all .15s;text-align:left}
+.extra-btn.active{border-color:var(--gold);background:#1a1400;color:var(--gold)}
+.extra-btn .extra-icon{font-size:18px;flex-shrink:0}
+@media(max-width:600px){
+  .pred-teams-grid{grid-template-columns:1fr}
+  .pred-vs{padding:4px 0}
+  .extras-grid{grid-template-columns:1fr}
+  .pred-conf-big{font-size:42px}
+}
+
+/* ── MI RACHA */
+.racha-hero{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px
+}
+.racha-box{
+  background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  padding:20px 16px;text-align:center;transition:all .2s
+}
+.racha-box:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 22px #f5c84215}
+.racha-num{font-size:40px;font-weight:900;line-height:1;letter-spacing:-1.5px}
+.racha-lbl{font-size:10px;color:var(--muted);margin-top:6px;text-transform:uppercase;
+  letter-spacing:.7px;font-weight:700}
+.racha-sub{font-size:11px;margin-top:4px;font-weight:600}
+.streak-box{
+  border-radius:12px;padding:18px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:6px
+}
+.streak-hot-box{background:#1a0800;border:1px solid #f97316_40}
+.month-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.month-label{font-size:10px;color:var(--muted);width:36px;text-align:right;flex-shrink:0;font-weight:600}
+.month-bar-outer{flex:1;height:22px;background:var(--s2);border-radius:5px;overflow:hidden;
+  position:relative;display:flex;align-items:center}
+.month-bar-fill{height:100%;border-radius:5px;transition:width .5s ease;min-width:3px}
+.month-bar-val{font-size:10px;font-weight:700;position:absolute;right:7px;
+  white-space:nowrap;mix-blend-mode:normal}
+.odds-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.odds-row:last-child{border:none}
+.odds-range-lbl{font-size:12px;font-weight:600;width:110px;flex-shrink:0}
+.odds-bar-outer{flex:1;height:8px;background:var(--s2);border-radius:4px;overflow:hidden}
+.odds-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.odds-record{font-size:11px;color:var(--muted);font-weight:600;width:55px;text-align:right;flex-shrink:0}
+.day-analysis-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day-col{text-align:center}
+.day-col-name{font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;
+  letter-spacing:.3px;margin-bottom:5px}
+.day-col-bar{height:60px;background:var(--s2);border-radius:5px;position:relative;
+  overflow:hidden;display:flex;align-items:flex-end}
+.day-col-fill{width:100%;border-radius:5px;transition:height .5s ease}
+.day-col-pct{font-size:9px;font-weight:800;margin-top:4px}
+@media(max-width:600px){
+  .racha-hero{grid-template-columns:1fr 1fr}
+  .racha-hero .racha-box:first-child{grid-column:1/-1}
+  .day-analysis-grid{gap:3px}
+  .day-col-name{font-size:8px}
+  .odds-range-lbl{width:80px;font-size:11px}
+}
+
+/* ── FUTURES / TORNEOS */
+.future-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;margin-bottom:12px;transition:box-shadow .2s,border-color .2s;
+  animation:cardIn .3s cubic-bezier(.34,1.45,.64,1) both
+}
+.future-card:hover{box-shadow:0 8px 28px #00000060;border-color:#f5c84230}
+.future-card-header{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border);background:var(--s2)
+}
+.future-market-badge{
+  font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.4px
+}
+.fm-champ{background:#1a1000;color:var(--gold);border:1px solid #f5c84240}
+.fm-div{background:#0a1e30;color:#38bdf8;border:1px solid #38bdf840}
+.fm-prop{background:#1a0a00;color:#fb923c;border:1px solid #fb923c40}
+.fm-parlay{background:#0a001a;color:#a78bfa;border:1px solid #a78bfa40}
+.future-status{margin-left:auto;font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px}
+.fs-active{background:#1a1400;color:var(--amber);border:1px solid #f59e0b35}
+.fs-won{background:#0a2016;color:var(--green);border:1px solid #10b98140}
+.fs-lost{background:#200a0a;color:var(--red);border:1px solid #ef444435}
+.future-body{padding:14px 16px}
+.future-team{font-size:18px;font-weight:900;letter-spacing:-.3px;margin-bottom:3px}
+.future-meta{font-size:11px;color:var(--muted);margin-bottom:12px}
+.future-numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px}
+.future-num-box{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:8px 4px}
+.future-num-val{font-size:15px;font-weight:800;line-height:1}
+.future-num-lbl{font-size:9px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
+.future-value-bar{height:5px;background:var(--s2);border-radius:3px;overflow:hidden;margin:6px 0}
+.future-value-fill{height:100%;border-radius:3px;transition:width .5s}
+.hedge-panel{
+  background:linear-gradient(135deg,#0a1e30,#05040a);
+  border:1px solid #38bdf840;border-radius:10px;padding:14px;margin-top:10px
+}
+.futures-summary{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px
+}
+.add-future-modal{
+  background:var(--s1);border:1px solid var(--border);border-radius:16px;
+  padding:22px;margin-bottom:18px;display:none
+}
+.add-future-modal.open{display:block;animation:slideUp .22s cubic-bezier(.34,1.45,.64,1) both}
+@media(max-width:600px){
+  .future-numbers{grid-template-columns:repeat(2,1fr)}
+  .futures-summary{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── ARBITRAJE */
+.arb-indicator{
+  border-radius:16px;padding:28px;text-align:center;margin-bottom:18px;
+  position:relative;overflow:hidden;transition:all .4s
+}
+.arb-yes{background:linear-gradient(135deg,#0a2016,#05120a);border:2px solid #10b98160;
+  box-shadow:0 0 40px #10b98115}
+.arb-no{background:linear-gradient(135deg,#200a0a,#120505);border:2px solid #ef444450}
+.arb-neutral{background:var(--s1);border:1px solid var(--border)}
+.arb-pct-big{font-size:56px;font-weight:900;line-height:1;letter-spacing:-2px}
+.arb-status-lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+.arb-book-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end;margin-bottom:10px
+}
+.arb-book-row.two-way{grid-template-columns:1fr 1fr}
+.arb-book-card{
+  background:var(--s2);border:1px solid var(--border);border-radius:12px;
+  padding:14px;transition:border-color .2s
+}
+.arb-book-card:focus-within{border-color:var(--gold)}
+.arb-book-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.5px;margin-bottom:8px}
+.arb-result-row{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;
+  margin-bottom:14px
+}
+.arb-result-box{
+  background:var(--s2);border:1px solid var(--border);border-radius:10px;
+  padding:14px;text-align:center
+}
+.arb-result-amount{font-size:24px;font-weight:900;color:var(--gold);line-height:1}
+.arb-result-label{font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;
+  letter-spacing:.5px;font-weight:700}
+.arb-profit-box{
+  background:linear-gradient(135deg,#0a2016,#05120a);
+  border:1px solid #10b98150;border-radius:12px;
+  padding:20px;text-align:center;margin-bottom:14px
+}
+.arb-profit-big{font-size:44px;font-weight:900;color:var(--green);letter-spacing:-1.5px;line-height:1}
+.arb-history-row{
+  display:flex;align-items:center;gap:10px;padding:9px 0;
+  border-bottom:1px solid var(--border);font-size:12px
+}
+.arb-history-row:last-child{border:none}
+.arb-tag-yes{background:#0a2016;color:var(--green);font-size:9px;font-weight:800;
+  padding:2px 7px;border-radius:5px;border:1px solid #10b98130}
+.arb-tag-no{background:#200a0a;color:var(--red);font-size:9px;font-weight:800;
+  padding:2px 7px;border-radius:5px;border:1px solid #ef444430}
+.odds-fmt-pills{display:flex;gap:5px;margin-bottom:14px}
+@media(max-width:600px){
+  .arb-book-row,.arb-book-row.two-way{grid-template-columns:1fr}
+  .arb-pct-big{font-size:44px}
+}
+
+/* ── ALERTAS DE VALOR */
+.alerta-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  padding:0;margin-bottom:12px;overflow:hidden;
+  transition:box-shadow .2s,border-color .2s;
+  animation:cardIn .3s cubic-bezier(.34,1.45,.64,1) both
+}
+.alerta-card:hover{box-shadow:0 8px 28px #00000060}
+.alerta-header{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-bottom:1px solid var(--border)
+}
+.alerta-priority{
+  width:8px;height:8px;border-radius:50%;flex-shrink:0
+}
+.pri-high{background:var(--red);box-shadow:0 0 8px var(--red)}
+.pri-med{background:var(--amber);box-shadow:0 0 6px var(--amber)}
+.pri-low{background:var(--green);box-shadow:0 0 6px var(--green)}
+.alerta-type-badge{
+  font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;
+  letter-spacing:.4px;white-space:nowrap
+}
+.at-ev{background:#0a2016;color:var(--green);border:1px solid #10b98145}
+.at-sharp{background:#1a0a00;color:var(--amber);border:1px solid #f59e0b45}
+.at-conf{background:#1a1000;color:var(--gold);border:1px solid #f5c84245}
+.at-fade{background:#200a14;color:#f472b6;border:1px solid #f472b645}
+.at-racha{background:#1a0800;color:#fb923c;border:1px solid #fb923c45}
+.at-combo{background:#0a001a;color:#a78bfa;border:1px solid #a78bfa45}
+.alerta-time{font-size:10px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.alerta-body{padding:14px 16px}
+.alerta-matchup{font-size:13px;font-weight:700;margin-bottom:4px}
+.alerta-pick{font-size:20px;font-weight:900;color:var(--gold);letter-spacing:-.3px}
+.alerta-odds{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle}
+.alerta-reason{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.alerta-metrics{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.alerta-metric{background:var(--s2);border:1px solid var(--border);border-radius:7px;
+  padding:5px 10px;font-size:11px;font-weight:700}
+.alerta-actions{display:flex;gap:7px;margin-top:12px}
+.alert-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.scan-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;
+  border:none;padding:8px 16px;border-radius:9px;cursor:pointer;
+  font-size:12px;font-weight:800;font-family:inherit;
+  transition:all .2s;margin-left:auto;white-space:nowrap
+}
+.scan-btn:hover{box-shadow:0 3px 14px #f5c84240;transform:translateY(-1px)}
+.scan-btn.scanning{animation:scanPulse .8s ease-in-out infinite}
+@keyframes scanPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.alerta-empty{text-align:center;padding:50px 16px;color:var(--muted)}
+.alerta-empty .ico{font-size:42px;margin-bottom:12px;opacity:.6}
+.priority-legend{display:flex;gap:12px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+.pleg{display:flex;align-items:center;gap:5px;font-weight:600}
+.scan-summary{
+  background:linear-gradient(135deg,#1c1500,#0e0c08);
+  border:1px solid #f5c84230;border-radius:12px;padding:14px 16px;
+  margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap
+}
+.scan-dot{width:8px;height:8px;border-radius:50%;background:var(--green);
+  animation:pulse 1.4s infinite;flex-shrink:0}
+.scan-info{font-size:12px;flex:1}
+.scan-ts{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── SHARE MODAL */
+.share-overlay{
+  position:fixed;inset:0;background:#00000088;z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;animation:fadeIn .18s ease both
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.share-modal{
+  background:var(--s1);border:1px solid var(--border);border-radius:18px;
+  padding:22px;max-width:520px;width:100%;
+  box-shadow:0 20px 60px #000000b0;animation:slideUp .22s cubic-bezier(.34,1.45,.64,1) both
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.share-preview{
+  width:100%;border-radius:10px;border:1px solid var(--border);
+  display:block;margin-bottom:16px;cursor:pointer
+}
+.share-title{font-size:15px;font-weight:800;margin-bottom:4px;letter-spacing:-.2px}
+.share-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.share-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.share-btn{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:12px 8px;border-radius:10px;border:1px solid var(--border);
+  background:var(--s2);cursor:pointer;font-family:inherit;
+  color:var(--text);transition:all .15s;font-size:11px;font-weight:700
+}
+.share-btn:hover{border-color:var(--gold);background:#1a1400;color:var(--gold)}
+.share-btn .share-icon{font-size:22px}
+.share-close{width:100%;background:none;border:1px solid var(--border);color:var(--muted);
+  padding:9px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px;
+  transition:border-color .15s}
+.share-close:hover{border-color:var(--gold)}
 </style>
 </head>
 <body>
@@ -496,6 +888,13 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
   <button class="nav-tab" onclick="showTab('kelly')">🎯 Kelly</button>
   <button class="nav-tab" onclick="showTab('historial')">📋 Historial</button>
   <button class="nav-tab" onclick="showTab('sim')">🧪 Sim</button>
+  <button class="nav-tab" onclick="showTab('predictor')">🔮 Predictor</button>
+  <button class="nav-tab" onclick="showTab('racha')">📈 Mi Racha</button>
+  <button class="nav-tab" onclick="showTab('futures')">🏆 Futures</button>
+  <button class="nav-tab" onclick="showTab('arb')">🔀 Arbitraje</button>
+  <button class="nav-tab" onclick="showTab('alertas')" id="tab-alertas">
+    🚨 Alertas<span class="badge" id="alertas-badge" style="display:none">0</span>
+  </button>
   <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Cambiar tema">🌙</button>
   <button class="theme-toggle" id="notif-btn" onclick="toggleNotifications()" title="Notificaciones" style="margin-left:4px">🔔</button>
   <button class="theme-toggle" id="install-btn" onclick="installApp()" title="Instalar app" style="display:none;margin-left:4px;align-items:center;gap:5px">⬇️ <span class="install-label">Instalar</span></button>
@@ -505,49 +904,106 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
 
 <!-- DASHBOARD -->
 <section class="section active" id="sec-dashboard">
+
+  <!-- HERO -->
   <div class="dash-hero">
-    <div class="dash-greeting" id="dash-greeting">Buenos días</div>
-    <div class="dash-title" id="dash-title">Picks del Día</div>
-    <div class="dash-subtitle" id="dash-subtitle">Cargando análisis…</div>
-    <div id="dash-best"></div>
+    <div class="dash-hero-top">
+      <div class="dash-hero-meta">
+        <div class="dash-greeting" id="dash-greeting">Buenos días</div>
+        <div class="dash-title" id="dash-title">Picks del Día</div>
+        <div class="dash-subtitle" id="dash-subtitle">Cargando análisis…</div>
+      </div>
+      <div class="dash-live-time" id="dash-live-time">--:--</div>
+    </div>
+    <div class="dash-best-section" id="dash-best"></div>
   </div>
+
+  <!-- ALERTS BANNER (shown if alerts exist) -->
+  <div class="dash-alerts-banner" id="dash-alerts-banner" style="display:none" onclick="showTab('alertas')">
+    <span style="font-size:20px">🚨</span>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:800" id="dash-alerts-txt">Alertas activas</div>
+      <div style="font-size:11px;color:var(--muted)">Toca para ver el panel completo</div>
+    </div>
+    <span style="color:var(--red);font-size:18px">→</span>
+  </div>
+
+  <!-- KPI STRIP -->
   <div class="stats-strip" id="dash-stats">
-    <div class="stat-box"><div class="stat-val" style="color:var(--muted)">—</div><div class="stat-label">Picks Hoy</div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--muted)">—</div><div class="stat-label">Mejor Conf.</div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--muted)">—</div><div class="stat-label">Win Rate</div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--muted)">—</div><div class="stat-label">Neto</div></div>
+    <div class="stat-box" style="--stat-glow:#f5c84215;--stat-border:var(--gold);--stat-shadow:#f5c84220">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-val" style="color:var(--muted)">—</div>
+      <div class="stat-label">Picks Hoy</div>
+    </div>
+    <div class="stat-box" style="--stat-glow:#10b98115;--stat-border:var(--green);--stat-shadow:#10b98120">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-val" style="color:var(--muted)">—</div>
+      <div class="stat-label">Mejor Conf.</div>
+    </div>
+    <div class="stat-box" style="--stat-glow:#38bdf815;--stat-border:#38bdf8;--stat-shadow:#38bdf820">
+      <div class="stat-icon">📊</div>
+      <div class="stat-val" style="color:var(--muted)">—</div>
+      <div class="stat-label">Win Rate</div>
+    </div>
+    <div class="stat-box" style="--stat-glow:#10b98115;--stat-border:var(--green);--stat-shadow:#10b98120">
+      <div class="stat-icon">💰</div>
+      <div class="stat-val" style="color:var(--muted)">—</div>
+      <div class="stat-label">Neto</div>
+    </div>
   </div>
-  <div style="font-size:13px;font-weight:700;margin-bottom:10px;letter-spacing:-.1px">Acceso Rápido</div>
+
+  <!-- TOP 3 PICKS -->
+  <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.7px;margin-bottom:10px" id="top-picks-lbl" style="display:none">
+    Top 3 picks por confianza
+  </div>
+  <div class="top-picks-strip" id="dash-top-picks"></div>
+
+  <!-- QUICK ACCESS -->
+  <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.7px;margin-bottom:10px;margin-top:6px">Herramientas</div>
   <div class="quick-grid">
-    <div class="quick-card" onclick="showTab('picks')">
-      <div class="quick-icon">🏠</div>
-      <div class="quick-label">Picks del Día</div>
-      <div class="quick-desc">9 picks disponibles</div>
+    <div class="quick-card" onclick="showTab('alertas')"
+      style="--qc-glow:#ef444415;--qc-border:#ef444450;--qc-shadow:#ef444418;--qc-accent:#ef4444">
+      <div class="quick-icon">🚨</div>
+      <div class="quick-label">Alertas de Valor</div>
+      <div class="quick-desc">EV alto, sharp money y señales</div>
+      <div class="quick-stat" id="qc-alertas-stat">Escaneando…</div>
     </div>
-    <div class="quick-card" onclick="showTab('monitor')">
-      <div class="quick-icon">📊</div>
-      <div class="quick-label">Monitor Live</div>
-      <div class="quick-desc">Scores en tiempo real</div>
+    <div class="quick-card" onclick="showTab('predictor')"
+      style="--qc-glow:#a78bfa15;--qc-border:#a78bfa50;--qc-shadow:#a78bfa18;--qc-accent:#a78bfa">
+      <div class="quick-icon">🔮</div>
+      <div class="quick-label">Predictor</div>
+      <div class="quick-desc">Análisis con tus propios datos</div>
+      <div class="quick-stat">Tu pick, tu algoritmo</div>
     </div>
-    <div class="quick-card" onclick="showTab('kelly')">
+    <div class="quick-card" onclick="showTab('kelly')"
+      style="--qc-glow:#f5c84215;--qc-border:var(--gold);--qc-shadow:#f5c84218;--qc-accent:var(--gold)">
       <div class="quick-icon">🎯</div>
       <div class="quick-label">Kelly + Parlay</div>
-      <div class="quick-desc">Apuesta óptima</div>
+      <div class="quick-desc">Tamaño de apuesta óptimo</div>
+      <div class="quick-stat">Calculadora de bankroll</div>
     </div>
-    <div class="quick-card" onclick="showTab('comparar')">
-      <div class="quick-icon">⚖️</div>
-      <div class="quick-label">Comparar</div>
-      <div class="quick-desc">Picks lado a lado</div>
+    <div class="quick-card" onclick="showTab('arb')"
+      style="--qc-glow:#10b98115;--qc-border:var(--green);--qc-shadow:#10b98118;--qc-accent:var(--green)">
+      <div class="quick-icon">🔀</div>
+      <div class="quick-label">Arbitraje</div>
+      <div class="quick-desc">Ganancia garantizada entre casas</div>
+      <div class="quick-stat">Detector de arb</div>
     </div>
-    <div class="quick-card" onclick="showTab('ou')">
+    <div class="quick-card" onclick="showTab('futures')"
+      style="--qc-glow:#f5c84215;--qc-border:var(--gold);--qc-shadow:#f5c84218;--qc-accent:var(--amber)">
+      <div class="quick-icon">🏆</div>
+      <div class="quick-label">Futures</div>
+      <div class="quick-desc">Campeones, props y hedges</div>
+      <div class="quick-stat" id="qc-futures-stat">Sin futures activos</div>
+    </div>
+    <div class="quick-card" onclick="showTab('racha')"
+      style="--qc-glow:#38bdf815;--qc-border:#38bdf8;--qc-shadow:#38bdf818;--qc-accent:#38bdf8">
       <div class="quick-icon">📈</div>
-      <div class="quick-label">Over / Under</div>
-      <div class="quick-desc">Detector con clima</div>
-    </div>
-    <div class="quick-card" onclick="showTab('historial')">
-      <div class="quick-icon">📋</div>
-      <div class="quick-label">Historial</div>
-      <div class="quick-desc">W-L y estadísticas</div>
+      <div class="quick-label">Mi Racha</div>
+      <div class="quick-desc">Stats avanzadas de rendimiento</div>
+      <div class="quick-stat" id="qc-racha-stat">Ver estadísticas</div>
     </div>
   </div>
 </section>
@@ -904,6 +1360,384 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
   <canvas id="share-canvas" width="800" height="420"></canvas>
 </section>
 
+<!-- ARBITRAJE -->
+<section class="section" id="sec-arb">
+  <div class="sec-title">🔀 Calculadora de Arbitraje</div>
+  <div class="sec-sub">Detecta oportunidades de ganancia garantizada entre casas de apuestas</div>
+
+  <div class="card">
+    <!-- Formato de odds -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+      <div>
+        <label style="margin-bottom:5px">Formato de odds</label>
+        <div class="odds-fmt-pills">
+          <button class="fpill active" onclick="setOddsFmt('american',this)">Americano</button>
+          <button class="fpill" onclick="setOddsFmt('decimal',this)">Decimal</button>
+        </div>
+      </div>
+      <div style="flex:1;min-width:140px">
+        <label>Tipo de mercado</label>
+        <div class="odds-fmt-pills" style="margin-top:5px">
+          <button class="fpill active" onclick="setArbWays(2,this)">2 resultados</button>
+          <button class="fpill" onclick="setArbWays(3,this)">3 resultados</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Casas de apuestas -->
+    <div id="arb-book-inputs"></div>
+
+    <!-- Stake -->
+    <div class="form-row" style="margin-top:4px">
+      <div class="form-group">
+        <label>Apuesta total ($)</label>
+        <input type="number" id="arb-stake" value="1000" min="1" oninput="calcArb()">
+      </div>
+      <div class="form-group">
+        <label>Ganancia objetivo ($) <span style="color:var(--muted);font-weight:400">(opcional)</span></label>
+        <input type="number" id="arb-target" placeholder="Ej: 50" min="1" oninput="calcArb()">
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%;margin-top:6px" onclick="calcArb()">
+      🔍 Calcular arbitraje
+    </button>
+  </div>
+
+  <!-- Indicador de arb -->
+  <div class="arb-indicator arb-neutral" id="arb-indicator" style="display:none">
+    <div class="arb-pct-big" id="arb-pct-big">—</div>
+    <div class="arb-status-lbl" id="arb-status-lbl"></div>
+    <div style="font-size:12px;color:var(--muted);margin-top:6px" id="arb-implied-sum"></div>
+  </div>
+
+  <!-- Resultado -->
+  <div id="arb-result" style="display:none">
+    <div class="arb-profit-box" id="arb-profit-box"></div>
+    <div class="arb-result-row" id="arb-bets-row"></div>
+    <div class="card" id="arb-detail-card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px">📊 Detalle</div>
+      <div id="arb-detail"></div>
+    </div>
+  </div>
+
+  <!-- Historial de checks -->
+  <div class="card" style="margin-top:14px" id="arb-history-card" style="display:none">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-size:13px;font-weight:700">Últimos checks</div>
+      <button class="btn btn-danger btn-sm" onclick="clearArbHistory()">🗑 Limpiar</button>
+    </div>
+    <div id="arb-history-list"></div>
+  </div>
+</section>
+
+<!-- FUTURES / TORNEOS -->
+<section class="section" id="sec-futures">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div class="sec-title">🏆 Futures y Torneos</div>
+      <div class="sec-sub">Campeones, props de temporada, parlays de largo plazo y hedges</div>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="toggleAddFuture()">+ Agregar</button>
+  </div>
+
+  <!-- Stats summary -->
+  <div class="futures-summary" id="futures-summary"></div>
+
+  <!-- Add form -->
+  <div class="add-future-modal" id="add-future-modal">
+    <div style="font-size:14px;font-weight:800;margin-bottom:14px;color:var(--gold)">Nueva apuesta future</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Deporte</label>
+        <select id="fut-sport">
+          <option value="MLB">⚾ MLB</option><option value="NBA">🏀 NBA</option>
+          <option value="NFL">🏈 NFL</option><option value="NHL">🏒 NHL</option>
+          <option value="SOC">⚽ Soccer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tipo de mercado</label>
+        <select id="fut-market">
+          <option value="champ">🏆 Campeón</option>
+          <option value="div">📍 División / Conferencia</option>
+          <option value="prop">🎯 Prop de temporada</option>
+          <option value="parlay">💎 Parlay largo plazo</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Equipo / Jugador / Descripción</label>
+        <input type="text" id="fut-team" placeholder="Ej: Kansas City Chiefs">
+      </div>
+      <div class="form-group">
+        <label>Odds al momento de apostar</label>
+        <input type="text" id="fut-odds" placeholder="+450">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Apuesta ($)</label>
+        <input type="number" id="fut-stake" placeholder="100" min="1">
+      </div>
+      <div class="form-group">
+        <label>Odds actuales (para valor)</label>
+        <input type="text" id="fut-odds-now" placeholder="+300">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Fecha de apuesta</label>
+        <input type="date" id="fut-date">
+      </div>
+      <div class="form-group">
+        <label>Fecha de resolución estimada</label>
+        <input type="date" id="fut-resolve">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Notas</label>
+      <input type="text" id="fut-notes" placeholder="Razón de la apuesta, análisis, etc.">
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" style="flex:1" onclick="saveFuture()">Guardar</button>
+      <button class="btn btn-ghost" onclick="toggleAddFuture()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Filter pills -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="fut-filters">
+    <button class="fpill active" onclick="setFutFilter('all',this)">Todos</button>
+    <button class="fpill" onclick="setFutFilter('active',this)">⏳ Activos</button>
+    <button class="fpill" onclick="setFutFilter('champ',this)">🏆 Campeón</button>
+    <button class="fpill" onclick="setFutFilter('div',this)">📍 División</button>
+    <button class="fpill" onclick="setFutFilter('prop',this)">🎯 Prop</button>
+    <button class="fpill" onclick="setFutFilter('won',this)">✅ Ganados</button>
+    <button class="fpill" onclick="setFutFilter('lost',this)">❌ Perdidos</button>
+  </div>
+
+  <div id="futures-list"></div>
+</section>
+
+<!-- ALERTAS DE VALOR -->
+<section class="section" id="sec-alertas">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div class="sec-title">🚨 Alertas de Valor</div>
+      <div class="sec-sub">Motor automático · EV, sharp money, confianza y rachas</div>
+    </div>
+    <button class="scan-btn" id="scan-btn" onclick="runAlertScan()">⚡ Escanear ahora</button>
+  </div>
+
+  <div class="scan-summary" id="scan-summary" style="display:none">
+    <div class="scan-dot"></div>
+    <div class="scan-info">
+      <div id="scan-info-text" style="font-weight:700;font-size:13px"></div>
+      <div class="scan-ts" id="scan-ts"></div>
+    </div>
+    <div class="priority-legend">
+      <span class="pleg"><span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block"></span>Alta</span>
+      <span class="pleg"><span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block"></span>Media</span>
+      <span class="pleg"><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block"></span>Baja</span>
+    </div>
+  </div>
+
+  <div class="alert-filters" id="alerta-filters">
+    <span style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Filtrar</span>
+    <button class="fpill active" data-atype="" onclick="setAlertaFilter('',this)">Todas</button>
+    <button class="fpill" data-atype="ev" onclick="setAlertaFilter('ev',this)">💰 EV Alto</button>
+    <button class="fpill" data-atype="sharp" onclick="setAlertaFilter('sharp',this)">⚡ Sharp</button>
+    <button class="fpill" data-atype="conf" onclick="setAlertaFilter('conf',this)">⭐ Conf. Alta</button>
+    <button class="fpill" data-atype="fade" onclick="setAlertaFilter('fade',this)">🔄 Fade</button>
+    <button class="fpill" data-atype="racha" onclick="setAlertaFilter('racha',this)">🔥 Racha</button>
+    <button class="fpill" data-atype="combo" onclick="setAlertaFilter('combo',this)">💎 Combo</button>
+  </div>
+
+  <div id="alertas-list-panel"></div>
+</section>
+
+<!-- MI RACHA -->
+<section class="section" id="sec-racha">
+  <div class="sec-title">📈 Mi Racha Personal</div>
+  <div class="sec-sub">Estadísticas avanzadas de tu historial de picks</div>
+
+  <div id="racha-empty" style="display:none">
+    <div class="empty-state">
+      <div class="ico">📋</div>
+      <div>Sin historial todavía</div>
+      <div style="font-size:12px;margin-top:6px">Ve a Historial y agrega picks o usa Demo data</div>
+      <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="addSampleData();showTab('racha')">
+        Cargar demo data
+      </button>
+    </div>
+  </div>
+
+  <div id="racha-content">
+    <!-- KPIs principales -->
+    <div class="racha-hero" id="racha-kpis"></div>
+
+    <!-- Racha actual + records -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px" id="racha-streaks"></div>
+
+    <!-- Rendimiento mensual -->
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">📅 Rendimiento mensual</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:14px">W-L y resultado neto por mes</div>
+      <div id="racha-monthly"></div>
+    </div>
+
+    <!-- Por tipo de odds -->
+    <div class="card" style="margin-top:4px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">🎰 Rendimiento por tipo de odds</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:14px">¿Qué tipo de picks te funcionan mejor?</div>
+      <div id="racha-odds-types"></div>
+    </div>
+
+    <!-- Análisis por día -->
+    <div class="card" style="margin-top:4px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">📆 Win rate por día de la semana</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:14px">¿Qué días apuestas mejor?</div>
+      <div class="day-analysis-grid" id="racha-days"></div>
+    </div>
+
+    <!-- Insight inteligente -->
+    <div class="card" style="margin-top:4px;background:linear-gradient(135deg,#1c1500,#0e0c08);
+      border-color:#f5c84230">
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--gold)">
+        🤖 Análisis inteligente
+      </div>
+      <div id="racha-insight" style="font-size:13px;line-height:1.7;color:var(--muted)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREDICTOR PERSONALIZADO -->
+<section class="section" id="sec-predictor">
+  <div class="sec-title">🔮 Predictor Personalizado</div>
+  <div class="sec-sub">Ingresa tus datos y el algoritmo genera un análisis completo</div>
+
+  <div class="card">
+    <!-- Deporte -->
+    <div class="form-group">
+      <label>Deporte</label>
+      <div class="filter-pills" id="pred-sport-pills">
+        <button class="fpill active" data-val="MLB" onclick="setPredSport('MLB',this)">⚾ MLB</button>
+        <button class="fpill" data-val="NBA" onclick="setPredSport('NBA',this)">🏀 NBA</button>
+        <button class="fpill" data-val="NFL" onclick="setPredSport('NFL',this)">🏈 NFL</button>
+        <button class="fpill" data-val="NHL" onclick="setPredSport('NHL',this)">🏒 NHL</button>
+        <button class="fpill" data-val="SOC" onclick="setPredSport('SOC',this)">⚽ Soccer</button>
+      </div>
+    </div>
+
+    <!-- Equipos -->
+    <div class="pred-teams-grid">
+      <div class="pred-team-box">
+        <div class="pred-team-label">🏠 Local</div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>Equipo</label>
+          <input type="text" id="pred-home" placeholder="Nombre del equipo" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>Odds (moneyline)</label>
+          <input type="text" id="pred-home-odds" placeholder="-110" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>% victorias en casa esta temporada</label>
+          <input type="number" id="pred-home-pct" placeholder="58" min="0" max="100" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:4px">
+          <label>Forma reciente (últimos 5, clic para cambiar)</label>
+          <div class="form-toggles" id="pred-home-form"></div>
+        </div>
+      </div>
+
+      <div class="pred-vs">VS</div>
+
+      <div class="pred-team-box">
+        <div class="pred-team-label">✈️ Visitante</div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>Equipo</label>
+          <input type="text" id="pred-away" placeholder="Nombre del equipo" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>Odds (moneyline)</label>
+          <input type="text" id="pred-away-odds" placeholder="+110" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:10px">
+          <label>% victorias de visitante esta temporada</label>
+          <input type="number" id="pred-away-pct" placeholder="44" min="0" max="100" oninput="predAutoCalc()">
+        </div>
+        <div class="form-group" style="margin-bottom:4px">
+          <label>Forma reciente (últimos 5, clic para cambiar)</label>
+          <div class="form-toggles" id="pred-away-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- H2H y factores extra -->
+    <div class="form-row" style="margin-bottom:14px">
+      <div class="form-group">
+        <label>H2H victorias del Local (últimas 10)</label>
+        <input type="number" id="pred-h2h-home" placeholder="6" min="0" max="10" oninput="predAutoCalc()">
+      </div>
+      <div class="form-group">
+        <label>H2H victorias del Visitante (últimas 10)</label>
+        <input type="number" id="pred-h2h-away" placeholder="4" min="0" max="10" oninput="predAutoCalc()">
+      </div>
+    </div>
+
+    <!-- Bankroll para Kelly -->
+    <div class="form-group">
+      <label>Bankroll para sugerencia Kelly ($)</label>
+      <input type="number" id="pred-bankroll" placeholder="1000" min="1" oninput="predAutoCalc()">
+    </div>
+
+    <!-- Factores extra -->
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;
+      letter-spacing:.5px;margin-bottom:10px">Factores adicionales</div>
+    <div class="extras-grid" id="pred-extras">
+      <button class="extra-btn" id="ex-home-injury" onclick="toggleExtra('home-injury')">
+        <span class="extra-icon">🚑</span><span>Lesión clave en Local</span>
+      </button>
+      <button class="extra-btn" id="ex-away-injury" onclick="toggleExtra('away-injury')">
+        <span class="extra-icon">🚑</span><span>Lesión clave en Visitante</span>
+      </button>
+      <button class="extra-btn" id="ex-home-motivated" onclick="toggleExtra('home-motivated')">
+        <span class="extra-icon">🔥</span><span>Local muy motivado (playoffs/rivalidad)</span>
+      </button>
+      <button class="extra-btn" id="ex-away-motivated" onclick="toggleExtra('away-motivated')">
+        <span class="extra-icon">🔥</span><span>Visitante muy motivado</span>
+      </button>
+      <button class="extra-btn" id="ex-weather-bad" onclick="toggleExtra('weather-bad')">
+        <span class="extra-icon">🌧️</span><span>Clima adverso (lluvia / frío extremo)</span>
+      </button>
+      <button class="extra-btn" id="ex-back-to-back" onclick="toggleExtra('back-to-back')">
+        <span class="extra-icon">😴</span><span>Visitante juega B2B / viaje largo</span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%;margin-top:18px;font-size:14px;padding:12px"
+      onclick="runPredictor()">🔮 Analizar y Predecir</button>
+  </div>
+
+  <!-- Resultado -->
+  <div id="pred-result" style="display:none">
+    <div class="pred-result-hero" id="pred-hero"></div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:12px">📊 Desglose de factores</div>
+      <div id="pred-factors"></div>
+    </div>
+    <div class="card" style="margin-top:4px" id="pred-kelly-card">
+      <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px">🎯 Sugerencia Kelly</div>
+      <div id="pred-kelly-result"></div>
+    </div>
+    <button class="btn btn-primary btn-sm" style="margin-top:10px" onclick="addPredToHistory()">
+      + Guardar en Historial
+    </button>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -949,12 +1783,17 @@ function showTab(name){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sec-'+name).classList.add('active');
-  const order=['dashboard','picks','monitor','comparar','ou','kelly','historial','sim'];
+  const order=['dashboard','picks','monitor','comparar','ou','kelly','historial','sim','predictor','racha','futures','arb','alertas'];
   document.querySelectorAll('.nav-tab')[order.indexOf(name)].classList.add('active');
   if(name==='monitor')startMonitor();
   if(name==='historial'){renderHistorial();renderWeekly()}
   if(name==='kelly'){calcKelly();renderParlayLegs();calcParlay();calcBankroll()}
   if(name==='sim')renderSimPreview();
+  if(name==='predictor')initPredictor();
+  if(name==='racha')renderRacha();
+  if(name==='alertas')renderAlertasPanel();
+  if(name==='arb')initArb();
+  if(name==='futures')renderFutures();
 }
 
 // ── PICKS GENERATION (enhanced with form/H2H)
@@ -1014,13 +1853,22 @@ function loadPicks(){
     fillCompareSelects();
     document.getElementById('auto-status').textContent='● Auto-cargado';
     if(notifsEnabled) schedulePickAlerts();
+    generateValueAlerts();
   },500);
+}
+
+// ── LIVE CLOCK
+function startDashClock(){
+  function tick(){
+    const el=document.getElementById('dash-live-time');
+    if(el) el.textContent=new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  }
+  tick(); setInterval(tick,1000);
 }
 
 // ── DASHBOARD
 function renderDashboard(){
   if(!picks.length)return;
-  // Greeting
   const h=new Date().getHours();
   const greet=h<12?'Buenos días ☀️':h<18?'Buenas tardes 🌤️':'Buenas noches 🌙';
   document.getElementById('dash-greeting').textContent=greet;
@@ -1028,33 +1876,74 @@ function renderDashboard(){
   const months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const now=new Date();
   document.getElementById('dash-title').textContent=`${days[now.getDay()]}, ${now.getDate()} de ${months[now.getMonth()]}`;
-  document.getElementById('dash-subtitle').textContent=`${picks.length} picks analizados — ${picks.filter(p=>p.confidence>=75).length} con alta confianza`;
-  // Best pick (highest confidence) + best EV
-  const best=picks.reduce((a,b)=>a.confidence>b.confidence?a:b);
-  const bestEV=picks.filter(p=>p.ev>0).reduce((a,b)=>a&&a.ev>b.ev?a:b,null);
+
+  const highConf=picks.filter(p=>p.confidence>=75).length;
+  const posEV=picks.filter(p=>p.ev>0).length;
+  document.getElementById('dash-subtitle').textContent=
+    `${picks.length} picks analizados · ${highConf} alta confianza · ${posEV} con EV positivo`;
+
+  // ── Best pick showcase
+  const sorted=[...picks].sort((a,b)=>b.confidence-a.confidence);
+  const best=sorted[0];
+  const bestEV=picks.filter(p=>p.ev>0).sort((a,b)=>b.ev-a.ev)[0]||null;
   const sp=S[best.sport];
+  const bestIdx=picks.indexOf(best);
+  const cc=best.confidence>=80?'var(--green)':best.confidence>=65?'var(--amber)':'var(--red)';
+
   document.getElementById('dash-best').innerHTML=`
-    <div class="best-pick-card">
-      <span class="best-pick-badge">⭐ MEJOR PICK</span>
-      <div class="best-pick-matchup">${sp.icon} ${best.away} @ ${best.home}</div>
+    <div class="dash-best-label">⭐ Mejor pick del día</div>
+    <div class="dash-pick-showcase">
       <div>
-        <div class="best-pick-pick">${best.pick}</div>
-        <div class="best-pick-conf">${best.odds} · ${best.confidence}% conf · <span style="color:var(--green)">${best.ev>0?'+':''}${best.ev}% EV</span></div>
+        <div class="dash-pick-sport-row">
+          <span class="dash-pick-sport-chip" style="background:${sp.bg};color:${sp.color}">${sp.icon} ${best.sport}</span>
+          <span style="font-size:10px;color:var(--muted)">🕐 ${best.time}</span>
+        </div>
+        <div class="dash-pick-matchup-txt">${best.away} @ ${best.home}</div>
+        <div class="dash-pick-name">${best.pick}</div>
+        <div class="dash-pick-conf-row">
+          <span class="ev-badge ${best.ev>0?'ev-pos':'ev-neu'}">${best.ev>0?'+':''}${best.ev}% EV</span>
+          <span style="font-size:12px;color:${cc};font-weight:700">${best.confidence}% conf.</span>
+          <button class="btn btn-ghost btn-sm" onclick="addToHistory(${bestIdx})" style="margin-left:auto">+ Historial</button>
+          <button class="btn btn-ghost btn-sm" onclick="sharePickCard(${bestIdx})">📤</button>
+        </div>
       </div>
-      <button class="btn btn-primary btn-sm" onclick="addToHistory(picks.indexOf(picks.find(p=>p.id==='${best.id}')))">+ Historial</button>
+      <div class="dash-odds-pill">${best.odds}</div>
     </div>
-    ${bestEV&&bestEV.id!==best.id?`<div class="best-pick-card" style="margin-top:10px;border-color:#10b98140;background:#0a1e10">
-      <span class="best-pick-badge" style="background:var(--green);color:#000">💰 MEJOR EV</span>
-      <div class="best-pick-matchup">${S[bestEV.sport].icon} ${bestEV.away} @ ${bestEV.home}</div>
-      <div>
-        <div class="best-pick-pick" style="color:var(--green)">${bestEV.pick}</div>
-        <div class="best-pick-conf">${bestEV.odds} · <span style="color:var(--green);font-weight:700">+${bestEV.ev}% EV</span></div>
+    ${bestEV&&bestEV.id!==best.id?`
+    <div class="dash-best-ev" onclick="showTab('picks')" style="cursor:pointer">
+      <span style="font-size:10px;font-weight:800;background:linear-gradient(135deg,var(--green),#059669);
+        color:#000;padding:3px 9px;border-radius:20px;white-space:nowrap">💰 MEJOR EV</span>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:700">${S[bestEV.sport].icon} ${bestEV.pick}
+          <span style="color:var(--gold)">${bestEV.odds}</span></div>
+        <div style="font-size:11px;color:var(--muted)">${bestEV.away} @ ${bestEV.home}</div>
       </div>
-      <button class="btn btn-ghost btn-sm" onclick="addToHistory(picks.indexOf(picks.find(p=>p.id==='${bestEV.id}')))">+ Historial</button>
+      <span style="color:var(--green);font-size:15px;font-weight:900">+${bestEV.ev}%</span>
     </div>`:''}`;
-  // Stats
-  const W=history.filter(h=>h.result==='W').length;
-  const L=history.filter(h=>h.result==='L').length;
+
+  // ── Alerts banner
+  setTimeout(()=>{
+    const n=valueAlerts.length;
+    const banner=document.getElementById('dash-alerts-banner');
+    const high=valueAlerts.filter(a=>a.priority==='high').length;
+    if(n>0){
+      banner.style.display='flex';
+      document.getElementById('dash-alerts-txt').innerHTML=
+        `<span style="color:var(--red)">${n} alertas activas</span> — ${high} de alta prioridad`;
+      const qcEl=document.getElementById('qc-alertas-stat');
+      if(qcEl) qcEl.textContent=`${high} alta · ${n-high} media/baja`;
+    }
+  },600);
+
+  // ── Futures quick stat
+  const activeFut=futures.filter(f=>f.status==='active').length;
+  const qcFut=document.getElementById('qc-futures-stat');
+  if(qcFut) qcFut.textContent=activeFut?`${activeFut} futures activos`:'Sin futures activos';
+
+  // ── Racha quick stat
+  const settled=history.filter(h=>h.result==='W'||h.result==='L');
+  const W=settled.filter(h=>h.result==='W').length;
+  const L=settled.filter(h=>h.result==='L').length;
   const pct=W+L?Math.round(W/(W+L)*100):0;
   const net=history.reduce((s,h)=>{
     if(h.result==='W'&&h.bet)return s+h.bet*parseOdds(h.odds);
@@ -1062,17 +1951,47 @@ function renderDashboard(){
     return s;
   },0);
   const bestConf=picks.reduce((a,p)=>Math.max(a,p.confidence),0);
-  document.getElementById('dash-stats').innerHTML=`
-    <div class="stat-box"><div class="stat-val" id="ds-picks" style="color:var(--gold)">0</div><div class="stat-label">Picks Hoy</div></div>
-    <div class="stat-box"><div class="stat-val" id="ds-conf" style="color:var(--green)">0%</div><div class="stat-label">Mejor Conf.</div></div>
-    <div class="stat-box"><div class="stat-val" id="ds-wr" style="color:${pct>=55?'var(--green)':'var(--amber)'}">0%</div><div class="stat-label">Win Rate</div></div>
-    <div class="stat-box"><div class="stat-val" id="ds-net" style="color:${net>=0?'var(--green)':'var(--red)'}">$0</div><div class="stat-label">Neto</div></div>`;
+  const qcRacha=document.getElementById('qc-racha-stat');
+  if(qcRacha) qcRacha.textContent=W+L?`${pct}% win rate · ${W}W-${L}L`:'Sin historial aún';
+
+  // ── KPI strip — update values in existing boxes (preserve CSS vars)
+  const statBoxes=document.querySelectorAll('#dash-stats .stat-box');
+  const vals=[
+    {id:'ds-picks',v:picks.length,suf:'',pre:'',col:'var(--gold)'},
+    {id:'ds-conf',v:bestConf,suf:'%',pre:'',col:'var(--green)'},
+    {id:'ds-wr',v:pct,suf:'%',pre:'',col:pct>=55?'var(--green)':'var(--amber)'},
+    {id:'ds-net',v:Math.abs(net),suf:'',pre:net>=0?'+$':'-$',col:net>=0?'var(--green)':'var(--red)'}
+  ];
+  vals.forEach((v,i)=>{
+    const box=statBoxes[i];if(!box)return;
+    const valEl=box.querySelector('.stat-val');
+    if(valEl){valEl.id=v.id;valEl.style.color=v.col;}
+  });
   setTimeout(()=>{
-    animateCount(document.getElementById('ds-picks'),0,picks.length,600);
-    animateCount(document.getElementById('ds-conf'),0,bestConf,700,'%');
-    animateCount(document.getElementById('ds-wr'),0,pct,750,'%');
-    animateCount(document.getElementById('ds-net'),0,Math.abs(net),800,'',net>=0?'+$':'-$');
-  },100);
+    vals.forEach(v=>{
+      const el=document.getElementById(v.id);
+      if(el) animateCount(el,0,v.v,650,v.suf,v.pre);
+    });
+  },80);
+
+  // ── Top 3 picks mini strip
+  const top3=sorted.slice(0,3);
+  const lbl=document.getElementById('top-picks-lbl');
+  if(lbl) lbl.style.display='block';
+  document.getElementById('dash-top-picks').innerHTML=top3.map((p,i)=>{
+    const spi=S[p.sport];
+    const c=p.confidence>=80?'var(--green)':p.confidence>=65?'var(--amber)':'var(--red)';
+    return`<div class="top-pick-mini" style="--sport-color:${spi.color}"
+      onclick="showTab('picks')">
+      <div class="tpm-rank">${i+1}</div>
+      <div class="tpm-sport" style="color:${spi.color}">${spi.icon} ${p.sport}</div>
+      <div class="tpm-pick">${p.pick}</div>
+      <div class="tpm-meta">
+        <span style="color:${c};font-weight:700">${p.confidence}%</span>
+        <span style="color:var(--gold)">${p.odds}</span>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // ── PICKS RENDER
@@ -1821,68 +2740,1227 @@ function runSimulation(){
     ${br>initBR?'✅ Esta estrategia hubiera sido <b>rentable</b> en el período analizado.':'⚠ Esta estrategia hubiera resultado en <b>pérdida neta</b>. Considera ajustar el tamaño de apuesta o los criterios de selección.'}`;
 }
 
-// ── SHARE PICK CARD (Canvas API)
-function sharePickCard(i){
-  const p=picks[i];if(!p)return;
+// ── SHARE PICK CARD (Canvas API + modal)
+function buildShareCanvas(p){
   const sp=S[p.sport];
   const canvas=document.getElementById('share-canvas');
   const ctx=canvas.getContext('2d');
-  const W=800,H=420;
-  // Background
+  const W=800,H=440;
+  canvas.width=W;canvas.height=H;
+
+  // BG
   ctx.fillStyle='#05040a';ctx.fillRect(0,0,W,H);
-  // Gold gradient border
-  const grd=ctx.createLinearGradient(0,0,W,H);
-  grd.addColorStop(0,'#f5c842');grd.addColorStop(1,'#c8880a');
-  ctx.strokeStyle=grd;ctx.lineWidth=3;ctx.strokeRect(2,2,W-4,H-4);
-  // Logo area
-  ctx.fillStyle='#f5c842';
-  ctx.font='bold 13px Inter,sans-serif';ctx.fillText('⚡ AGENTE PICK PRO',30,35);
-  ctx.fillStyle='#7a6d4e';
-  ctx.font='11px Inter,sans-serif';
+  const bgGrd=ctx.createRadialGradient(W/2,-30,0,W/2,-30,500);
+  bgGrd.addColorStop(0,'#1a1000');bgGrd.addColorStop(1,'#05040a');
+  ctx.fillStyle=bgGrd;ctx.fillRect(0,0,W,H);
+
+  // Border glow
+  const brd=ctx.createLinearGradient(0,0,W,H);
+  brd.addColorStop(0,'#f5c842');brd.addColorStop(.5,'#c8880a');brd.addColorStop(1,'#f5c842');
+  ctx.strokeStyle=brd;ctx.lineWidth=3;
+  ctx.beginPath();ctx.roundRect(2,2,W-4,H-4,14);ctx.stroke();
+
+  // Header bar
+  ctx.fillStyle='#0e0c08';ctx.fillRect(0,0,W,64);
+  ctx.strokeStyle='#2a2010';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,64);ctx.lineTo(W,64);ctx.stroke();
+
+  // Logo icon box
+  const lgGrd=ctx.createLinearGradient(24,12,56,52);
+  lgGrd.addColorStop(0,'#f5c842');lgGrd.addColorStop(1,'#c8880a');
+  ctx.fillStyle=lgGrd;ctx.beginPath();ctx.roundRect(24,12,40,40,9);ctx.fill();
+  ctx.fillStyle='#000';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+  ctx.fillText('P',44,38);ctx.textAlign='left';
+
+  // Logo text
+  ctx.fillStyle='#f5c842';ctx.font='bold 16px Inter,sans-serif';
+  ctx.fillText('AGENTE PICK PRO',76,30);
+  ctx.fillStyle='#7a6d4e';ctx.font='11px Inter,sans-serif';
   const now=new Date();
-  ctx.fillText(now.toLocaleDateString('es-MX',{weekday:'long',year:'numeric',month:'long',day:'numeric'}),30,52);
-  // Sport badge area
-  ctx.fillStyle='#1c1500';ctx.beginPath();ctx.roundRect(30,75,W-60,80,10);ctx.fill();
-  ctx.fillStyle=sp.color;ctx.font='bold 14px Inter,sans-serif';
-  ctx.fillText(`${sp.icon} ${p.sport}`,50,112);
-  ctx.fillStyle='#f0ead6';ctx.font='bold 22px Inter,sans-serif';
-  ctx.fillText(`${p.away} @ ${p.home}`,50,135);
-  // Pick highlight
-  ctx.fillStyle='#0a0600';ctx.beginPath();ctx.roundRect(30,175,W-60,90,10);ctx.fill();
-  const grd2=ctx.createLinearGradient(0,0,W,0);
-  grd2.addColorStop(0,'#f5c84220');grd2.addColorStop(1,'transparent');
-  ctx.fillStyle=grd2;ctx.beginPath();ctx.roundRect(30,175,W-60,90,10);ctx.fill();
-  ctx.strokeStyle='#f5c84240';ctx.lineWidth=1;ctx.strokeRect(30,175,W-60,90);
-  ctx.fillStyle='#7a6d4e';ctx.font='11px Inter,sans-serif';ctx.fillText('PICK RECOMENDADO',50,200);
-  ctx.fillStyle='#f5c842';ctx.font='bold 32px Inter,sans-serif';ctx.fillText(p.pick,50,235);
-  ctx.fillStyle='#f0ead6';ctx.font='bold 20px Inter,sans-serif';ctx.fillText(p.odds,W-130,235);
+  ctx.fillText(now.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),76,48);
+
+  // Sport badge
+  const badgeBg=ctx.createLinearGradient(24,80,180,110);
+  badgeBg.addColorStop(0,sp.bg);badgeBg.addColorStop(1,'#05040a');
+  ctx.fillStyle=badgeBg;ctx.beginPath();ctx.roundRect(24,78,130,28,6);ctx.fill();
+  ctx.strokeStyle=sp.color+'60';ctx.lineWidth=1;
+  ctx.beginPath();ctx.roundRect(24,78,130,28,6);ctx.stroke();
+  ctx.fillStyle=sp.color;ctx.font='bold 12px Inter,sans-serif';
+  ctx.fillText(`${sp.icon}  ${p.sport}`,38,97);
+
+  // Matchup
+  ctx.fillStyle='#f0ead6';ctx.font='bold 26px Inter,sans-serif';
+  ctx.fillText(`${p.away} @ ${p.home}`,24,140);
+
+  // Separator line
+  ctx.strokeStyle='#2a2010';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(24,158);ctx.lineTo(W-24,158);ctx.stroke();
+
+  // Pick highlight box
+  const phGrd=ctx.createLinearGradient(24,170,W-24,260);
+  phGrd.addColorStop(0,'#1c1500');phGrd.addColorStop(1,'#0e0c00');
+  ctx.fillStyle=phGrd;ctx.beginPath();ctx.roundRect(24,170,W-48,100,12);ctx.fill();
+  ctx.strokeStyle='#f5c84245';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.roundRect(24,170,W-48,100,12);ctx.stroke();
+
+  // Inner glow
+  const igGrd=ctx.createLinearGradient(24,170,W/2,220);
+  igGrd.addColorStop(0,'#f5c84215');igGrd.addColorStop(1,'transparent');
+  ctx.fillStyle=igGrd;ctx.beginPath();ctx.roundRect(24,170,W-48,100,12);ctx.fill();
+
+  ctx.fillStyle='#7a6d4e';ctx.font='700 11px Inter,sans-serif';
+  ctx.letterSpacing='1px';ctx.fillText('PICK RECOMENDADO',44,193);
+  ctx.fillStyle='#f5c842';ctx.font='bold 38px Inter,sans-serif';
+  ctx.fillText(p.pick,44,237);
+
+  // Odds pill
+  const oddsGrd=ctx.createLinearGradient(W-120,180,W-30,250);
+  oddsGrd.addColorStop(0,'#f5c842');oddsGrd.addColorStop(1,'#c8880a');
+  ctx.fillStyle=oddsGrd;ctx.beginPath();ctx.roundRect(W-120,190,88,52,10);ctx.fill();
+  ctx.fillStyle='#000';ctx.font='bold 24px Inter,sans-serif';ctx.textAlign='center';
+  ctx.fillText(p.odds,W-76,223);ctx.textAlign='left';
+
   // Stats row
   const stats=[
     {l:'CONFIANZA',v:`${p.confidence}%`,c:p.confidence>=75?'#10b981':'#f59e0b'},
-    {l:'EV',v:`${p.ev>0?'+':''}${p.ev}%`,c:p.ev>0?'#10b981':'#ef4444'},
+    {l:'VALOR EV',v:`${p.ev>0?'+':''}${p.ev}%`,c:p.ev>0?'#10b981':'#ef4444'},
     {l:'HORA',v:p.time,c:'#38bdf8'},
     {l:'H2H',v:`${p.h2hW}-${p.h2hL}`,c:'#f0ead6'},
     {l:'PÚBLICO',v:`${p.publicPct}%`,c:p.fadeSignal?'#f59e0b':'#7a6d4e'}
   ];
+  const colW=(W-48)/5;
   stats.forEach((s,idx)=>{
-    const x=30+idx*(W-60)/5,y=290;
-    ctx.fillStyle='#161210';ctx.beginPath();ctx.roundRect(x+2,y,(W-60)/5-8,75,8);ctx.fill();
-    ctx.fillStyle=s.c;ctx.font='bold 20px Inter,sans-serif';
-    ctx.textAlign='center';ctx.fillText(s.v,x+(W-60)/10,y+32);
-    ctx.fillStyle='#7a6d4e';ctx.font='10px Inter,sans-serif';
-    ctx.fillText(s.l,x+(W-60)/10,y+52);
+    const x=24+idx*colW,y=285;
+    ctx.fillStyle='#0e0c08';ctx.beginPath();ctx.roundRect(x+3,y,colW-8,88,9);ctx.fill();
+    ctx.strokeStyle='#2a2010';ctx.lineWidth=1;
+    ctx.beginPath();ctx.roundRect(x+3,y,colW-8,88,9);ctx.stroke();
+    ctx.fillStyle=s.c;ctx.font='bold 22px Inter,sans-serif';ctx.textAlign='center';
+    ctx.fillText(s.v,x+colW/2,y+38);
+    ctx.fillStyle='#4a4030';ctx.font='700 9px Inter,sans-serif';
+    ctx.fillText(s.l,x+colW/2,y+58);
     ctx.textAlign='left';
   });
+
   // Footer
-  ctx.fillStyle='#2a2010';ctx.fillRect(0,390,W,30);
-  ctx.fillStyle='#7a6d4e';ctx.font='11px Inter,sans-serif';
-  ctx.fillText('Generado por Agente Pick Pro · Solo para entretenimiento · Apuesta responsablemente',30,410);
+  ctx.fillStyle='#0e0c08';ctx.fillRect(0,H-34,W,34);
+  ctx.strokeStyle='#2a2010';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,H-34);ctx.lineTo(W,H-34);ctx.stroke();
+  ctx.fillStyle='#3a3020';ctx.font='10px Inter,sans-serif';
+  ctx.fillText('Generado por Agente Pick Pro  ·  Solo para entretenimiento  ·  Apuesta responsablemente',24,H-13);
+
+  return canvas;
+}
+
+function sharePickCard(i){
+  const p=picks[i];if(!p)return;
+  const canvas=buildShareCanvas(p);
+  const sp=S[p.sport];
+
+  // Remove any existing modal
+  const old=document.getElementById('share-modal-overlay');
+  if(old)old.remove();
+
+  const overlay=document.createElement('div');
+  overlay.className='share-overlay';overlay.id='share-modal-overlay';
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.remove()});
+
+  const dataURL=canvas.toDataURL('image/png');
+  const fileName=`pick-${p.pick.replace(/\s+/g,'-')}-${p.sport}.png`;
+  const canShare=!!(navigator.share&&navigator.canShare);
+
+  overlay.innerHTML=`
+    <div class="share-modal">
+      <div class="share-title">${sp.icon} ${p.pick} <span style="color:var(--gold)">${p.odds}</span></div>
+      <div class="share-sub">${p.away} @ ${p.home} · ${p.confidence}% confianza · ${p.ev>0?'+':''}${p.ev}% EV</div>
+      <img src="${dataURL}" class="share-preview" title="Clic para previsualizar a tamaño completo"
+        onclick="window.open(this.src,'_blank')">
+      <div class="share-btns">
+        <button class="share-btn" id="sh-download">
+          <span class="share-icon">⬇️</span>Descargar PNG
+        </button>
+        <button class="share-btn" id="sh-share" ${canShare?'':'style="opacity:.4;cursor:not-allowed"'} title="${canShare?'Compartir':'Web Share no disponible en este navegador'}">
+          <span class="share-icon">📤</span>Compartir
+        </button>
+        <button class="share-btn" id="sh-copy">
+          <span class="share-icon">📋</span>Copiar texto
+        </button>
+      </div>
+      <button class="share-close" onclick="document.getElementById('share-modal-overlay').remove()">Cerrar</button>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
   // Download
-  const link=document.createElement('a');
-  link.download=`pick-${p.pick.replace(/\s+/g,'-')}-${p.sport}.png`;
-  link.href=canvas.toDataURL('image/png');
-  link.click();
-  toast(`📤 Tarjeta de ${p.pick} descargada`);
+  document.getElementById('sh-download').addEventListener('click',()=>{
+    const a=document.createElement('a');a.download=fileName;a.href=dataURL;a.click();
+    toast(`✓ Tarjeta de ${p.pick} descargada`);
+  });
+
+  // Web Share API
+  document.getElementById('sh-share').addEventListener('click',async()=>{
+    if(!canShare){toast('⚠ Tu navegador no soporta Web Share');return}
+    try{
+      const blob=await(await fetch(dataURL)).blob();
+      const file=new File([blob],fileName,{type:'image/png'});
+      await navigator.share({
+        title:`Pick Pro · ${p.pick} ${p.odds}`,
+        text:`${sp.icon} ${p.pick} ${p.odds} · ${p.away} @ ${p.home}\nConfianza ${p.confidence}% · EV ${p.ev>0?'+':''}${p.ev}%\n\n#AgentPickPro`,
+        files:[file]
+      });
+      toast('✓ Pick compartido');
+    }catch(e){if(e.name!=='AbortError')toast('⚠ Error al compartir: '+e.message)}
+  });
+
+  // Copy text
+  document.getElementById('sh-copy').addEventListener('click',()=>{
+    const txt=`${sp.icon} ${p.pick} ${p.odds}\n${p.away} @ ${p.home}\nConfianza: ${p.confidence}% · EV: ${p.ev>0?'+':''}${p.ev}%\nHora: ${p.time}\n#AgentPickPro`;
+    navigator.clipboard.writeText(txt).then(()=>toast('✓ Texto copiado al portapapeles'))
+      .catch(()=>toast('⚠ No se pudo copiar'));
+  });
+}
+
+// ── FUTURES / TORNEOS
+let futures = JSON.parse(localStorage.getItem('app_futures') || '[]');
+let futFilter = 'all';
+
+const futMarketLabels = {champ:'🏆 Campeón', div:'📍 División', prop:'🎯 Prop', parlay:'💎 Parlay'};
+const futMarketClass  = {champ:'fm-champ', div:'fm-div', prop:'fm-prop', parlay:'fm-parlay'};
+
+function toggleAddFuture(){
+  const modal = document.getElementById('add-future-modal');
+  modal.classList.toggle('open');
+  if(modal.classList.contains('open')){
+    // Default dates
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('fut-date').value = today;
+    const resolve = new Date(); resolve.setMonth(resolve.getMonth()+4);
+    document.getElementById('fut-resolve').value = resolve.toISOString().split('T')[0];
+  }
+}
+
+function saveFuture(){
+  const team  = document.getElementById('fut-team').value.trim();
+  const odds  = document.getElementById('fut-odds').value.trim();
+  const stake = parseFloat(document.getElementById('fut-stake').value) || 0;
+  if(!team || !odds || !stake){ toast('⚠ Completa equipo, odds y apuesta'); return; }
+
+  const decO = americanToDecimal(odds);
+  const payout = stake * decO;
+
+  futures.unshift({
+    id: Date.now(),
+    sport:   document.getElementById('fut-sport').value,
+    market:  document.getElementById('fut-market').value,
+    team, odds, oddsNow: document.getElementById('fut-odds-now').value.trim() || odds,
+    stake, payout,
+    date:    document.getElementById('fut-date').value,
+    resolve: document.getElementById('fut-resolve').value,
+    notes:   document.getElementById('fut-notes').value.trim(),
+    status: 'active'
+  });
+
+  localStorage.setItem('app_futures', JSON.stringify(futures));
+  toggleAddFuture();
+  renderFutures();
+  toast(`✓ ${team} guardado`);
+
+  // Clear fields
+  ['fut-team','fut-odds','fut-stake','fut-odds-now','fut-notes'].forEach(id =>
+    document.getElementById(id).value = '');
+}
+
+function setFutFilter(f, btn){
+  futFilter = f;
+  document.querySelectorAll('#fut-filters .fpill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFutures();
+}
+
+function cycleFutStatus(id){
+  const f = futures.find(x=>x.id===id);
+  if(!f) return;
+  f.status = {active:'won', won:'lost', lost:'active'}[f.status];
+  localStorage.setItem('app_futures', JSON.stringify(futures));
+  renderFutures();
+  toast(f.status==='won'?`✅ ${f.team} marcado como ganado`:f.status==='lost'?`❌ ${f.team} marcado como perdido`:`⏳ ${f.team} activo`);
+}
+
+function deleteFuture(id){
+  futures = futures.filter(x=>x.id!==id);
+  localStorage.setItem('app_futures', JSON.stringify(futures));
+  renderFutures();
+  toast('Future eliminado');
+}
+
+function toggleHedge(id){
+  const panel = document.getElementById('hedge-'+id);
+  if(!panel) return;
+  panel.style.display = panel.style.display==='none' ? 'block' : 'none';
+}
+
+function calcHedge(id){
+  const f = futures.find(x=>x.id===id);
+  if(!f) return;
+  const hedgeOdds = parseFloat(document.getElementById('hedge-odds-'+id).value) || 0;
+  if(!hedgeOdds){ toast('⚠ Ingresa los odds del hedge'); return; }
+  const decH = hedgeOdds > 0 ? 1+hedgeOdds/100 : 1+100/Math.abs(hedgeOdds);
+  // Hedge: bet H on opponent so both scenarios pay same
+  // If future wins: payout - stake - H = profit
+  // If future loses: H*(decH-1) - stake = profit
+  // Optimal H = f.payout / decH
+  const hedgeBet = f.payout / decH;
+  const profitIfFutureWins  = f.payout - f.stake - hedgeBet;
+  const profitIfHedgeWins   = hedgeBet*(decH-1) - f.stake;
+  const guaranteed = Math.min(profitIfFutureWins, profitIfHedgeWins);
+  const el = document.getElementById('hedge-result-'+id);
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-top:10px">
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--blue)">$${hedgeBet.toFixed(2)}</div>
+        <div class="sim-stat-lbl">Apuesta hedge</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--green)">+$${guaranteed.toFixed(2)}</div>
+        <div class="sim-stat-lbl">Ganancia garantizada</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--gold)">${((guaranteed/f.stake)*100).toFixed(1)}%</div>
+        <div class="sim-stat-lbl">ROI asegurado</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5">
+      Si gana ${f.team}: $${profitIfFutureWins.toFixed(2)} neto · Si pierde: $${profitIfHedgeWins.toFixed(2)} neto</div>`;
+}
+
+function renderFutures(){
+  // Summary
+  const active = futures.filter(f=>f.status==='active');
+  const won    = futures.filter(f=>f.status==='won');
+  const lost   = futures.filter(f=>f.status==='lost');
+  const totalIn   = futures.reduce((s,f)=>s+f.stake, 0);
+  const totalPot  = active.reduce((s,f)=>s+f.payout, 0);
+  const totalWon  = won.reduce((s,f)=>s+(f.payout-f.stake), 0);
+  const totalLost = lost.reduce((s,f)=>s+f.stake, 0);
+  const net = totalWon - totalLost;
+
+  document.getElementById('futures-summary').innerHTML = `
+    <div class="stat-box"><div class="stat-val" style="color:var(--amber)">${active.length}</div>
+      <div class="stat-label">Activos</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--gold)">$${totalIn.toFixed(0)}</div>
+      <div class="stat-label">Invertido</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green)">$${totalPot.toFixed(0)}</div>
+      <div class="stat-label">Cobro potencial</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:${net>=0?'var(--green)':'var(--red)'}">
+      ${net>=0?'+':''}$${net.toFixed(0)}</div><div class="stat-label">P/L realizado</div></div>`;
+
+  // Filter
+  let list = futures;
+  if(futFilter === 'active') list = futures.filter(f=>f.status==='active');
+  else if(futFilter === 'won')  list = futures.filter(f=>f.status==='won');
+  else if(futFilter === 'lost') list = futures.filter(f=>f.status==='lost');
+  else if(['champ','div','prop','parlay'].includes(futFilter))
+    list = futures.filter(f=>f.market===futFilter);
+
+  const container = document.getElementById('futures-list');
+
+  if(!list.length){
+    container.innerHTML = futures.length
+      ? '<div class="empty-state"><div class="ico">🔍</div><div>Sin futures para este filtro</div></div>'
+      : `<div class="empty-state"><div class="ico">🏆</div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:6px">Sin futures registrados</div>
+          <div style="font-size:12px">Agrega tu primera apuesta a largo plazo</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="toggleAddFuture()">
+            + Agregar future</button></div>`;
+    return;
+  }
+
+  container.innerHTML = list.map((f,ai)=>{
+    const sp = S[f.sport] || {icon:'🏅',color:'var(--gold)',bg:'#1a1400'};
+    const decO    = americanToDecimal(f.odds);
+    const decNow  = americanToDecimal(f.oddsNow || f.odds);
+    const implOrig = 1/decO;
+    const implNow  = 1/decNow;
+    const valueShift = ((implOrig - implNow) / implOrig * 100).toFixed(1);
+    const valuePosn = parseFloat(valueShift) > 0;
+    const statusClass = {active:'fs-active', won:'fs-won', lost:'fs-lost'}[f.status];
+    const statusLabel = {active:'⏳ Activo', won:'✅ Ganado', lost:'❌ Perdido'}[f.status];
+    const daysLeft = f.resolve
+      ? Math.max(0, Math.round((new Date(f.resolve)-new Date())/(1000*60*60*24)))
+      : null;
+    const implPct = Math.round(implOrig*100);
+    const barPct  = Math.min(100, Math.round(implNow*100 / implOrig * 100));
+
+    return `<div class="future-card" style="animation-delay:${ai*60}ms">
+      <div class="future-card-header">
+        <span style="color:${sp.color};font-size:13px">${sp.icon}</span>
+        <span class="future-market-badge ${futMarketClass[f.market]||'fm-champ'}">
+          ${futMarketLabels[f.market]||f.market}</span>
+        ${daysLeft!==null?`<span style="font-size:10px;color:var(--muted)">${daysLeft}d restantes</span>`:''}
+        <span class="future-status ${statusClass}">${statusLabel}</span>
+      </div>
+      <div class="future-body">
+        <div class="future-team">${f.team}</div>
+        <div class="future-meta">${f.sport} · Apostado el ${f.date}${f.notes?` · ${f.notes}`:''}</div>
+        <div class="future-numbers">
+          <div class="future-num-box">
+            <div class="future-num-val" style="color:var(--gold)">${f.odds}</div>
+            <div class="future-num-lbl">Odds orig.</div></div>
+          <div class="future-num-box">
+            <div class="future-num-val" style="color:var(--amber)">$${f.stake}</div>
+            <div class="future-num-lbl">Apostado</div></div>
+          <div class="future-num-box">
+            <div class="future-num-val" style="color:var(--green)">$${f.payout.toFixed(0)}</div>
+            <div class="future-num-lbl">Cobro pot.</div></div>
+          <div class="future-num-box">
+            <div class="future-num-val" style="color:var(--blue)">${implPct}%</div>
+            <div class="future-num-lbl">Prob. impl.</div></div>
+        </div>
+        ${f.oddsNow && f.oddsNow!==f.odds ? `
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">
+          Odds actuales: <strong style="color:${valuePosn?'var(--green)':'var(--red)'}">${f.oddsNow}</strong>
+          <span style="color:${valuePosn?'var(--green)':'var(--red)'}">
+            (${valuePosn?'ganaste':'perdiste'} ${Math.abs(parseFloat(valueShift))}% de valor)</span>
+        </div>
+        <div class="future-value-bar">
+          <div class="future-value-fill" style="width:${barPct}%;background:${valuePosn?'var(--green)':'var(--red)'}"></div>
+        </div>` : ''}
+        <div style="display:flex;gap:7px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn btn-ghost btn-sm" onclick="cycleFutStatus(${f.id})">↻ Estado</button>
+          ${f.status==='active'?`<button class="btn btn-ghost btn-sm" onclick="toggleHedge(${f.id})">🛡 Hedge</button>`:''}
+          <button class="btn btn-danger btn-sm" onclick="deleteFuture(${f.id})">🗑</button>
+        </div>
+        <!-- Hedge panel -->
+        <div class="hedge-panel" id="hedge-${f.id}" style="display:none">
+          <div style="font-size:12px;font-weight:700;color:#38bdf8;margin-bottom:10px">
+            🛡 Calculadora de Hedge</div>
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0">
+              <label>Odds del resultado contrario (ahora)</label>
+              <input type="text" id="hedge-odds-${f.id}" placeholder="-180"
+                oninput="calcHedge(${f.id})">
+            </div>
+            <div style="display:flex;align-items:flex-end">
+              <button class="btn btn-primary btn-sm" onclick="calcHedge(${f.id})"
+                style="background:linear-gradient(135deg,#38bdf8,#0284c7);margin-bottom:0">
+                Calcular</button>
+            </div>
+          </div>
+          <div id="hedge-result-${f.id}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── CALCULADORA DE ARBITRAJE
+let arbWays = 2;
+let oddsFmt = 'american';
+let arbHistory = JSON.parse(localStorage.getItem('arb_history') || '[]');
+
+const defaultBooks = [
+  {name:'Casa A', outcomes:['Local','Visitante','Empate']},
+  {name:'Casa B', outcomes:['Local','Visitante','Empate']},
+  {name:'Casa C', outcomes:['Local','Visitante','Empate']}
+];
+
+function initArb(){
+  renderArbInputs();
+  renderArbHistory();
+}
+
+function setOddsFmt(fmt, btn){
+  oddsFmt = fmt;
+  document.querySelectorAll('.odds-fmt-pills .fpill').forEach(b => {
+    if(b.onclick && b.onclick.toString().includes('setOddsFmt')) b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  calcArb();
+}
+
+function setArbWays(n, btn){
+  arbWays = n;
+  document.querySelectorAll('.odds-fmt-pills .fpill').forEach(b => {
+    if(b.onclick && b.onclick.toString().includes('setArbWays')) b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderArbInputs();
+  calcArb();
+}
+
+function renderArbInputs(){
+  const outcomeLabels2 = ['🏠 Local / Equipo A', '✈️ Visitante / Equipo B'];
+  const outcomeLabels3 = ['🏠 Local', '🤝 Empate', '✈️ Visitante'];
+  const labels = arbWays === 2 ? outcomeLabels2 : outcomeLabels3;
+  const placeholder = oddsFmt === 'american' ? ['-110','+110','±100'] : ['1.91','1.91','3.50'];
+
+  document.getElementById('arb-book-inputs').innerHTML = `
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;
+      letter-spacing:.5px;margin-bottom:10px">
+      Ingresa los odds de cada resultado (distintas casas)</div>
+    <div class="arb-book-row ${arbWays===2?'two-way':''}">
+      ${labels.map((lbl,i)=>`
+        <div class="arb-book-card">
+          <div class="arb-book-label">${lbl}</div>
+          <div class="form-group" style="margin-bottom:8px">
+            <label>Casa de apuestas</label>
+            <input type="text" id="arb-book-${i}" placeholder="Ej: DraftKings" oninput="calcArb()">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label>Odds (${oddsFmt==='american'?'americano':'decimal'})</label>
+            <input type="text" id="arb-odds-${i}" placeholder="${placeholder[i]}" oninput="calcArb()">
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function toDecimal(raw){
+  const s = String(raw).trim();
+  if(!s) return null;
+  if(oddsFmt === 'decimal'){
+    const n = parseFloat(s);
+    return isNaN(n) || n <= 1 ? null : n;
+  }
+  // American
+  const n = parseFloat(s);
+  if(isNaN(n)) return null;
+  return n > 0 ? 1 + n/100 : 1 + 100/Math.abs(n);
+}
+
+function calcArb(){
+  const decOdds = [];
+  for(let i=0; i<arbWays; i++){
+    const d = toDecimal(document.getElementById(`arb-odds-${i}`)?.value || '');
+    decOdds.push(d);
+  }
+
+  const indicator = document.getElementById('arb-indicator');
+  const resultEl  = document.getElementById('arb-result');
+
+  // Need at least 2 valid odds
+  if(decOdds.filter(Boolean).length < 2){
+    indicator.style.display = 'none';
+    resultEl.style.display  = 'none';
+    return;
+  }
+
+  // Fill missing with implied equal share
+  const validOdds = decOdds.map(d => d || 2.0);
+  const impliedSum = validOdds.reduce((s, d) => s + 1/d, 0);
+  const arbPct = ((1 - impliedSum) * 100);
+  const isArb  = impliedSum < 1;
+
+  // Show indicator
+  indicator.style.display = 'block';
+  const pctEl = document.getElementById('arb-pct-big');
+  const lblEl = document.getElementById('arb-status-lbl');
+  const impEl = document.getElementById('arb-implied-sum');
+
+  indicator.className = `arb-indicator ${isArb ? 'arb-yes' : 'arb-no'}`;
+  pctEl.textContent   = `${arbPct > 0 ? '+' : ''}${arbPct.toFixed(2)}%`;
+  pctEl.style.color   = isArb ? 'var(--green)' : 'var(--red)';
+  lblEl.textContent   = isArb ? '✅ ARBITRAJE DETECTADO — Ganancia garantizada' : '❌ Sin arbitraje — El libro favorece a las casas';
+  lblEl.style.color   = isArb ? 'var(--green)' : 'var(--red)';
+  impEl.textContent   = `Suma de probabilidades implícitas: ${(impliedSum*100).toFixed(2)}% ${isArb ? '(< 100% ✓)' : '(> 100% ✗)'}`;
+
+  // Calculate bets
+  const stake  = parseFloat(document.getElementById('arb-stake').value) || 1000;
+  const target = parseFloat(document.getElementById('arb-target').value) || 0;
+
+  // If target profit is set, recalculate total stake
+  let totalStake = stake;
+  if(target > 0 && isArb){
+    totalStake = target / (1/impliedSum - 1);
+  }
+
+  const bets   = validOdds.map(d => totalStake * (1/d) / impliedSum);
+  const profit = totalStake * (1/impliedSum - 1);
+  const roi    = (profit / totalStake * 100);
+
+  resultEl.style.display = 'block';
+
+  // Profit box
+  const profitBox = document.getElementById('arb-profit-box');
+  if(isArb){
+    profitBox.className = 'arb-profit-box';
+    profitBox.innerHTML = `
+      <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;
+        letter-spacing:.8px;margin-bottom:6px">Ganancia garantizada</div>
+      <div class="arb-profit-big">+$${profit.toFixed(2)}</div>
+      <div style="font-size:12px;color:var(--green);margin-top:6px;font-weight:600">
+        ROI: +${roi.toFixed(2)}% · Apuesta total: $${totalStake.toFixed(2)}</div>`;
+  } else {
+    profitBox.className = '';
+    profitBox.style.cssText = 'background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;margin-bottom:14px';
+    const gap = (impliedSum - 1) * 100;
+    profitBox.innerHTML = `
+      <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Sin oportunidad — margen de las casas</div>
+      <div style="font-size:28px;font-weight:900;color:var(--red)">−${gap.toFixed(2)}%</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">
+        Necesitas reducir la suma implícita en ${gap.toFixed(2)}pp para encontrar arb</div>`;
+  }
+
+  // Bet amounts per outcome
+  const outcomeNames2 = ['Local / A','Visitante / B'];
+  const outcomeNames3 = ['Local','Empate','Visitante'];
+  const names = arbWays===2 ? outcomeNames2 : outcomeNames3;
+  document.getElementById('arb-bets-row').innerHTML = bets.map((b,i)=>{
+    const bookName = document.getElementById(`arb-book-${i}`)?.value.trim() || `Casa ${i+1}`;
+    const oddsDisp = validOdds[i] ? (oddsFmt==='american'
+      ? (validOdds[i]>=2 ? '+'+(Math.round((validOdds[i]-1)*100)) : '-'+(Math.round(100/(validOdds[i]-1))))
+      : validOdds[i].toFixed(2)) : '—';
+    return `<div class="arb-result-box">
+      <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;
+        letter-spacing:.4px;margin-bottom:4px">${names[i]}</div>
+      <div class="arb-result-amount">$${b.toFixed(2)}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">${bookName}</div>
+      <div style="font-size:11px;color:var(--gold);font-weight:700;margin-top:2px">@ ${oddsDisp}</div>
+      <div style="font-size:10px;color:var(--green);margin-top:3px">
+        Cobro: $${(b*validOdds[i]).toFixed(2)}</div>
+    </div>`;
+  }).join('');
+
+  // Detail table
+  document.getElementById('arb-detail').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:12px">
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--gold)">$${totalStake.toFixed(0)}</div>
+        <div class="sim-stat-lbl">Stake total</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:${isArb?'var(--green)':'var(--red)'}">
+        ${isArb?'+':''}$${profit.toFixed(2)}</div><div class="sim-stat-lbl">Beneficio</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:${isArb?'var(--green)':'var(--red)'}">
+        ${isArb?'+':''}${roi.toFixed(2)}%</div><div class="sim-stat-lbl">ROI</div></div>
+    </div>
+    ${isArb ? `<div style="font-size:12px;color:var(--muted);line-height:1.6">
+      • Para una ganancia de <strong>$${profit.toFixed(2)}</strong>, apuesta exactamente los montos indicados en cada casa.<br>
+      • El cobro es idéntico sin importar qué resultado ocurra: <strong style="color:var(--green)">$${(totalStake+profit).toFixed(2)}</strong>.<br>
+      • Asegúrate de que todos los mercados estén abiertos antes de colocar las apuestas.
+    </div>` : `<div style="font-size:12px;color:var(--muted);line-height:1.6">
+      • Busca mejores odds en otras casas para cerrar la brecha de ${((impliedSum-1)*100).toFixed(2)}pp.<br>
+      • Prueba combinando más casas o diferentes mercados (spread, total) para encontrar arb.
+    </div>`}`;
+
+  // Save to history
+  saveArbCheck({
+    time: new Date().toLocaleTimeString('es-MX'),
+    ways: arbWays,
+    odds: validOdds.map((d,i)=>({
+      outcome: (arbWays===2?outcomeNames2:outcomeNames3)[i],
+      book: document.getElementById(`arb-book-${i}`)?.value.trim() || `Casa ${i+1}`,
+      dec: d
+    })),
+    impliedSum, profit, stake: totalStake, isArb
+  });
+}
+
+function saveArbCheck(check){
+  arbHistory.unshift(check);
+  arbHistory = arbHistory.slice(0, 15);
+  localStorage.setItem('arb_history', JSON.stringify(arbHistory));
+  renderArbHistory();
+}
+
+function renderArbHistory(){
+  const card = document.getElementById('arb-history-card');
+  const list = document.getElementById('arb-history-list');
+  if(!arbHistory.length){ card.style.display='none'; return; }
+  card.style.display = 'block';
+  list.innerHTML = arbHistory.map(c => `
+    <div class="arb-history-row">
+      <span class="${c.isArb?'arb-tag-yes':'arb-tag-no'}">${c.isArb?'ARB':'NO ARB'}</span>
+      <span style="flex:1;color:var(--muted)">${c.odds.map(o=>`${o.outcome} ${o.book?'@'+o.book:''}`).join(' · ')}</span>
+      <span style="color:${c.isArb?'var(--green)':'var(--red)'};font-weight:700;margin-right:6px">
+        ${c.isArb?'+$'+c.profit.toFixed(2):'−'+((c.impliedSum-1)*100).toFixed(2)+'%'}</span>
+      <span style="color:var(--muted);font-size:10px">${c.time}</span>
+    </div>`).join('');
+}
+
+function clearArbHistory(){
+  arbHistory=[];
+  localStorage.removeItem('arb_history');
+  document.getElementById('arb-history-card').style.display='none';
+}
+
+// ── ALERTAS DE VALOR
+let valueAlerts = [];
+let alertaFilter = '';
+let lastScanTime = null;
+
+function generateValueAlerts(){
+  if(!picks.length) return;
+  valueAlerts = [];
+
+  picks.forEach((p, i) => {
+    const sp = S[p.sport];
+    const reasons = [];
+    let priority = 'low';
+    let types = [];
+
+    // 1. EV Alto
+    const evHigh = p.ev >= 6;
+    const evMed  = p.ev >= 3 && p.ev < 6;
+    if(evHigh){ reasons.push(`EV de <strong style="color:var(--green)">+${p.ev}%</strong> — valor esperado muy favorable`); types.push('ev'); priority='high'; }
+    else if(evMed){ reasons.push(`EV de <strong style="color:var(--green)">+${p.ev}%</strong> — valor positivo moderado`); types.push('ev'); if(priority==='low') priority='med'; }
+
+    // 2. Sharp money (línea bajó ≥15 pts)
+    const sharpMoney = (p.lineShift||0) <= -15;
+    if(sharpMoney){
+      reasons.push(`Línea movió <strong style="color:var(--amber)">${p.lineShift} pts</strong> a favor — dinero sharp detectado`);
+      types.push('sharp');
+      if(priority==='low') priority='med';
+      if(evHigh) priority='high';
+    }
+
+    // 3. Confianza alta
+    const highConf = p.confidence >= 83;
+    const medConf  = p.confidence >= 76 && p.confidence < 83;
+    if(highConf){ reasons.push(`Confianza del <strong style="color:var(--gold)">${p.confidence}%</strong> — pick de alta certeza`); types.push('conf'); if(priority!=='high') priority='med'; }
+    else if(medConf){ reasons.push(`Confianza del <strong style="color:var(--amber)">${p.confidence}%</strong>`); types.push('conf'); }
+
+    // 4. Fade signal fuerte (>70% público en contra)
+    if(p.publicPct >= 70){
+      reasons.push(`<strong style="color:#f472b6">${p.publicPct}%</strong> del público apuesta en contra — señal de fade`);
+      types.push('fade');
+      if(priority==='low') priority='med';
+    }
+
+    // 5. Racha caliente ≥4
+    if(p.isHot && p.streakCount >= 4){
+      reasons.push(`Equipo en racha de <strong style="color:#fb923c">${p.streakCount}/5</strong> victorias recientes`);
+      types.push('racha');
+    }
+
+    // 6. Combo premium: EV alto + sharp + conf alta
+    const isCombo = evHigh && sharpMoney && highConf;
+    const isCombo2 = (evHigh || sharpMoney) && highConf && p.publicPct >= 65;
+    if(isCombo || isCombo2){
+      types = ['combo', ...types.filter(t=>t!=='combo')];
+      priority = 'high';
+    }
+
+    // Solo emitir alerta si hay al menos un trigger
+    if(types.length === 0) return;
+
+    valueAlerts.push({ idx: i, pick: p, types, reasons, priority });
+  });
+
+  // Sort: high → med → low, then by EV desc
+  const priOrder = {high:0, med:1, low:2};
+  valueAlerts.sort((a,b)=>{
+    if(priOrder[a.priority] !== priOrder[b.priority]) return priOrder[a.priority]-priOrder[b.priority];
+    return b.pick.ev - a.pick.ev;
+  });
+
+  lastScanTime = new Date();
+  updateAlertaBadge();
+}
+
+function updateAlertaBadge(){
+  const badge = document.getElementById('alertas-badge');
+  if(!badge) return;
+  const n = valueAlerts.length;
+  badge.textContent = n;
+  badge.style.display = n > 0 ? '' : 'none';
+}
+
+function runAlertScan(){
+  const btn = document.getElementById('scan-btn');
+  btn.classList.add('scanning');
+  btn.textContent = '⟳ Escaneando…';
+  setTimeout(()=>{
+    generateValueAlerts();
+    renderAlertasPanel();
+    btn.classList.remove('scanning');
+    btn.textContent = '⚡ Escanear ahora';
+    toast(`✓ Escaneo completo — ${valueAlerts.length} alertas detectadas`);
+  }, 700);
+}
+
+function setAlertaFilter(type, btn){
+  alertaFilter = type;
+  document.querySelectorAll('#alerta-filters .fpill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAlertasPanel();
+}
+
+function renderAlertasPanel(){
+  if(!picks.length){
+    document.getElementById('alertas-list-panel').innerHTML=`
+      <div class="alerta-empty"><div class="ico">⚡</div>
+        <div>Carga los picks primero</div>
+        <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="loadPicks();showTab('alertas')">Cargar picks</button>
+      </div>`;
+    return;
+  }
+  if(!valueAlerts.length) generateValueAlerts();
+
+  // Summary bar
+  const sumEl = document.getElementById('scan-summary');
+  const high = valueAlerts.filter(a=>a.priority==='high').length;
+  const med  = valueAlerts.filter(a=>a.priority==='med').length;
+  const low  = valueAlerts.filter(a=>a.priority==='low').length;
+  sumEl.style.display = 'flex';
+  document.getElementById('scan-info-text').innerHTML =
+    `${valueAlerts.length} alertas: <span style="color:var(--red)">${high} alta</span> · <span style="color:var(--amber)">${med} media</span> · <span style="color:var(--green)">${low} baja</span>`;
+  document.getElementById('scan-ts').textContent =
+    lastScanTime ? `Último escaneo: ${lastScanTime.toLocaleTimeString('es-MX')}` : '';
+
+  const filtered = alertaFilter
+    ? valueAlerts.filter(a => a.types.includes(alertaFilter))
+    : valueAlerts;
+
+  const panel = document.getElementById('alertas-list-panel');
+
+  if(!filtered.length){
+    panel.innerHTML=`<div class="alerta-empty"><div class="ico">🔍</div>
+      <div>Sin alertas para este filtro</div></div>`;
+    return;
+  }
+
+  const typeLabels = {
+    ev:'💰 EV Alto', sharp:'⚡ Sharp Money', conf:'⭐ Conf. Alta',
+    fade:'🔄 Fade Signal', racha:'🔥 Racha', combo:'💎 Combo Premium'
+  };
+  const typeClass = {ev:'at-ev',sharp:'at-sharp',conf:'at-conf',fade:'at-fade',racha:'at-racha',combo:'at-combo'};
+  const priDot = {high:'pri-high', med:'pri-med', low:'pri-low'};
+  const priLabel = {high:'ALTA','med':'MEDIA','low':'BAJA'};
+
+  panel.innerHTML = filtered.map((a,ai) => {
+    const p = a.pick;
+    const sp = S[p.sport];
+    const mainType = a.types[0];
+    const cc = p.confidence>=80?'var(--green)':p.confidence>=65?'var(--amber)':'var(--red)';
+    const delay = ai * 60;
+    return `<div class="alerta-card" style="animation-delay:${delay}ms;border-left:3px solid ${
+      a.priority==='high'?'var(--red)':a.priority==='med'?'var(--amber)':'var(--green)'}">
+      <div class="alerta-header">
+        <div class="alerta-priority ${priDot[a.priority]}"></div>
+        <span style="font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.6px;text-transform:uppercase">
+          ${priLabel[a.priority]}</span>
+        ${a.types.map(t=>`<span class="alerta-type-badge ${typeClass[t]||'at-ev'}">${typeLabels[t]||t}</span>`).join('')}
+        <span class="alerta-time">🕐 ${p.time}</span>
+      </div>
+      <div class="alerta-body">
+        <div class="alerta-matchup">${sp.icon} ${p.away} @ ${p.home}</div>
+        <div style="margin:6px 0">
+          <span class="alerta-pick">${p.pick}</span>
+          <span class="alerta-odds">${p.odds}</span>
+        </div>
+        <div class="alerta-reason">${a.reasons.join('<br>')}</div>
+        <div class="alerta-metrics">
+          <span class="alerta-metric" style="color:${cc}">Conf ${p.confidence}%</span>
+          <span class="alerta-metric" style="color:${p.ev>0?'var(--green)':'var(--red)'}">${p.ev>0?'+':''}${p.ev}% EV</span>
+          ${(p.lineShift||0)<=−10?`<span class="alerta-metric" style="color:var(--amber)">Línea ${p.lineShift}</span>`:''}
+          <span class="alerta-metric" style="color:var(--muted)">Público ${p.publicPct}%</span>
+          <span class="alerta-metric">H2H ${p.h2hW}-${p.h2hL}</span>
+        </div>
+        <div class="alerta-actions">
+          <button class="btn btn-primary btn-sm" onclick="addToHistory(${a.idx})">+ Historial</button>
+          <button class="btn btn-ghost btn-sm" onclick="goCompare(${a.idx})">⚖ Comparar</button>
+          <button class="btn btn-ghost btn-sm" onclick="sharePickCard(${a.idx})">📤 Compartir</button>
+          <button class="btn btn-ghost btn-sm" onclick="showTab('picks')" title="Ver en Picks">👁</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── MI RACHA PERSONAL
+function renderRacha(){
+  const settled = history.filter(h => h.result === 'W' || h.result === 'L');
+  const empty = document.getElementById('racha-empty');
+  const content = document.getElementById('racha-content');
+  if(!settled.length){
+    empty.style.display = 'block';
+    content.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  content.style.display = 'block';
+
+  const W = settled.filter(h=>h.result==='W').length;
+  const L = settled.filter(h=>h.result==='L').length;
+  const wr = Math.round(W/(W+L)*100);
+  const net = settled.reduce((s,h)=>{
+    const gain = h.bet ? h.bet * parseOdds(h.odds) : parseOdds(h.odds);
+    return h.result==='W' ? s + gain : s - (h.bet||1);
+  },0);
+
+  // ── Current streak
+  const sorted = [...settled].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  let curStreak = 0; let curType = sorted[0]?.result || 'W';
+  for(const h of sorted){ if(h.result===curType) curStreak++; else break; }
+
+  // ── Best / worst streaks
+  let bestStreak=0, worstStreak=0, tmpW=0, tmpL=0;
+  const chronological = [...settled].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  for(const h of chronological){
+    if(h.result==='W'){ tmpW++; tmpL=0; bestStreak=Math.max(bestStreak,tmpW); }
+    else { tmpL++; tmpW=0; worstStreak=Math.max(worstStreak,tmpL); }
+  }
+
+  // ── KPIs
+  const kpiColor = wr>=55?'var(--green)':wr>=45?'var(--amber)':'var(--red)';
+  const streakColor = curType==='W' ? 'var(--green)' : 'var(--red)';
+  document.getElementById('racha-kpis').innerHTML=`
+    <div class="racha-box">
+      <div class="racha-num" style="color:${kpiColor}">${wr}%</div>
+      <div class="racha-lbl">Win Rate</div>
+      <div class="racha-sub" style="color:var(--muted)">${W}W — ${L}L de ${W+L} picks</div>
+    </div>
+    <div class="racha-box">
+      <div class="racha-num" style="color:${net>=0?'var(--green)':'var(--red)'}">${net>=0?'+':''}${net.toFixed(0)}</div>
+      <div class="racha-lbl">Neto (u)</div>
+      <div class="racha-sub" style="color:var(--muted)">${net>=0?'En positivo':'En negativo'}</div>
+    </div>
+    <div class="racha-box">
+      <div class="racha-num" style="color:${streakColor}">${curStreak}${curType}</div>
+      <div class="racha-lbl">Racha actual</div>
+      <div class="racha-sub" style="color:${streakColor}">${curType==='W'?'🔥 Caliente':'❄️ Fría'}</div>
+    </div>`;
+
+  // ── Streak records
+  document.getElementById('racha-streaks').innerHTML=`
+    <div class="card" style="background:linear-gradient(135deg,#0a2016,#05040a);border-color:#10b98140;text-align:center;padding:20px">
+      <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">
+        🏆 Mejor racha ganadora</div>
+      <div style="font-size:48px;font-weight:900;color:var(--green);letter-spacing:-2px;line-height:1">${bestStreak}W</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">consecutivas</div>
+    </div>
+    <div class="card" style="background:linear-gradient(135deg,#200a0a,#05040a);border-color:#ef444440;text-align:center;padding:20px">
+      <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">
+        💀 Peor racha perdedora</div>
+      <div style="font-size:48px;font-weight:900;color:var(--red);letter-spacing:-2px;line-height:1">${worstStreak}L</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">consecutivas</div>
+    </div>`;
+
+  // ── Monthly performance
+  const byMonth = {};
+  settled.forEach(h=>{
+    const key = h.date ? h.date.slice(0,7) : 'N/A';
+    if(!byMonth[key]) byMonth[key]={W:0,L:0};
+    byMonth[key][h.result]++;
+  });
+  const months = Object.keys(byMonth).sort().slice(-6);
+  const maxPicks = Math.max(...months.map(m=>byMonth[m].W+byMonth[m].L),1);
+  document.getElementById('racha-monthly').innerHTML = months.map(m=>{
+    const {W:mW,L:mL} = byMonth[m];
+    const total = mW+mL;
+    const pct = Math.round(mW/total*100);
+    const barPct = Math.round(total/maxPicks*100);
+    const col = pct>=55?'var(--green)':pct>=45?'var(--amber)':'var(--red)';
+    const label = m.slice(5) + '/' + m.slice(2,4);
+    return`<div class="month-bar-row">
+      <span class="month-label">${label}</span>
+      <div class="month-bar-outer">
+        <div class="month-bar-fill" style="width:${barPct}%;background:${col}"></div>
+        <span class="month-bar-val" style="color:${col}">${mW}W-${mL}L (${pct}%)</span>
+      </div>
+    </div>`;
+  }).join('') || '<div style="color:var(--muted);font-size:13px">Sin datos suficientes</div>';
+
+  // ── Odds type breakdown
+  function oddsCategory(o){
+    const n = parseInt(o)||0;
+    if(n <= -151) return 'Gran favorito (−151 o más)';
+    if(n <= -111) return 'Favorito (−111 a −150)';
+    if(n <= 110)  return 'Pick neutro (−110 a +110)';
+    if(n <= 150)  return 'Perro leve (+111 a +150)';
+    return 'Underdog (+151 o más)';
+  }
+  const oddsOrder = ['Gran favorito (−151 o más)','Favorito (−111 a −150)',
+    'Pick neutro (−110 a +110)','Perro leve (+111 a +150)','Underdog (+151 o más)'];
+  const byOdds = {};
+  oddsOrder.forEach(k=>byOdds[k]={W:0,L:0});
+  settled.forEach(h=>{ const k=oddsCategory(h.odds||0); if(byOdds[k]) byOdds[k][h.result]++; });
+  document.getElementById('racha-odds-types').innerHTML = oddsOrder.map(cat=>{
+    const {W:oW,L:oL} = byOdds[cat];
+    const tot = oW+oL;
+    if(!tot) return '';
+    const pct = Math.round(oW/tot*100);
+    const col = pct>=55?'var(--green)':pct>=45?'var(--amber)':'var(--red)';
+    return`<div class="odds-row">
+      <span class="odds-range-lbl">${cat}</span>
+      <div class="odds-bar-outer">
+        <div class="odds-bar-fill" style="width:${pct}%;background:${col}"></div>
+      </div>
+      <span class="odds-record" style="color:${col}">${oW}W-${oL}L</span>
+    </div>`;
+  }).join('') || '<div style="color:var(--muted);font-size:13px">Sin datos</div>';
+
+  // ── Day of week analysis
+  const dayNames=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const byDay = Array.from({length:7},()=>({W:0,L:0}));
+  settled.forEach(h=>{
+    if(!h.date) return;
+    const d = new Date(h.date+'T12:00:00');
+    byDay[d.getDay()][h.result]++;
+  });
+  const maxDayTotal = Math.max(...byDay.map(d=>d.W+d.L),1);
+  document.getElementById('racha-days').innerHTML = byDay.map((d,i)=>{
+    const tot = d.W+d.L;
+    const pct = tot ? Math.round(d.W/tot*100) : 0;
+    const barH = tot ? Math.round(tot/maxDayTotal*100) : 4;
+    const col = pct>=55?'var(--green)':pct>=45?'var(--amber)':tot?'var(--red)':'var(--border)';
+    return`<div class="day-col">
+      <div class="day-col-name">${dayNames[i]}</div>
+      <div class="day-col-bar">
+        <div class="day-col-fill" style="height:${barH}%;background:${col}"></div>
+      </div>
+      <div class="day-col-pct" style="color:${col}">${tot?pct+'%':'—'}</div>
+    </div>`;
+  }).join('');
+
+  // ── Smart insight
+  const bestDay = byDay.reduce((best,d,i)=>{
+    const tot=d.W+d.L; const pct=tot?d.W/tot:0;
+    return (!best || (pct > best.pct && tot >= 2)) ? {pct,name:dayNames[i],tot} : best;
+  }, null);
+  const bestOddsCat = oddsOrder.reduce((best,cat)=>{
+    const {W:oW,L:oL}=byOdds[cat];const tot=oW+oL;const pct=tot?oW/tot:0;
+    return (!best||pct>best.pct)&&tot>=2?{pct,cat,tot}:best;
+  },null);
+  const worstOddsCat = oddsOrder.reduce((worst,cat)=>{
+    const {W:oW,L:oL}=byOdds[cat];const tot=oW+oL;const pct=tot?oW/tot:1;
+    return (!worst||pct<worst.pct)&&tot>=2?{pct,cat,tot}:worst;
+  },null);
+
+  let insight = `Con <strong>${W+L} picks registrados</strong>, tu win rate es <strong style="color:${kpiColor}">${wr}%</strong>
+    y tu neto es <strong style="color:${net>=0?'var(--green)':'var(--red)'}">${net>=0?'+':''}${net.toFixed(1)} u</strong>.<br><br>`;
+
+  if(curStreak>=3) insight += `🔥 Llevas <strong>${curStreak} picks ${curType==='W'?'ganados':'perdidos'} seguidos</strong>.
+    ${curType==='W'?'Sigue así, pero cuida el tamaño de tus apuestas.':'Considera reducir el volumen hasta recuperar el ritmo.'}<br><br>`;
+
+  if(bestDay?.tot>=2) insight += `📆 Tu mejor día es el <strong>${bestDay.name}</strong> con <strong>${Math.round(bestDay.pct*100)}%</strong> de acierto en ${bestDay.tot} picks.<br>`;
+  if(bestOddsCat?.tot>=2) insight += `🎰 Tus mejores resultados llegan con picks de tipo <strong>"${bestOddsCat.cat}"</strong> (${Math.round(bestOddsCat.pct*100)}% win rate).<br>`;
+  if(worstOddsCat?.tot>=2 && worstOddsCat.cat !== bestOddsCat?.cat)
+    insight += `⚠ Tu peor categoría son los <strong>"${worstOddsCat.cat}"</strong> (${Math.round(worstOddsCat.pct*100)}% win rate) — considera reducirlos.<br>`;
+
+  if(wr>=55) insight += `<br>✅ Con ${wr}% de acierto, tu estrategia es <strong>rentable a largo plazo</strong>. Mantén la disciplina y el tamaño de apuesta consistente.`;
+  else if(wr>=48) insight += `<br>⚠ Estás cerca del punto de equilibrio. Afina tus criterios de selección y enfócate en los picks con mayor EV positivo.`;
+  else insight += `<br>❌ Win rate por debajo del 50%. Revisa tus criterios de selección y considera apostar solo en picks con alta confianza (75%+).`;
+
+  document.getElementById('racha-insight').innerHTML = insight;
+}
+
+// ── PREDICTOR PERSONALIZADO
+let predSport = 'MLB';
+let predHomeForm = ['W','W','L','W','L'];
+let predAwayForm = ['L','W','L','L','W'];
+const predExtras = {
+  'home-injury':false,'away-injury':false,
+  'home-motivated':false,'away-motivated':false,
+  'weather-bad':false,'back-to-back':false
+};
+let lastPredResult = null;
+
+function initPredictor(){
+  renderFormToggles('pred-home-form', predHomeForm, 'home');
+  renderFormToggles('pred-away-form', predAwayForm, 'away');
+}
+
+function renderFormToggles(containerId, form, side){
+  const el = document.getElementById(containerId);
+  el.innerHTML = form.map((r,i)=>`
+    <button class="form-toggle tog-${r}" onclick="cyclePredForm('${side}',${i})">${r}</button>
+  `).join('');
+}
+
+function cyclePredForm(side, idx){
+  const form = side==='home' ? predHomeForm : predAwayForm;
+  form[idx] = form[idx]==='W' ? 'L' : 'W';
+  renderFormToggles(side==='home'?'pred-home-form':'pred-away-form', form, side);
+  predAutoCalc();
+}
+
+function setPredSport(val, btn){
+  predSport = val;
+  document.querySelectorAll('#pred-sport-pills .fpill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  predAutoCalc();
+}
+
+function toggleExtra(key){
+  predExtras[key] = !predExtras[key];
+  const btn = document.getElementById('ex-'+key);
+  btn.classList.toggle('active', predExtras[key]);
+  predAutoCalc();
+}
+
+function predAutoCalc(){
+  // Only auto-run if result is already visible
+  if(document.getElementById('pred-result').style.display !== 'none') runPredictor(true);
+}
+
+function runPredictor(silent=false){
+  const home = document.getElementById('pred-home').value.trim() || 'Local';
+  const away = document.getElementById('pred-away').value.trim() || 'Visitante';
+  const homeOddsRaw = document.getElementById('pred-home-odds').value || '-110';
+  const awayOddsRaw = document.getElementById('pred-away-odds').value || '+110';
+  const homePct = parseFloat(document.getElementById('pred-home-pct').value) || 54;
+  const awayPct = parseFloat(document.getElementById('pred-away-pct').value) || 44;
+  const h2hHome = parseFloat(document.getElementById('pred-h2h-home').value) || 5;
+  const h2hAway = parseFloat(document.getElementById('pred-h2h-away').value) || 5;
+  const bankroll = parseFloat(document.getElementById('pred-bankroll').value) || 1000;
+
+  const homeFormW = predHomeForm.filter(r=>r==='W').length;
+  const awayFormW = predAwayForm.filter(r=>r==='W').length;
+
+  // ── FACTOR SCORING (positive = favors home, negative = favors away)
+  const factors = [];
+  let score = 0; // >0 = pick home, <0 = pick away
+
+  // 1. Form reciente (each game = 4 pts)
+  const formDiff = (homeFormW - awayFormW) * 4;
+  score += formDiff;
+  factors.push({
+    label: `Forma reciente (${home} ${homeFormW}/5 vs ${away} ${awayFormW}/5)`,
+    value: formDiff, max: 20,
+    detail: homeFormW > awayFormW ? `Ventaja ${home}` : homeFormW < awayFormW ? `Ventaja ${away}` : 'Equilibrado'
+  });
+
+  // 2. Win % local vs visitante
+  const pctDiff = ((homePct - awayPct) / 5);
+  score += pctDiff;
+  factors.push({
+    label: `Win % casa/visita (${homePct}% vs ${awayPct}%)`,
+    value: pctDiff, max: 20,
+    detail: `${Math.abs(homePct - awayPct).toFixed(0)}% diferencia`
+  });
+
+  // 3. H2H (max 10 games)
+  const total10 = h2hHome + h2hAway || 10;
+  const h2hScore = ((h2hHome - h2hAway) / total10) * 12;
+  score += h2hScore;
+  factors.push({
+    label: `Head to head (${home} ${h2hHome}-${h2hAway} ${away})`,
+    value: h2hScore, max: 12,
+    detail: h2hHome > h2hAway ? `${home} domina H2H` : h2hHome < h2hAway ? `${away} domina H2H` : 'Parejo'
+  });
+
+  // 4. Ventaja de local (inherent)
+  const homeAdv = 5;
+  score += homeAdv;
+  factors.push({label:'Ventaja de local (inherente)', value: homeAdv, max: 8, detail:'+5 al local siempre'});
+
+  // 5. Extras
+  if(predExtras['home-injury']){
+    score -= 12;
+    factors.push({label:`Lesión clave en ${home}`, value: -12, max: 12, detail:'Factor muy negativo'});
+  }
+  if(predExtras['away-injury']){
+    score += 12;
+    factors.push({label:`Lesión clave en ${away}`, value: 12, max: 12, detail:'Favorece al local'});
+  }
+  if(predExtras['home-motivated']){
+    score += 8;
+    factors.push({label:`${home} muy motivado`, value: 8, max: 10, detail:'Playoff/rivalidad'});
+  }
+  if(predExtras['away-motivated']){
+    score -= 8;
+    factors.push({label:`${away} muy motivado`, value: -8, max: 10, detail:'Playoff/rivalidad'});
+  }
+  if(predExtras['weather-bad']){
+    // Bad weather hurts higher-scoring offense slightly (usually home team adapted)
+    score += 3;
+    factors.push({label:'Clima adverso', value: 3, max: 6, detail:'Local más adaptado al estadio'});
+  }
+  if(predExtras['back-to-back']){
+    score += 10;
+    factors.push({label:`${away} viaje/B2B desgaste`, value: 10, max: 12, detail:'Fatiga del visitante'});
+  }
+
+  // 6. Odds implied probability (market signal)
+  const homeOddsN = parseFloat(homeOddsRaw) || -110;
+  const awayOddsN = parseFloat(awayOddsRaw) || 110;
+  const homeImpl = homeOddsN > 0 ? 100/(homeOddsN+100) : Math.abs(homeOddsN)/(Math.abs(homeOddsN)+100);
+  const awayImpl = awayOddsN > 0 ? 100/(awayOddsN+100) : Math.abs(awayOddsN)/(Math.abs(awayOddsN)+100);
+  const mktSignal = (homeImpl - awayImpl) * 20;
+  score += mktSignal;
+  factors.push({
+    label:`Señal de mercado (odds ${homeOddsRaw} vs ${awayOddsRaw})`,
+    value: mktSignal, max: 20,
+    detail: `Impl. ${(homeImpl*100).toFixed(0)}% / ${(awayImpl*100).toFixed(0)}%`
+  });
+
+  // ── COMPUTE RESULT
+  const pickHome = score >= 0;
+  const pick = pickHome ? home : away;
+  const pickOdds = pickHome ? homeOddsRaw : awayOddsRaw;
+  const pickOddsN = pickHome ? homeOddsN : awayOddsN;
+
+  // Confidence: normalize score to 55-95%
+  const maxScore = factors.reduce((s,f)=>s+Math.abs(f.max||10), 0);
+  const rawConf = Math.abs(score) / (maxScore * 0.6);
+  const confidence = Math.min(95, Math.max(52, Math.round(50 + rawConf * 45)));
+
+  // EV calculation
+  const decOdds = pickOddsN > 0 ? 1 + pickOddsN/100 : 1 + 100/Math.abs(pickOddsN);
+  const p = confidence / 100;
+  const ev = parseFloat(((p * decOdds - (1-p)) * 100).toFixed(1));
+
+  // Kelly
+  const b = pickOddsN > 0 ? pickOddsN/100 : 100/Math.abs(pickOddsN);
+  const kelly = Math.max(0, (b*p - (1-p)) / b);
+  const halfKelly = kelly * 0.5;
+  const betAmt = bankroll * halfKelly;
+
+  lastPredResult = {sport: predSport, home, away, pick, odds: pickOdds,
+    confidence, ev, bet: Math.round(betAmt), result:'P',
+    date: new Date().toISOString().split('T')[0]};
+
+  // ── RENDER
+  const sp = S[predSport] || {icon:'🏅',color:'var(--gold)',bg:'#1a1400'};
+  const cc = confidence>=80?'var(--green)':confidence>=65?'var(--amber)':'var(--red)';
+
+  document.getElementById('pred-hero').innerHTML=`
+    <div class="pred-pick-label">${sp.icon} ${predSport} · ${away} @ ${home}</div>
+    <div class="pred-pick-name">${pick}</div>
+    <div class="pred-pick-sub">${pickHome?'🏠 Local':'✈️ Visitante'} · Odds <strong style="color:var(--gold)">${pickOdds}</strong></div>
+    <div class="pred-conf-big" style="color:${cc}">${confidence}%</div>
+    <div class="pred-conf-label">confianza del algoritmo</div>
+    <div style="margin:14px auto 0;max-width:300px">
+      <div class="conf-bar"><div class="conf-fill" style="width:${confidence}%;background:${cc}"></div></div>
+    </div>
+    <div class="pred-pills-row">
+      <span class="ev-badge ${ev>0?'ev-pos':ev<-2?'ev-neg':'ev-neu'}">${ev>0?'+':''}${ev}% EV</span>
+      ${ev>0?'<span class="streak-hot">💰 Valor positivo</span>':'<span class="streak-cold">⚠ Sin valor claro</span>'}
+      ${confidence>=75?'<span class="best-pick-badge" style="font-size:10px">⭐ Alta confianza</span>':''}
+    </div>`;
+
+  document.getElementById('pred-factors').innerHTML = factors.map(f=>{
+    const pct = Math.min(100, Math.abs(f.value) / (f.max||10) * 100);
+    const clr = f.value > 0 ? 'var(--green)' : f.value < 0 ? 'var(--red)' : 'var(--muted)';
+    const side = f.value > 0 ? `▲ ${home}` : f.value < 0 ? `▼ ${away}` : '—';
+    return`<div class="factor-row">
+      <span class="factor-label">${f.label}</span>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <span class="factor-value" style="color:${clr};min-width:60px;text-align:right">${side}</span>
+        <div class="factor-bar-wrap">
+          <div class="factor-bar-fill" style="width:${pct}%;background:${clr}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const riskLbl = halfKelly>0.12?'Alto':halfKelly>0.06?'Medio':'Bajo';
+  const riskCol = halfKelly>0.12?'var(--red)':halfKelly>0.06?'var(--amber)':'var(--green)';
+  document.getElementById('pred-kelly-result').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center">
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--gold)">$${betAmt.toFixed(2)}</div>
+        <div class="sim-stat-lbl">Apuesta (½ Kelly)</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:var(--green)">$${(betAmt*b).toFixed(2)}</div>
+        <div class="sim-stat-lbl">Ganancia pot.</div></div>
+      <div class="sim-stat"><div class="sim-stat-val" style="color:${riskCol}">${riskLbl}</div>
+        <div class="sim-stat-lbl">Riesgo (${(halfKelly*100).toFixed(1)}%)</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5">
+      Con $${bankroll} de bankroll · Kelly completo: ${(kelly*100).toFixed(1)}% · Medio Kelly (recomendado): ${(halfKelly*100).toFixed(1)}%</div>`;
+
+  document.getElementById('pred-result').style.display = 'block';
+  if(!silent){
+    document.getElementById('pred-result').scrollIntoView({behavior:'smooth',block:'start'});
+    toast(`🔮 Predicción: ${pick} (${confidence}% conf.)`);
+  }
+}
+
+function addPredToHistory(){
+  if(!lastPredResult){toast('⚠ Genera una predicción primero');return}
+  history.unshift({...lastPredResult, id:Date.now()});
+  localStorage.setItem('app_history', JSON.stringify(history));
+  toast(`✓ ${lastPredResult.pick} guardado en historial`);
+  renderDashboard();
 }
 
 // ── PWA INSTALL
@@ -1909,6 +3987,7 @@ if(localStorage.getItem('app_notifs')==='on'&&Notification.permission==='granted
   notifsEnabled=true;
   document.getElementById('notif-btn').style.color='var(--green)';
 }
+startDashClock();
 loadPicks();
 calcKelly();
 calcCashout();
@@ -1917,6 +3996,7 @@ renderParlayLegs();
 calcParlay();
 renderHistorial();
 renderWeekly();
+initPredictor();
 </script>
 </body>
 </html>
