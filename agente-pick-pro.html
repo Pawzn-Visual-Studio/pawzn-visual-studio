@@ -954,7 +954,7 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
 
   <!-- TOP 3 PICKS -->
   <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;
-    letter-spacing:.7px;margin-bottom:10px" id="top-picks-lbl" style="display:none">
+    letter-spacing:.7px;margin-bottom:10px;display:none" id="top-picks-lbl">
     Top 3 picks por confianza
   </div>
   <div class="top-picks-strip" id="dash-top-picks"></div>
@@ -1422,7 +1422,7 @@ input[type=range]{padding:5px 0;cursor:pointer;accent-color:var(--gold)}
   </div>
 
   <!-- Historial de checks -->
-  <div class="card" style="margin-top:14px" id="arb-history-card" style="display:none">
+  <div class="card" style="margin-top:14px;display:none" id="arb-history-card">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
       <div style="font-size:13px;font-weight:700">Últimos checks</div>
       <button class="btn btn-danger btn-sm" onclick="clearArbHistory()">🗑 Limpiar</button>
@@ -2373,7 +2373,7 @@ function renderParlayLegs(){
   document.getElementById('parlay-legs').innerHTML=parlayLegs.map((l,i)=>`
     <div class="parlay-leg">
       <span class="parlay-leg-num">${i+1}</span>
-      <input type="number" placeholder="Odds ej: -110" value="${l.odds}"
+      <input type="text" placeholder="Odds ej: -110" value="${l.odds}"
         onchange="parlayLegs[${i}].odds=this.value;calcParlay()">
       <input type="number" placeholder="Prob % ej: 55" value="${l.prob}" min="1" max="99"
         onchange="parlayLegs[${i}].prob=parseFloat(this.value);calcParlay()">
@@ -2655,7 +2655,7 @@ function calcCashout(){
   const decNow=parseOdds(oddsNow);
   const impliedProbNow=1/(decNow+1);
   const potWin=bet*decOrig;
-  const fairValue=parseFloat((impliedProbNow*potWin).toFixed(2));
+  const fairValue=parseFloat((impliedProbNow*(bet+potWin)).toFixed(2));
   const diff=offer-fairValue;
   const take=offer>=fairValue;
   const el=document.getElementById('cashout-result');
@@ -3541,7 +3541,7 @@ function renderAlertasPanel(){
         <div class="alerta-metrics">
           <span class="alerta-metric" style="color:${cc}">Conf ${p.confidence}%</span>
           <span class="alerta-metric" style="color:${p.ev>0?'var(--green)':'var(--red)'}">${p.ev>0?'+':''}${p.ev}% EV</span>
-          ${(p.lineShift||0)<=−10?`<span class="alerta-metric" style="color:var(--amber)">Línea ${p.lineShift}</span>`:''}
+          ${(p.lineShift||0)<=-10?`<span class="alerta-metric" style="color:var(--amber)">Línea ${p.lineShift}</span>`:''}
           <span class="alerta-metric" style="color:var(--muted)">Público ${p.publicPct}%</span>
           <span class="alerta-metric">H2H ${p.h2hW}-${p.h2hL}</span>
         </div>
@@ -3983,7 +3983,7 @@ function toggleTheme(){
 // ── INIT
 const savedTheme=localStorage.getItem('app_theme');
 if(savedTheme==='light'){document.body.classList.add('light');document.getElementById('theme-btn').textContent='☀️'}
-if(localStorage.getItem('app_notifs')==='on'&&Notification.permission==='granted'){
+if('Notification' in window&&localStorage.getItem('app_notifs')==='on'&&Notification.permission==='granted'){
   notifsEnabled=true;
   document.getElementById('notif-btn').style.color='var(--green)';
 }
