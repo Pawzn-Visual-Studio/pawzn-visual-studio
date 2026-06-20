@@ -1,0 +1,266 @@
+{
+  "name": "Pawzn — Prospección Automática de Leads (Google Maps + OpenRouter)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [1],
+              "triggerAtHour": 9,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-1600, 0],
+      "id": "sched-maps-01",
+      "name": "Cada lunes a las 9am"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "industries-list",
+              "name": "busquedas",
+              "value": "=[\"restaurants in Las Vegas NV\", \"hair salons in Las Vegas NV\", \"gyms in Las Vegas NV\", \"law firms in Las Vegas NV\", \"dental offices in Las Vegas NV\", \"real estate agencies in Las Vegas NV\", \"contractors in Las Vegas NV\", \"spas in Las Vegas NV\", \"boutique clothing stores in Las Vegas NV\", \"chiropractors in Las Vegas NV\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-1360, 0],
+      "id": "set-maps-02",
+      "name": "Lista de industrias a buscar"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "busquedas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [-1120, 0],
+      "id": "split-maps-03",
+      "name": "Separar por industria"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://maps.googleapis.com/maps/api/place/textsearch/json?query={{ encodeURIComponent($json.busquedas) }}&key=TU_GOOGLE_MAPS_API_KEY",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-880, 0],
+      "id": "gmaps-maps-04",
+      "name": "Google Maps — Buscar Negocios"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [-640, 0],
+      "id": "split-maps-05",
+      "name": "Separar Resultados"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://maps.googleapis.com/maps/api/place/details/json?place_id={{ $json.place_id }}&fields=name,website,formatted_phone_number,rating,user_ratings_total,business_status,types&key=TU_GOOGLE_MAPS_API_KEY",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-400, 0],
+      "id": "gmaps-detail-06",
+      "name": "Google Maps — Detalles del Negocio"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict", "version": 2 },
+          "conditions": [
+            {
+              "id": "cond-web-01",
+              "leftValue": "={{ $json.result?.website }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-160, 0],
+      "id": "if-maps-07",
+      "name": "¿Tiene sitio web?"
+    },
+    {
+      "parameters": {
+        "jsCode": "const result = $input.item.json.result;\nconst website = result.website || '';\n\nlet domain = '';\ntry {\n  const url = new URL(website);\n  domain = url.hostname.replace(/^www\\./, '');\n} catch(e) { domain = ''; }\n\nconst emailGuess = domain ? `info@${domain}` : '';\n\nconst tipos = result.types || [];\nlet industria = 'negocio local';\nif (tipos.some(t => t.includes('restaurant') || t.includes('food'))) industria = 'restaurante';\nelse if (tipos.some(t => t.includes('beauty') || t.includes('hair'))) industria = 'salón de belleza';\nelse if (tipos.some(t => t.includes('gym') || t.includes('fitness'))) industria = 'gimnasio o centro de fitness';\nelse if (tipos.some(t => t.includes('lawyer') || t.includes('legal'))) industria = 'bufete de abogados';\nelse if (tipos.some(t => t.includes('dentist') || t.includes('dental'))) industria = 'clínica dental';\nelse if (tipos.some(t => t.includes('real_estate'))) industria = 'agencia inmobiliaria';\nelse if (tipos.some(t => t.includes('spa') || t.includes('health'))) industria = 'spa o centro de bienestar';\nelse if (tipos.some(t => t.includes('store') || t.includes('clothing'))) industria = 'tienda o boutique';\nelse if (tipos.some(t => t.includes('chiropractor'))) industria = 'clínica de quiropráctica';\nelse if (tipos.some(t => t.includes('contractor') || t.includes('plumber') || t.includes('electrician'))) industria = 'empresa de servicios del hogar';\n\nreturn [{ json: { nombre_negocio: result.name, website, domain, email_guess: emailGuess, telefono: result.formatted_phone_number || '', rating: result.rating || 0, total_reviews: result.user_ratings_total || 0, industria } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [80, 0],
+      "id": "code-maps-08",
+      "name": "Extraer dominio y detectar industria"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict", "version": 2 },
+          "conditions": [
+            {
+              "id": "cond-email-01",
+              "leftValue": "={{ $json.email_guess }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [320, 0],
+      "id": "if-maps-09",
+      "name": "¿Tiene email?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $vars.OPENROUTER_API_KEY }}" },
+            { "name": "Content-Type",  "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n  \"temperature\": 0.7,\n  \"max_tokens\": 600,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres el redactor de emails fríos de Pawzn Visual Studio, agencia de diseño web, desarrollo, SEO y branding con base en Las Vegas, NV.\\n\\nServicios: diseño web premium, desarrollo a medida, branding, SEO, tiendas online, consultoría digital.\\n\\nDolores por industria:\\n- Restaurante: sin reservas/pedidos online, menú desactualizado\\n- Salón/Belleza: sin agenda online, no salen en Google\\n- Gimnasio: sin registro de clases online, web lenta\\n- Bufete: no aparecen en búsquedas locales\\n- Dental: sin citas online, poca visibilidad\\n- Inmobiliaria: sin captación de leads, web genérica\\n- Spa: sin reservas online\\n- Tienda/Boutique: sin tienda online\\n- Servicios del hogar: no salen en búsquedas locales\\n\\nRedacta un email frío personalizado. Identifica el dolor de su industria. Dirígete al equipo del negocio. Menciona el negocio por nombre. Tono directo y humano, sin clichés ni emojis. 100-130 palabras. Cierra con: ¿Tienes 15 minutos esta semana para una llamada rápida? Firma: Mónica | Pawzn Visual Studio | contacto@pawznvisualstudio.com | +1 702 429 1909.\\n\\nFormato obligatorio:\\nPrimera línea: ASUNTO: [asunto]\\nLínea en blanco.\\nCuerpo del email.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Negocio: {{ $json.nombre_negocio }}\\nIndustria: {{ $json.industria }}\\nSitio web: {{ $json.website }}\\nReseñas Google: {{ $json.total_reviews }} reseñas ({{ $json.rating }} estrellas)\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [560, 0],
+      "id": "groq-maps-10",
+      "name": "OpenRouter — Generar Email Personalizado"
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [800, 0],
+      "id": "wait-maps-11",
+      "name": "Esperar 3 min (anti-spam)",
+      "webhookId": "wait-groq-prosp-001"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('¿Tiene email?').item.json.email_guess }}",
+        "subject": "={{ $json.choices[0].message.content.split('\\n')[0].replace('ASUNTO: ', '').trim() }}",
+        "message": "={{ $json.choices[0].message.content.split('\\n').slice(2).join('\\n').trim() }}",
+        "options": {
+          "senderName": "Mónica — Pawzn Visual Studio",
+          "emailType": "text"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [1040, 0],
+      "id": "gmail-maps-12",
+      "name": "Gmail — Enviar Email",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GMAIL_CRED_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1MpXHa9dNMT_3zICls1S3IDcLJ06Fmo-PSLloP4RNBz4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Prospectos",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha Envío": "={{ $now.toFormat('dd/MM/yyyy HH:mm') }}",
+            "Negocio":     "={{ $('¿Tiene email?').item.json.nombre_negocio }}",
+            "Industria":   "={{ $('¿Tiene email?').item.json.industria }}",
+            "Email":       "={{ $('¿Tiene email?').item.json.email_guess }}",
+            "Web":         "={{ $('¿Tiene email?').item.json.website }}",
+            "Rating":      "={{ $('¿Tiene email?').item.json.rating }} ⭐ ({{ $('¿Tiene email?').item.json.total_reviews }} reseñas)",
+            "Asunto":      "={{ $('OpenRouter — Generar Email Personalizado').item.json.choices[0].message.content.split('\\n')[0].replace('ASUNTO: ', '').trim() }}",
+            "Estado":      "Enviado"
+          },
+          "schema": [
+            { "id": "Fecha Envío", "displayName": "Fecha Envío", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Negocio",     "displayName": "Negocio",     "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Industria",   "displayName": "Industria",   "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Email",       "displayName": "Email",       "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Web",         "displayName": "Web",         "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Rating",      "displayName": "Rating",      "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Asunto",      "displayName": "Asunto",      "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Estado",      "displayName": "Estado",      "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1280, 0],
+      "id": "sheets-maps-13",
+      "name": "Registrar en Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SHEETS_CRED_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cada lunes a las 9am":          { "main": [[{ "node": "Lista de industrias a buscar",       "type": "main", "index": 0 }]] },
+    "Lista de industrias a buscar":  { "main": [[{ "node": "Separar por industria",               "type": "main", "index": 0 }]] },
+    "Separar por industria":         { "main": [[{ "node": "Google Maps — Buscar Negocios",        "type": "main", "index": 0 }]] },
+    "Google Maps — Buscar Negocios": { "main": [[{ "node": "Separar Resultados",                  "type": "main", "index": 0 }]] },
+    "Separar Resultados":            { "main": [[{ "node": "Google Maps — Detalles del Negocio",  "type": "main", "index": 0 }]] },
+    "Google Maps — Detalles del Negocio": { "main": [[{ "node": "¿Tiene sitio web?",              "type": "main", "index": 0 }]] },
+    "¿Tiene sitio web?":             { "main": [[{ "node": "Extraer dominio y detectar industria","type": "main", "index": 0 }], []] },
+    "Extraer dominio y detectar industria": { "main": [[{ "node": "¿Tiene email?",                "type": "main", "index": 0 }]] },
+    "¿Tiene email?":                 { "main": [[{ "node": "OpenRouter — Generar Email Personalizado",  "type": "main", "index": 0 }], []] },
+    "OpenRouter — Generar Email Personalizado": { "main": [[{ "node": "Esperar 3 min (anti-spam)",      "type": "main", "index": 0 }]] },
+    "Esperar 3 min (anti-spam)":     { "main": [[{ "node": "Gmail — Enviar Email",                "type": "main", "index": 0 }]] },
+    "Gmail — Enviar Email":          { "main": [[{ "node": "Registrar en Google Sheets",          "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" }
+}

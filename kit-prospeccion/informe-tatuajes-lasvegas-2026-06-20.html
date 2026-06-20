@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Estudios de Tatuajes en Las Vegas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed, #4f46e5); padding: 2rem; text-align: center; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; }
+  .header p { opacity: 0.85; margin-top: 0.5rem; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #111118; flex-wrap: wrap; justify-content: center; }
+  .stat { background: #1a1a2e; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 2rem; text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
+
+  .note { max-width: 1000px; margin: 1.5rem auto 0; background: #1a1400; border: 1px solid #f5c84240; color: #fbbf24; font-size: 0.85rem; padding: 1rem 1.25rem; border-radius: 10px; line-height: 1.6; }
+
+  .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+  .container-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  h2 { font-size: 1.2rem; color: #c4b5fd; }
+  .export-btn { background: #1a1a2e; border: 1px solid #2d2d44; color: #c4b5fd; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.78rem; cursor: pointer; }
+  .export-btn:hover { background: #24243f; }
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 12px; overflow: hidden; }
+  th { background: #1a1a2e; padding: 1rem; text-align: left; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; }
+  td { padding: 1rem; border-bottom: 1px solid #1e1e2e; font-size: 0.9rem; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #16162a; }
+
+  .score { display: inline-block; width: 36px; height: 36px; border-radius: 50%; font-weight: 800; font-size: 0.9rem; line-height: 36px; text-align: center; }
+  .score-high { background: #14532d; color: #4ade80; }
+  .score-mid { background: #713f12; color: #fbbf24; }
+  .score-low { background: #450a0a; color: #f87171; }
+
+  .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; margin: 0.15rem; }
+  .tag-web { background: #1e1b4b; color: #a5b4fc; }
+  .tag-redes { background: #1a0533; color: #e879f9; }
+  .tag-email { background: #0c2a16; color: #4ade80; }
+  .tag-sin { background: #2d1515; color: #f87171; }
+  .tag-critico { background: #450a0a; color: #fca5a5; font-weight: 700; }
+  .tag-ok { background: #0c2a16; color: #4ade80; }
+
+  .msg { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.82rem; line-height: 1.6; color: #cbd5e1; cursor: pointer; }
+  .msg:hover { background: #1e293b; }
+  .copy-btn { display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.72rem; cursor: pointer; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .no-web { color: #f87171; font-size: 0.8rem; }
+
+  .footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
+  .footer .disclaimer { margin-top: 0.5rem; color: #3f3f5c; max-width: 600px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Prospectos — Estudios de Tatuajes en Las Vegas</h1>
+  <p>Generado por Pawzn Visual Studio · 20 de junio de 2026</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Prospectos encontrados</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Dominio caído / perdido</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Redes inactivas confirmadas</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Oportunidad alta (7+) por puntaje</div></div>
+</div>
+
+<div class="note">
+  <strong>Nota importante:</strong> excluí cadenas multi-local (Skin Design Tattoo, Koolsville Tattoo, Club Tattoo) porque no encajan con el ticket de Pawzn — son marcas grandes con varias sucursales. De los 9 estudios independientes que sí encontré, 3 tienen un problema grave que el puntaje numérico no refleja del todo: su dominio antiguo expiró y ahora **no les pertenece** — uno quedó como "dominio en venta", otro redirige a una empresa de comida que no tiene nada que ver, y un tercero simplemente no carga. Son los 3 primeros de la lista y, en mi opinión, el pitch más fuerte de todo este lote (mucho más urgente que cualquier plantilla desactualizada). Solo llegué a 9 estudios independientes verificados en vez de los 15 de costumbre — los demás resultados eran cadenas grandes o tenían direcciones contradictorias entre fuentes, así que los descarté en vez de adivinar.
+</div>
+
+<div class="container">
+  <div class="container-head">
+    <h2>Prospectos ordenados por oportunidad</h2>
+    <div>
+      <button class="export-btn" onclick="downloadJSON()">Descargar JSON</button>
+      <button class="export-btn" onclick="downloadCSV()">Descargar CSV (Google Sheets)</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Contacto</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Pawzn Visual Studio · contacto@pawznvisualstudio.com · Kit de Prospección
+  <div class="disclaimer">Datos obtenidos de búsqueda pública el 20 de junio de 2026 (Yelp, sitios propios, verificación directa de cada dominio). Verifica cada dato antes de contactar de forma masiva.</div>
+</div>
+
+<script id="prospect-data" type="application/json">
+[
+  {
+    "nombre": "Pair-A-Dice Tattoo",
+    "direccion": "304 E Sahara Ave, Las Vegas, NV 89104",
+    "telefono": "(702) 792-8282",
+    "web": "pairadicetattoolv.com (dominio caducado — ahora redirige a una empresa de distribución de alimentos no relacionada)",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=304+E+Sahara+Ave+Las+Vegas+NV+89104",
+    "score": 3,
+    "problemas": ["CRÍTICO: dominio perdido, ahora pertenece a otra empresa", "66 reseñas en Yelp (negocio activo)"],
+    "verificado": true,
+    "mensaje": "Hola, buscamos el sitio de Pair-A-Dice Tattoo (pairadicetattoolv.com) y ahora redirige a una empresa de distribución de alimentos — el dominio caducó y lo compró otra empresa. Cualquiera que busque su estudio en Google cae en una página que no tiene nada que ver con tatuajes. En Pawzn Visual Studio podemos recuperar su presencia online con un dominio y sitio nuevo. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Ink The Flesh",
+    "direccion": "Las Vegas, NV 89118 (dirección exacta no confirmada — fuentes muestran dos ubicaciones distintas)",
+    "telefono": "(702) 483-1736",
+    "web": "lasvegastattoostudio.com (dominio caducado — listado en venta en Afternic)",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Ink+The+Flesh+Tattoo+Las+Vegas+NV",
+    "score": 3,
+    "problemas": ["CRÍTICO: dominio caducado, ahora en venta"],
+    "verificado": true,
+    "mensaje": "Hola, el dominio de Ink The Flesh (lasvegastattoostudio.com) caducó y ahora aparece como \"en venta\" en un sitio de subastas de dominios — quien busque su estudio en Google llega a una página vacía. En Pawzn Visual Studio armamos sitios para estudios de tatuaje y nos encargamos de que esto no vuelva a pasar. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Dotty Ginger Tattoo",
+    "direccion": "3533 S Valley View Blvd, Las Vegas, NV 89103",
+    "telefono": "(702) 501-0699",
+    "web": "dotty.tattoo (el sitio no carga — conexión rechazada)",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3533+S+Valley+View+Blvd+Las+Vegas+NV+89103",
+    "score": 3,
+    "problemas": ["CRÍTICO: sitio caído (no carga)", "53 reseñas en Yelp"],
+    "verificado": true,
+    "mensaje": "Hola, intentamos entrar al sitio de Dotty Ginger (dotty.tattoo) y no carga, parece estar caído. Con el nivel de trabajo que muestran en Instagram, sería una pena perder clientes que buscan portafolio y no encuentran nada. En Pawzn Visual Studio podemos levantarles un sitio simple y confiable. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Studio 21 Tattoo Gallery",
+    "direccion": "6020 W Flamingo Rd, Ste B-2, Las Vegas, NV 89103",
+    "telefono": "(702) 248-8762",
+    "web": "https://www.studio21tattoo.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=6020+W+Flamingo+Rd+Ste+B-2+Las+Vegas+NV+89103",
+    "score": 1,
+    "problemas": ["876 reseñas en Yelp (negocio muy activo)", "Sitio ya moderno (Shopify) — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Studio 21 Tattoo Gallery está muy bien lograda, con tienda y eventos propios. En Pawzn Visual Studio trabajamos con estudios similares en email marketing para promocionar esos eventos a su base de clientes. Si les interesa, contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Illuminati Tattoo Co.",
+    "direccion": "3247 S Sammy Davis Jr Dr, Ste C, Las Vegas, NV 89109",
+    "telefono": "(702) 222-2250",
+    "web": "https://www.tattooilluminati.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3247+S+Sammy+Davis+Jr+Dr+Ste+C+Las+Vegas+NV+89109",
+    "score": 1,
+    "problemas": ["Cientos de reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de Illuminati Tattoo Co. se ve profesional y con buenos testimonios. Si en algún momento buscan reforzar redes sociales o campañas de email para fechas puntuales, en Pawzn Visual Studio podemos ayudar. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Skin Factory Tattoo",
+    "direccion": "2461 W Horizon Ridge Pkwy, Ste 110, Henderson, NV 89052",
+    "telefono": "(702) 263-1005",
+    "web": "https://www.skinfactorytattoo.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2461+W+Horizon+Ridge+Pkwy+Ste+110+Henderson+NV+89052",
+    "score": 1,
+    "problemas": ["276 reseñas en Yelp (negocio activo)", "Sitio ya moderno (diseñado por agencia) — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Skin Factory Tattoo está muy bien diseñada, se nota el trabajo profesional detrás. En Pawzn Visual Studio solemos sumar email marketing o gestión de redes a estudios que ya tienen buena base como la de ustedes. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Midway City Tattoo & Piercing",
+    "direccion": "400 College Dr, Ste I, Henderson, NV 89015",
+    "telefono": "(702) 268-8071",
+    "web": "https://www.midwaycitytattoo.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=400+College+Dr+Ste+I+Henderson+NV+89015",
+    "score": 0,
+    "problemas": ["Sitio en plantilla Wix, pero personalizado — sin oportunidad clara detectada"],
+    "verificado": true,
+    "mensaje": "Hola, vimos la web de Midway City Tattoo armada en Wix, funciona bien, aunque migrar a un sitio a medida podría darles más control y mejor velocidad de carga a futuro. En Pawzn Visual Studio diseñamos sitios para estudios de tatuaje. Quedamos a disposición si les interesa explorarlo. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Downtown Tattoo (Henderson)",
+    "direccion": "37 S Water St, Ste 120, Henderson, NV 89015",
+    "telefono": "(702) 333-1006",
+    "web": "https://downtowntattoo.vegas/henderson/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=37+S+Water+St+Ste+120+Henderson+NV+89015",
+    "score": 0,
+    "problemas": ["Sitio moderno y personalizado — sin oportunidad clara detectada", "Solo 18 reseñas en Yelp (sucursal más nueva)"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de Downtown Tattoo en Henderson se ve cuidado y con buena identidad visual. En Pawzn Visual Studio podemos ayudarles a sumar email marketing o redes para que esa identidad llegue a más clientes locales. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Collective Tattoo Parlor",
+    "direccion": "8416 W Desert Inn Rd, Las Vegas, NV 89117",
+    "telefono": "(702) 476-9921",
+    "web": "https://www.ctparlor.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=8416+W+Desert+Inn+Rd+Las+Vegas+NV+89117",
+    "score": 0,
+    "problemas": ["Sitio moderno (Squarespace) pero con contenido mínimo (sin precios ni disponibilidad)"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Collective Tattoo Parlor tiene buen portafolio visual por artista. Notamos que falta información de precios o disponibilidad, algo que ayudaría a convertir más visitas en citas. En Pawzn Visual Studio podemos sumar eso al sitio actual. contacto@pawznvisualstudio.com"
+  }
+]
+</script>
+
+<script>
+function getProspectData() {
+  return JSON.parse(document.getElementById('prospect-data').textContent);
+}
+
+function scoreClass(score) {
+  if (score >= 7) return 'score-high';
+  if (score >= 3) return 'score-mid';
+  return 'score-low';
+}
+
+function renderTable() {
+  const data = getProspectData().sort((a, b) => b.score - a.score);
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = data.map((p, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><span class="score ${scoreClass(p.score)}">${p.score}</span></td>
+      <td><strong>${p.nombre}</strong><br><small style="color:#64748b">${p.direccion}</small></td>
+      <td>${p.telefono}<br><a href="${p.maps_url}" target="_blank">Ver en Maps</a></td>
+      <td><span class="${p.web.includes('caduc') || p.web.includes('no carga') ? 'no-web' : ''}">${p.web}</span></td>
+      <td>${p.problemas.map(pr => `<span class="tag ${tagClass(pr)}">${pr}</span>`).join('')}</td>
+      <td>
+        <div class="msg" onclick="copyMsg(this)">
+          ${p.mensaje}
+          <br><br>
+          <button class="copy-btn">Copiar mensaje</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function tagClass(text) {
+  if (text.includes('CRÍTICO')) return 'tag-critico';
+  if (text.includes('moderno') || text.includes('activo')) return 'tag-ok';
+  if (text.includes('sin oportunidad') || text.includes('mínimo')) return 'tag-web';
+  return 'tag-sin';
+}
+
+function copyMsg(el) {
+  const text = el.innerText.replace('Copiar mensaje', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.querySelector('.copy-btn');
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar mensaje', 2000);
+  });
+}
+
+function triggerDownload(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadJSON() {
+  const data = getProspectData();
+  triggerDownload(JSON.stringify(data, null, 2), 'prospectos-tatuajes-lasvegas.json', 'application/json');
+}
+
+function downloadCSV() {
+  const data = getProspectData();
+  const cols = ['nombre', 'direccion', 'telefono', 'web', 'maps_url', 'score', 'problemas', 'verificado', 'mensaje'];
+  const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+  const rows = [cols.join(',')];
+  data.forEach(p => {
+    rows.push(cols.map(c => esc(c === 'problemas' ? p[c].join('; ') : p[c])).join(','));
+  });
+  triggerDownload(rows.join('\n'), 'prospectos-tatuajes-lasvegas.csv', 'text/csv');
+}
+
+renderTable();
+</script>
+</body>
+</html>

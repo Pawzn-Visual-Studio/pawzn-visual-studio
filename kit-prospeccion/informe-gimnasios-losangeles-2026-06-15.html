@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Gimnasios en Los Ángeles</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed, #4f46e5); padding: 2.5rem 2rem; text-align: center; }
+  .header h1 { font-size: 2rem; font-weight: 800; }
+  .header p { opacity: 0.85; margin-top: 0.5rem; font-size: 0.95rem; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #111118; flex-wrap: wrap; justify-content: center; }
+  .stat { background: #1a1a2e; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 2rem; text-align: center; min-width: 130px; }
+  .stat-num { font-size: 2.2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.72rem; color: #94a3b8; margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .container { padding: 2rem; max-width: 1500px; margin: 0 auto; }
+  h2 { font-size: 1.1rem; margin-bottom: 1rem; color: #c4b5fd; font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 12px; overflow: hidden; font-size: 0.88rem; }
+  th { background: #1a1a2e; padding: 0.9rem 1rem; text-align: left; font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+  td { padding: 1rem; border-bottom: 1px solid #1e1e2e; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #16162a; }
+
+  .score { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; font-weight: 800; font-size: 1rem; }
+  .score-high { background: #14532d; color: #4ade80; border: 2px solid #16a34a; }
+  .score-mid  { background: #713f12; color: #fbbf24; border: 2px solid #d97706; }
+  .score-low  { background: #450a0a; color: #f87171; border: 2px solid #dc2626; }
+
+  .tag { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 6px; font-size: 0.68rem; margin: 0.15rem 0.1rem; font-weight: 500; }
+  .tag-sin-web  { background: #2d1515; color: #fca5a5; }
+  .tag-web-old  { background: #1c1407; color: #fcd34d; }
+  .tag-sin-redes{ background: #1a0533; color: #d8b4fe; }
+  .tag-redes-ok { background: #0c2a16; color: #86efac; }
+  .tag-sin-email{ background: #0c1a2e; color: #7dd3fc; }
+  .tag-ok       { background: #0f2a1a; color: #4ade80; }
+
+  .biz-name { font-weight: 700; font-size: 0.95rem; color: #e2e8f0; }
+  .biz-addr { font-size: 0.78rem; color: #64748b; margin-top: 0.25rem; }
+  .biz-link { font-size: 0.75rem; }
+
+  .msg-box { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.8rem; line-height: 1.65; color: #cbd5e1; max-width: 340px; }
+  .copy-btn { display: inline-block; margin-top: 0.6rem; padding: 0.3rem 0.9rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-weight: 600; }
+  .copy-btn:hover { background: #6d28d9; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .no-web { color: #f87171; font-size: 0.8rem; font-style: italic; }
+  .has-web { color: #86efac; font-size: 0.8rem; }
+
+  .section-divider { margin: 2rem 0 1rem; }
+
+  .footer { text-align: center; padding: 2.5rem 1rem; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e1e2e; margin-top: 2rem; }
+  .footer strong { color: #7c3aed; }
+
+  @media (max-width: 900px) {
+    table { display: block; overflow-x: auto; }
+    .stats { gap: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Gimnasios en Los Ángeles — Análisis de Oportunidad</h1>
+  <p>Generado por Pawzn Visual Studio · 15 de junio 2026 · 12 prospectos analizados</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Prospectos</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Sin web propia</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Sin email marketing</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Oportunidad alta (7+)</div></div>
+</div>
+
+<div class="container">
+
+  <div class="section-divider">
+    <h2>🔥 Oportunidad Alta (7–10) — Contactar primero</h2>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1</td>
+        <td><span class="score score-high">9</span></td>
+        <td>
+          <div class="biz-name">Beyond Fitness LA</div>
+          <div class="biz-addr">1990 Westwood Blvd, Los Angeles, CA 90025</div>
+          <div class="biz-link"><a href="https://www.yelp.com/biz/beyond-fitness-la-los-angeles" target="_blank">Ver en Yelp</a></div>
+        </td>
+        <td class="no-web">Solo perfil Yelp<br><small>Sin dominio propio</small></td>
+        <td>
+          <span class="tag tag-sin-web">Sin web</span>
+          <span class="tag tag-sin-email">Sin email</span>
+          <span class="tag tag-sin-redes">Redes débiles</span>
+          <br><small style="color:#64748b;font-size:0.72rem">32 reseñas Yelp — negocio activo pero sin presencia digital</small>
+        </td>
+        <td>
+          <div class="msg-box" id="msg1">
+Hola, vi Beyond Fitness LA en Yelp y noté que no tienen sitio web propio — con 32 reseñas positivas y ubicación en Westwood, están dejando clientes sobre la mesa.
+
+En Pawzn Visual Studio diseñamos webs para gimnasios boutique que convierten visitantes en membresías. ¿Les interesa una propuesta sin compromiso?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg1', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td><span class="score score-high">8</span></td>
+        <td>
+          <div class="biz-name">LA Boxing Gym</div>
+          <div class="biz-addr">200 S Los Angeles St, Downtown LA, CA 90012</div>
+          <div class="biz-link"><a href="https://www.yelp.com/biz/la-boxing-gym-los-angeles" target="_blank">Ver en Yelp</a></div>
+        </td>
+        <td class="no-web">Solo Yelp<br><small>Sin web detectada</small></td>
+        <td>
+          <span class="tag tag-sin-web">Sin web</span>
+          <span class="tag tag-sin-email">Sin email mkt</span>
+          <span class="tag tag-sin-redes">Sin redes activas</span>
+          <br><small style="color:#64748b;font-size:0.72rem">Boxing, Muay Thai — mercado muy competido, necesitan diferenciarse</small>
+        </td>
+        <td>
+          <div class="msg-box" id="msg2">
+Hola, vimos LA Boxing Gym en Downtown LA. El boxeo está en auge pero sin web ni redes activas, los clientes potenciales los están encontrando a la competencia primero.
+
+Creamos sitios web para gyms de artes marciales con reserva de clases integrada. ¿Hablamos 15 minutos esta semana?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg2', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td><span class="score score-high">8</span></td>
+        <td>
+          <div class="biz-name">Babes of Wellness</div>
+          <div class="biz-addr">Compton, Los Angeles County, CA</div>
+          <div class="biz-link"><a href="https://www.babesofwellness.com" target="_blank">babesofwellness.com</a></div>
+        </td>
+        <td class="has-web">Web básica<br><small>Sin email / sin SEO</small></td>
+        <td>
+          <span class="tag tag-web-old">Web básica</span>
+          <span class="tag tag-sin-email">Sin newsletter</span>
+          <span class="tag tag-sin-redes">Alcance limitado</span>
+          <br><small style="color:#64748b;font-size:0.72rem">Primera gym all-women queer en South LA — historia única, sin email marketing</small>
+        </td>
+        <td>
+          <div class="msg-box" id="msg3">
+Hola, Babes of Wellness es un proyecto increíble — la primera gym all-women queer en South LA merece una presencia digital a la altura.
+
+En Pawzn Visual Studio hacemos email marketing para negocios con comunidades fuertes. Un newsletter mensual puede convertir seguidoras en membresías fijas. ¿Les interesa?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg3', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td><span class="score score-high">7</span></td>
+        <td>
+          <div class="biz-name">Angeles Elite Fitness Club</div>
+          <div class="biz-addr">Los Ángeles, CA</div>
+          <div class="biz-link"><a href="https://www.angeleselite.com" target="_blank">angeleselite.com</a></div>
+        </td>
+        <td class="has-web">Web desactualizada<br><small>Contacto sin datos reales</small></td>
+        <td>
+          <span class="tag tag-web-old">Web desactualizada</span>
+          <span class="tag tag-sin-email">Sin email mkt</span>
+          <span class="tag tag-sin-redes">Redes inciertas</span>
+          <br><small style="color:#64748b;font-size:0.72rem">CrossFit + fisioterapia — buen servicio, web con datos placeholder</small>
+        </td>
+        <td>
+          <div class="msg-box" id="msg4">
+Hola, revisamos Angeles Elite Fitness Club y notamos que la web tiene información desactualizada — eso genera desconfianza en clientes nuevos que los buscan en Google.
+
+Rediseñamos y actualizamos webs de gyms en 2 semanas, con SEO local incluido. ¿Les compartimos ejemplos?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg4', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td><span class="score score-high">7</span></td>
+        <td>
+          <div class="biz-name">ESTLR Athletics</div>
+          <div class="biz-addr">East Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://estlr.com" target="_blank">estlr.com</a></div>
+        </td>
+        <td class="has-web">Web funcional<br><small>Sin email marketing</small></td>
+        <td>
+          <span class="tag tag-sin-email">Sin newsletter</span>
+          <span class="tag tag-sin-redes">Redes con poco alcance</span>
+          <br><small style="color:#64748b;font-size:0.72rem">CrossFit East LA — comunidad local fuerte, sin estrategia de retención digital</small>
+        </td>
+        <td>
+          <div class="msg-box" id="msg5">
+Hola ESTLR Athletics, tienen una comunidad sólida en East LA pero sin email marketing están perdiendo la chance de retener miembros y vender programas especiales.
+
+Diseñamos flujos de email para gyms CrossFit que aumentan renovaciones de membresía. ¿Les mostramos cómo funciona?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg5', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="section-divider" style="margin-top:2.5rem">
+    <h2>Oportunidad Media (4–6) — Seguimiento secundario</h2>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>6</td>
+        <td><span class="score score-mid">6</span></td>
+        <td>
+          <div class="biz-name">NELA Athletics</div>
+          <div class="biz-addr">Northeast Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://www.nelaathletics.com" target="_blank">nelaathletics.com</a></div>
+        </td>
+        <td class="has-web">Web básica</td>
+        <td>
+          <span class="tag tag-sin-email">Sin email mkt</span>
+          <span class="tag tag-web-old">Sin blog/SEO</span>
+        </td>
+        <td>
+          <div class="msg-box" id="msg6">
+Hola NELA Athletics, su web es funcional pero sin SEO local ni email marketing, otros gyms de NE Los Ángeles los están superando en búsquedas de Google.
+
+Podemos ayudarles a aparecer primero cuando alguien busca "gym en Eagle Rock" o "CrossFit Highland Park". ¿Conversamos?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg6', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td><span class="score score-mid">5</span></td>
+        <td>
+          <div class="biz-name">Backyard Fitness</div>
+          <div class="biz-addr">DTLA Arts District, Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://www.backyard.fit" target="_blank">backyard.fit</a></div>
+        </td>
+        <td class="has-web">Web moderna</td>
+        <td>
+          <span class="tag tag-sin-email">Sin email mkt</span>
+          <span class="tag tag-ok">Redes activas</span>
+        </td>
+        <td>
+          <div class="msg-box" id="msg7">
+Hola Backyard Fitness, tienen un concepto fuerte en el Arts District pero sin email marketing no están aprovechando su base de clientes para vender membresías premium o challenges.
+
+Diseñamos secuencias de email para gyms multi-disciplina. ¿Les interesa una demo?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg7', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td><span class="score score-mid">5</span></td>
+        <td>
+          <div class="biz-name">CrossFit Echo Park</div>
+          <div class="biz-addr">Echo Park, Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://www.crossfitechopark.com" target="_blank">crossfitechopark.com</a></div>
+        </td>
+        <td class="has-web">Web funcional</td>
+        <td>
+          <span class="tag tag-sin-email">Sin newsletter</span>
+          <span class="tag tag-web-old">Diseño mejorable</span>
+        </td>
+        <td>
+          <div class="msg-box" id="msg8">
+Hola CrossFit Echo Park, su gym tiene buena reputación local pero su web no comunica bien el ambiente y comunidad que ofrecen — algo clave para convertir visitas en pruebas gratuitas.
+
+Rediseñamos la sección de inicio y armamos un email de bienvenida para nuevos leads. ¿Lo vemos juntos?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg8', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td><span class="score score-mid">4</span></td>
+        <td>
+          <div class="biz-name">Indigo Fitness</div>
+          <div class="biz-addr">Silver Lake, Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://www.indigo.la" target="_blank">indigo.la</a></div>
+        </td>
+        <td class="has-web">Web limpia</td>
+        <td>
+          <span class="tag tag-sin-email">Sin email mkt</span>
+          <span class="tag tag-ok">Redes ok</span>
+        </td>
+        <td>
+          <div class="msg-box" id="msg9">
+Hola Indigo Fitness, tienen buen diseño web y presencia en redes pero sin email marketing no están capitalizando a los clientes que ya confían en ustedes.
+
+Una secuencia de 3 emails post-trial puede duplicar la tasa de conversión a membresía. ¿Les enviamos un ejemplo real?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg9', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="section-divider" style="margin-top:2.5rem">
+    <h2>Oportunidad Baja (1–3) — Solo si hay capacidad</h2>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Web</th>
+        <th>Notas</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>10</td>
+        <td><span class="score score-low">3</span></td>
+        <td>
+          <div class="biz-name">CrossFit Hollywood</div>
+          <div class="biz-addr">Hollywood, Los Angeles, CA</div>
+          <div class="biz-link"><a href="https://crossfithollywood.com" target="_blank">crossfithollywood.com</a></div>
+        </td>
+        <td class="has-web">Web completa</td>
+        <td><span class="tag tag-ok">Establecido 2008</span><span class="tag tag-ok">Redes activas</span><br><small style="color:#64748b;font-size:0.72rem">Solo pueden mejorar email mkt</small></td>
+        <td>
+          <div class="msg-box" id="msg10">
+Hola CrossFit Hollywood, con más de 15 años en el mercado tienen una base de clientes sólida — ¿están aprovechando email marketing para retener y reactivar exmiembros?
+
+Podemos armar una campaña de reactivación en 2 semanas. ¿Lo conversamos?
+
+contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg10', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td>
+        <td><span class="score score-low">2</span></td>
+        <td>
+          <div class="biz-name">The GYM LA</div>
+          <div class="biz-addr">11567 Santa Monica Blvd, Los Angeles, CA 90025</div>
+          <div class="biz-link"><a href="https://www.thegym.la" target="_blank">thegym.la</a></div>
+        </td>
+        <td class="has-web">Web completa</td>
+        <td><span class="tag tag-ok">220 reseñas Yelp</span><br><small style="color:#64748b;font-size:0.72rem">Bien establecido — bajo potencial de venta</small></td>
+        <td>
+          <div class="msg-box" id="msg11">
+Hola The GYM LA, con 220 reseñas y una web sólida claramente tienen todo en orden. Si en algún momento quieren explorar campañas de email para retención o temporada alta, estamos en contacto.
+
+Pawzn Visual Studio · contacto@pawznvisualstudio.com
+            <br><button class="copy-btn" onclick="copyMsg('msg11', this)">Copiar mensaje</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>12</td>
+        <td><span class="score score-low">1</span></td>
+        <td>
+          <div class="biz-name">LA Fitness (cadena)</div>
+          <div class="biz-addr">Múltiples ubicaciones en LA</div>
+          <div class="biz-link"><a href="https://www.lafitness.com" target="_blank">lafitness.com</a></div>
+        </td>
+        <td class="has-web">Corporativa</td>
+        <td><span class="tag tag-ok">Cadena nacional</span><br><small style="color:#64748b;font-size:0.72rem">No es prospecto viable para agencia boutique</small></td>
+        <td>
+          <div class="msg-box" id="msg12">
+— Cadena corporativa, no aplica como prospecto para Pawzn Visual Studio.
+            <br><button class="copy-btn" onclick="copyMsg('msg12', this)">Copiar</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- RESUMEN ESTRATÉGICO -->
+  <div style="margin-top:3rem;background:#111118;border:1px solid #2d2d44;border-radius:16px;padding:1.5rem 2rem;">
+    <h2 style="margin-bottom:1rem;font-size:1rem;">Estrategia recomendada</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+      <div style="background:#1a1a2e;border-radius:10px;padding:1rem;">
+        <div style="color:#a78bfa;font-weight:700;margin-bottom:0.5rem;">Semana 1</div>
+        <div style="font-size:0.83rem;color:#94a3b8;line-height:1.6;">Contactar Beyond Fitness LA, LA Boxing Gym y Babes of Wellness vía WhatsApp/email. Prioridad: los sin web.</div>
+      </div>
+      <div style="background:#1a1a2e;border-radius:10px;padding:1rem;">
+        <div style="color:#a78bfa;font-weight:700;margin-bottom:0.5rem;">Semana 2</div>
+        <div style="font-size:0.83rem;color:#94a3b8;line-height:1.6;">Seguimiento a Angeles Elite y ESTLR Athletics. Ofrecer auditoría digital gratuita como gancho.</div>
+      </div>
+      <div style="background:#1a1a2e;border-radius:10px;padding:1rem;">
+        <div style="color:#a78bfa;font-weight:700;margin-bottom:0.5rem;">Mes 1</div>
+        <div style="font-size:0.83rem;color:#94a3b8;line-height:1.6;">Girar a NELA, Backyard y Echo Park con propuesta de email marketing. Potencial recurrente mensual.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Generado por <strong>Pawzn Visual Studio</strong> · Kit de Prospección · contacto@pawznvisualstudio.com<br>
+  <small style="margin-top:0.3rem;display:block">15 de junio 2026 · Los Ángeles, CA · Gimnasios locales independientes</small>
+</div>
+
+<script>
+function copyMsg(id, btn) {
+  const el = document.getElementById(id);
+  const clone = el.cloneNode(true);
+  clone.querySelector('.copy-btn').remove();
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '¡Copiado!';
+    btn.style.background = '#16a34a';
+    setTimeout(() => {
+      btn.textContent = 'Copiar mensaje';
+      btn.style.background = '#7c3aed';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

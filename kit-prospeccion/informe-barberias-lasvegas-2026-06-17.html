@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Barberías en Las Vegas, NV</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed, #4f46e5); padding: 2rem; text-align: center; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; }
+  .header p { opacity: 0.85; margin-top: 0.5rem; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #111118; flex-wrap: wrap; justify-content: center; }
+  .stat { background: #1a1a2e; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 2rem; text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
+
+  .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+  .container-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  h2 { font-size: 1.2rem; color: #c4b5fd; }
+  .export-btn { background: #1a1a2e; border: 1px solid #2d2d44; color: #c4b5fd; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.78rem; cursor: pointer; }
+  .export-btn:hover { background: #24243f; }
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 12px; overflow: hidden; }
+  th { background: #1a1a2e; padding: 1rem; text-align: left; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; }
+  td { padding: 1rem; border-bottom: 1px solid #1e1e2e; font-size: 0.9rem; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #16162a; }
+
+  .score { display: inline-block; width: 36px; height: 36px; border-radius: 50%; font-weight: 800; font-size: 0.9rem; line-height: 36px; text-align: center; }
+  .score-high { background: #14532d; color: #4ade80; }
+  .score-mid { background: #713f12; color: #fbbf24; }
+  .score-low { background: #450a0a; color: #f87171; }
+
+  .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; margin: 0.15rem; }
+  .tag-web { background: #1e1b4b; color: #a5b4fc; }
+  .tag-redes { background: #1a0533; color: #e879f9; }
+  .tag-email { background: #0c2a16; color: #4ade80; }
+  .tag-sin { background: #2d1515; color: #f87171; }
+  .tag-desact { background: #422006; color: #fdba74; }
+  .tag-unverified { background: #1e1e1e; color: #94a3b8; }
+
+  .msg { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.82rem; line-height: 1.6; color: #cbd5e1; cursor: pointer; }
+  .msg:hover { background: #1e293b; }
+  .copy-btn { display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.72rem; cursor: pointer; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .no-web { color: #f87171; font-size: 0.8rem; }
+  .down-web { color: #fdba74; font-size: 0.8rem; }
+
+  .footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
+  .footer .disclaimer { margin-top: 0.5rem; color: #3f3f5c; max-width: 600px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Prospectos — Barberías en Las Vegas, NV</h1>
+  <p>Generado por Pawzn Visual Studio · 2026-06-17</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">15</div><div class="stat-label">Prospectos encontrados</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Sin sitio web funcional</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Sin redes sociales activas</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Oportunidad alta (5+)</div></div>
+</div>
+
+<div class="container">
+  <div class="container-head">
+    <h2>Prospectos ordenados por oportunidad</h2>
+    <div>
+      <button class="export-btn" onclick="downloadJSON()">Descargar JSON</button>
+      <button class="export-btn" onclick="downloadCSV()">Descargar CSV (Google Sheets)</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Contacto</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><span class="score score-high">6</span></td>
+        <td><strong>Ruth's Barber &amp; Beauty</strong><br><small style="color:#64748b">3333 S Maryland Pkwy Ste 7, Las Vegas, NV 89169</small></td>
+        <td>(702) 672-3420<br><a href="https://www.yelp.com/biz/ruths-barber-and-beauty-las-vegas" target="_blank">Ver en Yelp</a></td>
+        <td class="no-web">Sin sitio web</td>
+        <td><span class="tag tag-sin">Sin web</span><span class="tag tag-redes">Sin redes activas</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Ruth's Barber &amp; Beauty lleva años en Maryland Pkwy pero no encontramos sitio web ni cuentas activas de Instagram o Facebook a su nombre — dependen casi por completo del boca a boca. Podemos darles presencia digital básica (web + redes) para que los nuevos vecinos del área los encuentren.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="score score-high">6</span></td>
+        <td><strong>Eastern Ave Barbers</strong><br><small style="color:#64748b">10960 S Eastern Ave Ste 105, Henderson, NV 89052</small></td>
+        <td>(702) 614-4844<br><a href="https://www.yelp.com/biz/eastern-ave-barbers-henderson" target="_blank">Ver en Yelp</a></td>
+        <td class="no-web">Sin sitio web</td>
+        <td><span class="tag tag-sin">Sin web</span><span class="tag tag-redes">Sin redes activas</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Eastern Ave Barbers acumula 91 reseñas en Yelp en Henderson, pero no encontramos sitio web ni redes sociales propias — esa buena reputación se queda atrapada en Yelp. Podemos construirles una web y arrancar sus redes para capitalizar esas reseñas.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="score score-mid">4</span></td>
+        <td><strong>Official Barbershop &amp; Shave Parlor</strong><br><small style="color:#64748b">1305 Vegas Valley Dr Suite E, Las Vegas, NV 89169</small></td>
+        <td>(702) 737-3003<br><a href="https://www.instagram.com/_officialbarbershop/" target="_blank">Ver Instagram (1,182 seguidores)</a></td>
+        <td class="no-web">Sin sitio web</td>
+        <td><span class="tag tag-sin">Sin web</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Official Barbershop &amp; Shave Parlor tiene más de 1,100 seguidores en Instagram, pero no encontramos un sitio web propio donde esos seguidores puedan reservar directamente — hoy dependen solo de llamadas al (702) 737-3003. Podemos construirles una web simple conectada a sus redes.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="score score-mid">4</span></td>
+        <td><strong>Boulevard Barber Shop</strong><br><small style="color:#64748b">906 S 6th St Suite 105, Las Vegas, NV 89101</small></td>
+        <td>(702) 384-1453<br><a href="https://www.instagram.com/boulevard_barber_shop/" target="_blank">Ver Instagram (1,843 seguidores)</a></td>
+        <td class="down-web">boulevardbarbershops.com — no carga (verificado 2 veces)</td>
+        <td><span class="tag tag-sin">Sitio caído</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Boulevard Barber Shop tiene casi 1,900 seguidores en Instagram, pero su dominio boulevardbarbershops.com no carga — lo intentamos dos veces y la conexión se rechaza. Es tráfico de redes que se pierde justo antes de reservar.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span class="score score-mid">4</span></td>
+        <td><strong>Slayed Cutz Barber Shop</strong><br><small style="color:#64748b">3385 S Durango Dr Ste D, Las Vegas, NV 89139</small></td>
+        <td>(702) 228-0848<br><a href="https://www.facebook.com/SlayedCutz702/" target="_blank">Ver Facebook</a></td>
+        <td class="no-web">Sin sitio web</td>
+        <td><span class="tag tag-sin">Sin web</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Slayed Cutz tiene presencia en Facebook ('Slayed Cutz 702') pero no detectamos sitio web propio, y su número de reseñas en Yelp es bajo comparado con otras barberías de la zona. Una web propia con reservas podría ayudar a subir esa visibilidad.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>Chops Barbershop DTLV</strong><br><small style="color:#64748b">1531 S Commerce St Unit 150A, Las Vegas, NV 89102</small></td>
+        <td>(702) 463-2925<br><a href="https://chopsbarbershopdtlv.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://chopsbarbershopdtlv.com" target="_blank">chopsbarbershopdtlv.com</a></td>
+        <td><span class="tag tag-desact">Sitio básico</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Chops Barbershop DTLV tiene una comunidad fuerte en Instagram (más de 5,500 seguidores), pero su sitio web no refleja esa misma energía — está orientado solo a reservas básicas sin conectar con esas redes. Podemos modernizarlo para que web e Instagram trabajen juntos.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>Goodtimes Barbershop</strong><br><small style="color:#64748b">3803 W Sahara, Las Vegas, NV 89102</small></td>
+        <td>(702) 433-3335<br><a href="https://www.yelp.com/biz/goodtimes-barbershop-las-vegas" target="_blank">Ver en Yelp (4.7★, 184 reseñas)</a></td>
+        <td class="down-web">goodtimesbarbershop.net — certificado SSL inválido (verificado)</td>
+        <td><span class="tag tag-desact">Error SSL</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Al intentar abrir el sitio de Goodtimes Barbershop nos topamos con un error de certificado SSL — el navegador probablemente le muestra advertencias de "sitio no seguro" a sus clientes, algo grave para un negocio con 4.7 estrellas y 184 reseñas. Podemos arreglarlo sin perder lo que ya construyeron.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>RNDVU Barbershop</strong><br><small style="color:#64748b">9480 S Eastern Ave Ste 150, Las Vegas, NV 89123</small></td>
+        <td>(702) 852-4181<br><a href="https://rndvulv.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://rndvulv.com" target="_blank">rndvulv.com</a></td>
+        <td><span class="tag tag-redes">Sin redes activas</span><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">RNDVU Barbershop tiene un sitio funcional con reservas vía GetSquire, pero no encontramos enlaces a Instagram o Facebook en su web — una barbería sin redes visibles pierde clientela que decide por fotos de cortes. Podemos sumarles esa pieza y un newsletter simple.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>Speakeasy Barbershop LV</strong><br><small style="color:#64748b">600 E Fremont St Piso 2 (El Cortez), Las Vegas, NV 89101</small></td>
+        <td>(702) 352-7170<br><a href="https://www.speakeasybarbershoplv.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://www.speakeasybarbershoplv.com" target="_blank">speakeasybarbershoplv.com</a></td>
+        <td><span class="tag tag-desact">Sitio desactualizado</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Speakeasy Barbershop LV tiene una historia única dentro del Hotel El Cortez y reseñas excelentes (4.8★, 176 opiniones), pero su sitio en Squarespace se ve desactualizado para lo que representa la marca. Un rediseño podría capturar mejor esa historia y subir las reservas online.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>Get A Haircut</strong><br><small style="color:#64748b">900 E Liberace Ave Ste B-101, Las Vegas, NV 89109</small></td>
+        <td>(702) 366-9480<br><a href="https://getahaircutlv.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://getahaircutlv.com" target="_blank">getahaircutlv.com</a></td>
+        <td><span class="tag tag-desact">Sitio desactualizado</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Get A Haircut tiene una comunidad muy activa en Instagram y Facebook, pero su sitio en WordPress se ve anticuado y no ofrece reservas online — solo "walk-ins". Modernizar esa web podría convertir mejor todo el tráfico que ya generan en redes.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><span class="score score-mid">3</span></td>
+        <td><strong>Friendly Barber Shop</strong><br><small style="color:#64748b">10895 S Eastern Ave Ste 170, Henderson, NV 89052</small></td>
+        <td>(702) 421-0370<br><a href="https://friendlybarberhaircut.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://friendlybarberhaircut.com" target="_blank">friendlybarberhaircut.com</a></td>
+        <td><span class="tag tag-desact">Sitio desactualizado</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Friendly Barber Shop en Henderson ya tiene 136 reseñas y reservas con Vagaro, pero el diseño de su sitio se ve de hace varios años (estética 2014-2017). Una actualización visual podría reflejar mejor la calidad que confirman sus reseñas.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><span class="score score-low">2</span></td>
+        <td><strong>FINO for MEN (Paradise)</strong><br><small style="color:#64748b">4480 Paradise Rd #425, Las Vegas, NV 89169</small></td>
+        <td>(702) 970-2399<br><a href="https://finoformen.com/pages/las-vegas" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://finoformen.com/pages/las-vegas" target="_blank">finoformen.com</a></td>
+        <td><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">FINO for MEN acumula más de 500 reseñas de 5 estrellas en Las Vegas — el servicio claramente no es el problema. Lo que no vimos en su sitio fue alguna señal de newsletter o email marketing para mantener a esos clientes volviendo entre cortes.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><span class="score score-low">2</span></td>
+        <td><strong>Elliott &amp; Co.</strong><br><small style="color:#64748b">8876 S Eastern Ave #102, Las Vegas, NV 89123</small></td>
+        <td>702-990-5672<br><a href="https://elliottandco.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://elliottandco.com" target="_blank">elliottandco.com</a></td>
+        <td><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Elliott &amp; Co. tiene 606 reseñas en Yelp, una de las cifras más altas que encontramos en Las Vegas — gran base de confianza. No detectamos email marketing en su sitio, una forma sencilla de traer de vuelta a esos clientes sin depender solo de Google.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td><span class="score score-low">1</span></td>
+        <td><strong>Olympian Barbershop</strong><br><small style="color:#64748b">7925 S Rainbow Blvd, Las Vegas, NV 89139</small></td>
+        <td>(702) 750-2226<br><a href="https://olympianbarbershop.com" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://olympianbarbershop.com" target="_blank">olympianbarbershop.com</a></td>
+        <td><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">Olympian Barbershop ya tiene una web sólida con reservas por barbero — ahí no hay mucho que tocar. Lo único que no encontramos fue un newsletter o email marketing para aprovechar a los clientes recurrentes entre visitas.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td><span class="score score-low">1</span></td>
+        <td><strong>The Gents Place (Summerlin)</strong><br><small style="color:#64748b">9340 West Sahara Ave Suite 100, Las Vegas, NV 89117</small></td>
+        <td>855-338-0027<br><a href="https://thegentsplace.com/service_location/las-vegas-summerlin/" target="_blank">Ver sitio web</a></td>
+        <td><a href="https://thegentsplace.com/service_location/las-vegas-summerlin/" target="_blank">thegentsplace.com</a></td>
+        <td><span class="tag tag-email">Sin email mkt</span></td>
+        <td><div class="msg" onclick="copyMsg(this)">The Gents Place tiene una de las webs más completas que vimos en Las Vegas, con redes activas y hasta una causa social con veteranos. Lo único que no detectamos fue un newsletter por email — si ya lo tienen, dinos; si no, podemos ayudarte a montarlo.<br>Pawzn Visual Studio | contacto@pawznvisualstudio.com<br><br><button class="copy-btn">Copiar mensaje</button></div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Pawzn Visual Studio · contacto@pawznvisualstudio.com · Kit de Prospección
+  <div class="disclaimer">Datos obtenidos de búsqueda pública y verificación directa de sitios el 2026-06-17. Verifica cada dato antes de contactar de forma masiva.</div>
+</div>
+
+<script id="prospect-data" type="application/json">
+[
+  {"nombre":"Ruth's Barber & Beauty","direccion":"3333 S Maryland Pkwy Ste 7, Las Vegas, NV 89169","telefono":"(702) 672-3420","web":"No disponible","maps_url":"https://www.yelp.com/biz/ruths-barber-and-beauty-las-vegas","score":6,"problemas":["Sin web","Sin redes activas","Sin email marketing"],"verificado":true,"mensaje":"Ruth's Barber & Beauty lleva años en Maryland Pkwy pero no encontramos sitio web ni cuentas activas de Instagram o Facebook a su nombre — dependen casi por completo del boca a boca. Podemos darles presencia digital básica (web + redes) para que los nuevos vecinos del área los encuentren. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Eastern Ave Barbers","direccion":"10960 S Eastern Ave Ste 105, Henderson, NV 89052","telefono":"(702) 614-4844","web":"No disponible","maps_url":"https://www.yelp.com/biz/eastern-ave-barbers-henderson","score":6,"problemas":["Sin web","Sin redes activas","Sin email marketing"],"verificado":true,"mensaje":"Eastern Ave Barbers acumula 91 reseñas en Yelp en Henderson, pero no encontramos sitio web ni redes sociales propias — esa buena reputación se queda atrapada en Yelp. Podemos construirles una web y arrancar sus redes para capitalizar esas reseñas. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Official Barbershop & Shave Parlor","direccion":"1305 Vegas Valley Dr Suite E, Las Vegas, NV 89169","telefono":"(702) 737-3003","web":"No disponible","maps_url":"https://www.instagram.com/_officialbarbershop/","score":4,"problemas":["Sin web","Sin email marketing"],"verificado":true,"mensaje":"Official Barbershop & Shave Parlor tiene más de 1,100 seguidores en Instagram, pero no encontramos un sitio web propio donde esos seguidores puedan reservar directamente — hoy dependen solo de llamadas al (702) 737-3003. Podemos construirles una web simple conectada a sus redes. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Boulevard Barber Shop","direccion":"906 S 6th St Suite 105, Las Vegas, NV 89101","telefono":"(702) 384-1453","web":"boulevardbarbershops.com (no carga, verificado 2 veces)","maps_url":"https://www.instagram.com/boulevard_barber_shop/","score":4,"problemas":["Sitio caído","Sin email marketing"],"verificado":true,"mensaje":"Boulevard Barber Shop tiene casi 1,900 seguidores en Instagram, pero su dominio boulevardbarbershops.com no carga — lo intentamos dos veces y la conexión se rechaza. Es tráfico de redes que se pierde justo antes de reservar. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Slayed Cutz Barber Shop","direccion":"3385 S Durango Dr Ste D, Las Vegas, NV 89139","telefono":"(702) 228-0848","web":"No disponible","maps_url":"https://www.facebook.com/SlayedCutz702/","score":4,"problemas":["Sin web","Sin email marketing"],"verificado":true,"mensaje":"Slayed Cutz tiene presencia en Facebook ('Slayed Cutz 702') pero no detectamos sitio web propio, y su número de reseñas en Yelp es bajo comparado con otras barberías de la zona. Una web propia con reservas podría ayudar a subir esa visibilidad. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Chops Barbershop DTLV","direccion":"1531 S Commerce St Unit 150A, Las Vegas, NV 89102","telefono":"(702) 463-2925","web":"chopsbarbershopdtlv.com","maps_url":"https://chopsbarbershopdtlv.com","score":3,"problemas":["Sitio básico","Sin email marketing"],"verificado":true,"mensaje":"Chops Barbershop DTLV tiene una comunidad fuerte en Instagram (más de 5,500 seguidores), pero su sitio web no refleja esa misma energía — está orientado solo a reservas básicas sin conectar con esas redes. Podemos modernizarlo para que web e Instagram trabajen juntos. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Goodtimes Barbershop","direccion":"3803 W Sahara, Las Vegas, NV 89102","telefono":"(702) 433-3335","web":"goodtimesbarbershop.net (certificado SSL inválido, verificado)","maps_url":"https://www.yelp.com/biz/goodtimes-barbershop-las-vegas","score":3,"problemas":["Error SSL"],"verificado":true,"mensaje":"Al intentar abrir el sitio de Goodtimes Barbershop nos topamos con un error de certificado SSL — el navegador probablemente le muestra advertencias de \"sitio no seguro\" a sus clientes, algo grave para un negocio con 4.7 estrellas y 184 reseñas. Podemos arreglarlo sin perder lo que ya construyeron. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"RNDVU Barbershop","direccion":"9480 S Eastern Ave Ste 150, Las Vegas, NV 89123","telefono":"(702) 852-4181","web":"rndvulv.com","maps_url":"https://rndvulv.com","score":3,"problemas":["Sin redes activas","Sin email marketing"],"verificado":true,"mensaje":"RNDVU Barbershop tiene un sitio funcional con reservas vía GetSquire, pero no encontramos enlaces a Instagram o Facebook en su web — una barbería sin redes visibles pierde clientela que decide por fotos de cortes. Podemos sumarles esa pieza y un newsletter simple. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Speakeasy Barbershop LV","direccion":"600 E Fremont St Piso 2 (El Cortez), Las Vegas, NV 89101","telefono":"(702) 352-7170","web":"speakeasybarbershoplv.com","maps_url":"https://www.speakeasybarbershoplv.com","score":3,"problemas":["Sitio desactualizado"],"verificado":true,"mensaje":"Speakeasy Barbershop LV tiene una historia única dentro del Hotel El Cortez y reseñas excelentes (4.8★, 176 opiniones), pero su sitio en Squarespace se ve desactualizado para lo que representa la marca. Un rediseño podría capturar mejor esa historia y subir las reservas online. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Get A Haircut","direccion":"900 E Liberace Ave Ste B-101, Las Vegas, NV 89109","telefono":"(702) 366-9480","web":"getahaircutlv.com","maps_url":"https://getahaircutlv.com","score":3,"problemas":["Sitio desactualizado"],"verificado":true,"mensaje":"Get A Haircut tiene una comunidad muy activa en Instagram y Facebook, pero su sitio en WordPress se ve anticuado y no ofrece reservas online — solo \"walk-ins\". Modernizar esa web podría convertir mejor todo el tráfico que ya generan en redes. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Friendly Barber Shop","direccion":"10895 S Eastern Ave Ste 170, Henderson, NV 89052","telefono":"(702) 421-0370","web":"friendlybarberhaircut.com","maps_url":"https://friendlybarberhaircut.com","score":3,"problemas":["Sitio desactualizado"],"verificado":true,"mensaje":"Friendly Barber Shop en Henderson ya tiene 136 reseñas y reservas con Vagaro, pero el diseño de su sitio se ve de hace varios años (estética 2014-2017). Una actualización visual podría reflejar mejor la calidad que confirman sus reseñas. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"FINO for MEN (Paradise)","direccion":"4480 Paradise Rd #425, Las Vegas, NV 89169","telefono":"(702) 970-2399","web":"finoformen.com","maps_url":"https://finoformen.com/pages/las-vegas","score":2,"problemas":["Sin email marketing"],"verificado":true,"mensaje":"FINO for MEN acumula más de 500 reseñas de 5 estrellas en Las Vegas — el servicio claramente no es el problema. Lo que no vimos en su sitio fue alguna señal de newsletter o email marketing para mantener a esos clientes volviendo entre cortes. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Elliott & Co.","direccion":"8876 S Eastern Ave #102, Las Vegas, NV 89123","telefono":"702-990-5672","web":"elliottandco.com","maps_url":"https://elliottandco.com","score":2,"problemas":["Sin email marketing"],"verificado":true,"mensaje":"Elliott & Co. tiene 606 reseñas en Yelp, una de las cifras más altas que encontramos en Las Vegas — gran base de confianza. No detectamos email marketing en su sitio, una forma sencilla de traer de vuelta a esos clientes sin depender solo de Google. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"Olympian Barbershop","direccion":"7925 S Rainbow Blvd, Las Vegas, NV 89139","telefono":"(702) 750-2226","web":"olympianbarbershop.com","maps_url":"https://olympianbarbershop.com","score":1,"problemas":["Sin email marketing"],"verificado":true,"mensaje":"Olympian Barbershop ya tiene una web sólida con reservas por barbero — ahí no hay mucho que tocar. Lo único que no encontramos fue un newsletter o email marketing para aprovechar a los clientes recurrentes entre visitas. Pawzn Visual Studio | contacto@pawznvisualstudio.com"},
+  {"nombre":"The Gents Place (Summerlin)","direccion":"9340 West Sahara Ave Suite 100, Las Vegas, NV 89117","telefono":"855-338-0027","web":"thegentsplace.com","maps_url":"https://thegentsplace.com/service_location/las-vegas-summerlin/","score":1,"problemas":["Sin email marketing"],"verificado":true,"mensaje":"The Gents Place tiene una de las webs más completas que vimos en Las Vegas, con redes activas y hasta una causa social con veteranos. Lo único que no detectamos fue un newsletter por email — si ya lo tienen, dinos; si no, podemos ayudarte a montarlo. Pawzn Visual Studio | contacto@pawznvisualstudio.com"}
+]
+</script>
+
+<script>
+function copyMsg(el) {
+  const text = el.innerText.replace('Copiar mensaje', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.querySelector('.copy-btn');
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar mensaje', 2000);
+  });
+}
+
+function getProspectData() {
+  return JSON.parse(document.getElementById('prospect-data').textContent);
+}
+
+function triggerDownload(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadJSON() {
+  const data = getProspectData();
+  triggerDownload(JSON.stringify(data, null, 2), 'prospectos.json', 'application/json');
+}
+
+function downloadCSV() {
+  const data = getProspectData();
+  const cols = ['nombre', 'direccion', 'telefono', 'web', 'maps_url', 'score', 'problemas', 'verificado', 'mensaje'];
+  const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+  const rows = [cols.join(',')];
+  data.forEach(p => {
+    rows.push(cols.map(c => esc(c === 'problemas' ? p[c].join('; ') : p[c])).join(','));
+  });
+  triggerDownload(rows.join('\n'), 'prospectos.csv', 'text/csv');
+}
+</script>
+</body>
+</html>

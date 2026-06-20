@@ -1,0 +1,271 @@
+{
+  "name": "Agente Google Reviews — Pawzn Visual Studio",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [{ "mode": "everyMinute" }]
+        },
+        "account": {
+          "__rl": true,
+          "value": "accounts/103866932474488396070",
+          "mode": "list",
+          "cachedResultName": "Pawzn Visual Studio"
+        },
+        "location": {
+          "__rl": true,
+          "value": "locations/11303787163250651499",
+          "mode": "list",
+          "cachedResultName": "locations/11303787163250651499"
+        }
+      },
+      "type": "n8n-nodes-base.googleBusinessProfileTrigger",
+      "typeVersion": 1,
+      "position": [-896, -208],
+      "id": "51a92b79-98f2-4ef2-8198-70b4ea807444",
+      "name": "Google Business Profile Trigger",
+      "credentials": {
+        "googleBusinessProfileOAuth2Api": {
+          "id": "o1w9CHwJA5VVfloY",
+          "name": "Google Business Profile - clase YouTube"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $vars.OPENROUTER_API_KEY }}" },
+            { "name": "Content-Type",  "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n  \"temperature\": 0,\n  \"max_tokens\": 10,\n  \"messages\": [\n    {\"role\": \"system\", \"content\": \"Clasifica la reseña como positiva o negativa. POSITIVA: satisfacción, elogio, 4-5 estrellas. NEGATIVA: insatisfacción, quejas, 1-3 estrellas. Responde ÚNICAMENTE con una palabra: positiva o negativa\"},\n    {\"role\": \"user\", \"content\": \"Reseña: {{ $json.comment }}\\nRating sobre 5: {{ $json.starRating }}\"}\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-688, -208],
+      "id": "90b19a08-839a-4a1c-b7d3-f7e07512b14f",
+      "name": "Analizador de Reseñas | Agente de IA"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $vars.OPENROUTER_API_KEY }}" },
+            { "name": "Content-Type",  "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"meta-llama/llama-3.1-70b-instruct:free\",\n  \"temperature\": 0.7,\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres el asistente de Pawzn Visual Studio, agencia de diseño web, email y redes sociales. Responde reseñas de Google My Business de forma profesional, cercana y auténtica. Tono humano, sin emojis, sin clichés de IA. Positivas (4-5⭐): agradece con el nombre, menciona el aspecto elogiado, invita a volver. 50-120 palabras. Sin texto positiva: 25-40 palabras. Negativas (1-3⭐): lamenta la experiencia, ofrece resolver, pide contacto: contacto@pawznvisualstudio.com. Cierra siempre con: Saludos del equipo de Pawzn Visual Studio.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Reseña: {{ $('Google Business Profile Trigger').item.json.comment ?? '(sin texto)' }}\\nPuntuación: {{ $('Google Business Profile Trigger').item.json.starRating }}/5\\nNombre: {{ $('Google Business Profile Trigger').item.json.reviewer.displayName }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-368, -208],
+      "id": "82fe37cd-05ee-47c1-9b63-b7a04be34694",
+      "name": "Generador de respuestas | Agente"
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [-32, -208],
+      "id": "c84a7306-1f03-4ed8-ae55-4398de334e25",
+      "name": "Wait",
+      "webhookId": "2d0ee2fd-ad21-4236-8087-7ecb0b8f8e83"
+    },
+    {
+      "parameters": {
+        "resource": "review",
+        "operation": "reply",
+        "account": {
+          "__rl": true,
+          "value": "accounts/103866932474488396070",
+          "mode": "list",
+          "cachedResultName": "Pawzn Visual Studio"
+        },
+        "location": {
+          "__rl": true,
+          "value": "locations/11303787163250651499",
+          "mode": "list",
+          "cachedResultName": "locations/11303787163250651499"
+        },
+        "review": {
+          "__rl": true,
+          "value": "={{ $('Google Business Profile Trigger').item.json.reviewId }}",
+          "mode": "id"
+        },
+        "reply": "={{ $('Generador de respuestas | Agente').item.json.choices[0].message.content }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.googleBusinessProfile",
+      "typeVersion": 1,
+      "position": [176, -208],
+      "id": "210eef46-c298-4b78-81bc-65ef5b4beee3",
+      "name": "Reply to review",
+      "credentials": {
+        "googleBusinessProfileOAuth2Api": {
+          "id": "o1w9CHwJA5VVfloY",
+          "name": "Google Business Profile - clase YouTube"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1MpXHa9dNMT_3zICls1S3IDcLJ06Fmo-PSLloP4RNBz4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Reseñas",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ $now.toFormat('yyyy-MM-dd HH:mm') }}",
+            "Nombre": "={{ $('Google Business Profile Trigger').item.json.reviewer.displayName }}",
+            "Puntuación": "={{ $('Google Business Profile Trigger').item.json.starRating }}",
+            "Reseña": "={{ $('Google Business Profile Trigger').item.json.comment ?? '(sin texto)' }}",
+            "Sentimiento": "={{ $('Analizador de Reseñas | Agente de IA').item.json.choices[0].message.content }}",
+            "Respuesta publicada": "={{ $('Generador de respuestas | Agente').item.json.choices[0].message.content }}",
+            "ID Reseña": "={{ $('Google Business Profile Trigger').item.json.reviewId }}"
+          },
+          "schema": [
+            { "id": "Fecha", "displayName": "Fecha", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Nombre", "displayName": "Nombre", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Puntuación", "displayName": "Puntuación", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Reseña", "displayName": "Reseña", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Sentimiento", "displayName": "Sentimiento", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Respuesta publicada", "displayName": "Respuesta publicada", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "ID Reseña", "displayName": "ID Reseña", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [368, -208],
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Guardar en Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SHEETS_CRED_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Analizador de Reseñas | Agente de IA').item.json.choices[0].message.content }}",
+                    "rightValue": "positiva",
+                    "operator": { "type": "string", "operation": "equals" },
+                    "id": "f6e1dc21-3ae8-4a0d-b248-b80895e60f5b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Positiva"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
+                "conditions": [
+                  {
+                    "id": "68adce6d-099a-458e-96c1-b82d965a1644",
+                    "leftValue": "={{ $('Analizador de Reseñas | Agente de IA').item.json.choices[0].message.content }}",
+                    "rightValue": "negativa",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Negativa"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [576, -208],
+      "id": "f01e3971-26d0-451d-b727-82d578108eec",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution-api-production-6989.up.railway.app/message/sendText/pawzn-whatsapp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "pawzn123456" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"17024291909\",\n  \"text\": \"🚨 *Reseña NEGATIVA — Pawzn Visual Studio*\\n\\n👤 *Reseñador:* {{ $('Google Business Profile Trigger').item.json.reviewer.displayName }}\\n⭐ *Puntuación:* {{ $('Google Business Profile Trigger').item.json.starRating }}/5\\n📝 *Reseña:* {{ $('Google Business Profile Trigger').item.json.comment ?? '(sin texto)' }}\\n\\n✅ *Respuesta publicada:*\\n{{ $('Generador de respuestas | Agente').item.json.choices[0].message.content }}\\n\\n⚠️ Se recomienda seguimiento personalizado.\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [800, -64],
+      "id": "whatsapp-node-pawzn",
+      "name": "WhatsApp — Alerta Negativa"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Business Profile Trigger": {
+      "main": [[{ "node": "Analizador de Reseñas | Agente de IA", "type": "main", "index": 0 }]]
+    },
+    "Analizador de Reseñas | Agente de IA": {
+      "main": [[{ "node": "Generador de respuestas | Agente", "type": "main", "index": 0 }]]
+    },
+    "Generador de respuestas | Agente": {
+      "main": [[{ "node": "Wait", "type": "main", "index": 0 }]]
+    },
+    "Wait": {
+      "main": [[{ "node": "Reply to review", "type": "main", "index": 0 }]]
+    },
+    "Reply to review": {
+      "main": [[{ "node": "Guardar en Google Sheets", "type": "main", "index": 0 }]]
+    },
+    "Guardar en Google Sheets": {
+      "main": [[{ "node": "Switch", "type": "main", "index": 0 }]]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [{ "node": "WhatsApp — Alerta Negativa", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "active": true,
+  "settings": { "executionOrder": "v1" }
+}

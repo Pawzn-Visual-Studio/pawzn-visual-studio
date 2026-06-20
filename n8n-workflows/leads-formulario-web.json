@@ -1,0 +1,110 @@
+{
+  "name": "Pawzn — Leads desde Formulario Web",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pawzn-leads",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-896, 0],
+      "id": "a1f2e3d4-b5c6-7890-abcd-ef1234567801",
+      "name": "Webhook — Formulario Web"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1MpXHa9dNMT_3zICls1S3IDcLJ06Fmo-PSLloP4RNBz4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ $now.toFormat('dd/MM/yyyy HH:mm') }}",
+            "Nombre": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Servicio": "={{ $json.body.service }}",
+            "Mensaje": "={{ $json.body.message }}"
+          },
+          "schema": [
+            { "id": "Fecha",    "displayName": "Fecha",    "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Nombre",   "displayName": "Nombre",   "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Email",    "displayName": "Email",    "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Servicio", "displayName": "Servicio", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Mensaje",  "displayName": "Mensaje",  "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [-688, 0],
+      "id": "b2e3f4a5-c6d7-8901-bcde-f01234567802",
+      "name": "Guardar Lead en Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SHEETS_CRED_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution-api-production-6989.up.railway.app/message/sendText/pawzn-whatsapp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey",       "value": "pawzn123456" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"17024291909\",\n  \"text\": \"🔔 *Nuevo Lead — Pawzn Visual Studio*\\n\\n👤 *Nombre:* {{ $('Webhook — Formulario Web').item.json.body.name }}\\n📧 *Email:* {{ $('Webhook — Formulario Web').item.json.body.email }}\\n🛠 *Servicio:* {{ $('Webhook — Formulario Web').item.json.body.service }}\\n\\n💬 *Mensaje:*\\n{{ $('Webhook — Formulario Web').item.json.body.message }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-480, 0],
+      "id": "c3f4a5b6-d7e8-9012-cdef-012345678803",
+      "name": "WhatsApp — Alerta Nuevo Lead"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "ok",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [-272, 0],
+      "id": "d4a5b6c7-e8f9-0123-defa-123456789804",
+      "name": "Responder OK"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook — Formulario Web": {
+      "main": [[{ "node": "Guardar Lead en Google Sheets", "type": "main", "index": 0 }]]
+    },
+    "Guardar Lead en Google Sheets": {
+      "main": [[{ "node": "WhatsApp — Alerta Nuevo Lead", "type": "main", "index": 0 }]]
+    },
+    "WhatsApp — Alerta Nuevo Lead": {
+      "main": [[{ "node": "Responder OK", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" }
+}

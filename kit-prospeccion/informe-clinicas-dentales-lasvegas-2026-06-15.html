@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Clínicas Dentales en Las Vegas NV</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 60%, #1d4ed8 100%); padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(139,92,246,0.4) 0%, transparent 60%); }
+  .header-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 0.75rem; position: relative; }
+  .header h1 { font-size: 1.9rem; font-weight: 900; position: relative; }
+  .header p { opacity: 0.8; margin-top: 0.5rem; font-size: 0.9rem; position: relative; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #0d0d14; flex-wrap: wrap; justify-content: center; border-bottom: 1px solid #1e1e2e; }
+  .stat { background: #111118; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 1.75rem; text-align: center; min-width: 120px; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.68rem; color: #94a3b8; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .container { padding: 2rem; max-width: 1500px; margin: 0 auto; }
+
+  .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 6px; display: inline-block; margin-bottom: 1rem; }
+  .label-high { background: #14532d; color: #4ade80; }
+  .label-mid  { background: #713f12; color: #fbbf24; }
+  .label-low  { background: #1e293b; color: #94a3b8; }
+
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 14px; overflow: hidden; font-size: 0.86rem; margin-bottom: 2.5rem; }
+  th { background: #16162a; padding: 0.85rem 1rem; text-align: left; font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  td { padding: 1rem; border-bottom: 1px solid #1a1a2e; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #13132a; transition: background 0.15s; }
+
+  .score { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; font-weight: 900; font-size: 1.05rem; flex-shrink: 0; }
+  .score-9, .score-10 { background: #14532d; color: #4ade80; border: 2px solid #16a34a; }
+  .score-8 { background: #1a3a1a; color: #86efac; border: 2px solid #15803d; }
+  .score-7 { background: #713f12; color: #fbbf24; border: 2px solid #d97706; }
+  .score-6 { background: #4a2d06; color: #fcd34d; border: 2px solid #b45309; }
+  .score-5 { background: #450a0a; color: #f87171; border: 2px solid #dc2626; }
+
+  .tag { display: inline-block; padding: 0.18rem 0.5rem; border-radius: 5px; font-size: 0.65rem; margin: 0.12rem 0.08rem; font-weight: 600; }
+  .t-no-web   { background: #2d1515; color: #fca5a5; }
+  .t-web-old  { background: #2a1d06; color: #fcd34d; }
+  .t-no-ig    { background: #1a0533; color: #d8b4fe; }
+  .t-no-fb    { background: #1e0a3c; color: #c084fc; }
+  .t-no-email { background: #0c2040; color: #7dd3fc; }
+  .t-low-ig   { background: #2c1654; color: #c084fc; }
+  .t-ok       { background: #0a2e1a; color: #4ade80; }
+  .t-maps     { background: #1a2c10; color: #86efac; }
+
+  .biz-name { font-weight: 700; font-size: 0.95rem; color: #f1f5f9; }
+  .biz-zone { font-size: 0.75rem; color: #64748b; margin-top: 0.2rem; }
+  .biz-phone { font-size: 0.8rem; color: #94a3b8; margin-top: 0.25rem; }
+  .biz-link  { font-size: 0.72rem; margin-top: 0.3rem; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; color: #a5b4fc; }
+  .no-web { color: #f87171; font-size: 0.78rem; font-style: italic; }
+  .has-web { color: #86efac; font-size: 0.78rem; }
+  .web-old { color: #fcd34d; font-size: 0.78rem; }
+
+  .msg-box { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.78rem; line-height: 1.7; color: #cbd5e1; max-width: 300px; }
+  .copy-btn { display: inline-block; margin-top: 0.55rem; padding: 0.28rem 0.85rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.68rem; cursor: pointer; font-weight: 700; transition: background 0.15s; }
+  .copy-btn:hover { background: #6d28d9; }
+
+  .detail-note { font-size: 0.72rem; color: #475569; margin-top: 0.4rem; font-style: italic; }
+
+  .footer { text-align: center; padding: 2.5rem 1rem; color: #475569; font-size: 0.78rem; border-top: 1px solid #1e1e2e; margin-top: 1rem; }
+  .footer strong { color: #7c3aed; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem; color: #7c3aed; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+  .back-link:hover { color: #a78bfa; }
+
+  @media (max-width: 1000px) {
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Pawzn Visual Studio — Kit de Prospección</div>
+  <h1>🦷 Clínicas Dentales en Las Vegas, NV</h1>
+  <p>15 prospectos analizados · Ordenados por oportunidad digital · 15 de junio 2026</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">15</div><div class="stat-label">Prospectos</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Sin sitio web</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Sin email marketing</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Sin Instagram activo</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Oportunidad alta (8+)</div></div>
+</div>
+
+<div class="container">
+
+  <a class="back-link" href="index.html">← Volver al kit</a>
+
+  <!-- ALTA OPORTUNIDAD -->
+  <div style="margin-bottom:0.75rem">
+    <span class="section-label label-high">🔥 Oportunidad alta — contactar primero (Score 8–10)</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Clínica</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje de contacto</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">01</td>
+        <td><span class="score score-9">9</span></td>
+        <td>
+          <div class="biz-name">Dr. Lee Dental Clinic</div>
+          <div class="biz-zone">811 S 7th Street, Las Vegas, NV 89101</div>
+          <div class="biz-phone">📞 (702) 477-0844</div>
+          <div class="biz-link"><a href="https://www.google.com/maps/search/Dr+Lee+Dentist+811+S+7th+Las+Vegas+NV" target="_blank">Ver en Maps</a></div>
+          <div class="detail-note">Multilingüe: inglés, español, coreano</div>
+        </td>
+        <td class="no-web">Sin sitio propio<br><small>Solo directorios</small></td>
+        <td>
+          <span class="tag t-no-web">Sin web</span>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-no-fb">Sin Facebook</span>
+          <div class="detail-note">Clínica multilingüe sin presencia digital detectada. Solo aparece en directorios médicos.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg1">
+Hola, encontré Dr. Lee Dental Clinic en directorios médicos de Las Vegas. Ser multilingüe (inglés, español, coreano) es una ventaja enorme que no están aprovechando digitalmente.
+
+En Pawzn Visual Studio diseñamos sitios web para clínicas dentales con páginas en varios idiomas, Google Maps optimizado y formularios de citas online. ¿Les interesa una propuesta sin compromiso?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg1', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">02</td>
+        <td><span class="score score-9">9</span></td>
+        <td>
+          <div class="biz-name">Dr. Rezaei Dental</div>
+          <div class="biz-zone">6835 W Tropicana Ave, Ste 110, Las Vegas, NV 89103</div>
+          <div class="biz-phone">📞 (702) 804-0153</div>
+          <div class="biz-link"><a href="https://www.google.com/maps/search/Dr+Rezaei+Dentist+6835+W+Tropicana+Las+Vegas" target="_blank">Ver en Maps</a></div>
+        </td>
+        <td class="no-web">Sin sitio propio<br><small>Solo directorios</small></td>
+        <td>
+          <span class="tag t-no-web">Sin web</span>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-no-fb">Sin Facebook visible</span>
+          <div class="detail-note">Zona de Tropicana — alta densidad residencial. Sin web propia ni redes detectadas.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg2">
+Hola, vi el consultorio del Dr. Rezaei en la zona de Tropicana. La ubicación es excelente pero sin sitio web los pacientes potenciales no los van a encontrar cuando busquen dentista en Google.
+
+Creamos webs para clínicas dentales con reserva de citas online, SEO local y presencia en Google Maps optimizada. ¿Tienen 15 minutos para conocer la propuesta?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg2', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">03</td>
+        <td><span class="score score-8">8</span></td>
+        <td>
+          <div class="biz-name">The Dentist LV</div>
+          <div class="biz-zone">7500 W Lake Mead Blvd, Las Vegas, NV 89128</div>
+          <div class="biz-phone">📞 (702) 997-8977</div>
+          <div class="biz-link"><a href="https://www.yelp.com/biz/the-dentist-las-vegas" target="_blank">Ver en Yelp</a></div>
+        </td>
+        <td class="no-web">Solo Yelp<br><small>12 reseñas, sin web propia</small></td>
+        <td>
+          <span class="tag t-no-web">Sin web propia</span>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-maps">12 reseñas Yelp</span>
+          <div class="detail-note">Solo existe en Yelp. Sin dominio propio, sin redes, sin estrategia digital. Zona Lake Mead de alto tráfico.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg3">
+Hola, encontré The Dentist LV en Yelp y noté que solo tienen 12 reseñas y no aparecen en Google con web propia — eso significa que están perdiendo decenas de pacientes nuevos cada mes.
+
+En Pawzn Visual Studio lanzamos el paquete digital completo para clínicas: web profesional, Google Business optimizado, Instagram y campaña de email para retener pacientes. ¿Hablamos esta semana?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg3', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">04</td>
+        <td><span class="score score-8">8</span></td>
+        <td>
+          <div class="biz-name">Dr. Guild Dental Office</div>
+          <div class="biz-zone">3050 E Desert Inn Rd, Ste 105, Las Vegas, NV 89121</div>
+          <div class="biz-phone">📞 (702) 732-7616</div>
+          <div class="biz-link"><a href="https://www.google.com/maps/search/Dr+Guild+Dentist+3050+E+Desert+Inn+Las+Vegas" target="_blank">Ver en Maps</a></div>
+        </td>
+        <td class="no-web">Sin sitio propio<br><small>Solo directorios</small></td>
+        <td>
+          <span class="tag t-no-web">Sin web</span>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-no-fb">Sin Facebook visible</span>
+          <div class="detail-note">Zona Desert Inn / Eastside. Sin presencia digital detectada más allá de directorios médicos.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg4">
+Hola, encontré el consultorio del Dr. Guild en la zona de Desert Inn. Con una clínica activa y buena ubicación, no tener web ni redes sociales significa que la competencia aparece primero cuando alguien busca "dentista cerca de mí" en esa zona.
+
+Diseñamos el sitio, gestionamos Instagram y optimizamos Google Maps. ¿Les enviamos un análisis gratuito de su presencia digital actual?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg4', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">05</td>
+        <td><span class="score score-8">8</span></td>
+        <td>
+          <div class="biz-name">Nevada Dentistry &amp; Braces</div>
+          <div class="biz-zone">581 N Eastern Ave, Las Vegas, NV 89101</div>
+          <div class="biz-phone">📞 (702) 444-7810</div>
+          <div class="biz-link"><a href="https://nvdentalbraces.com" target="_blank">nvdentalbraces.com</a></div>
+        </td>
+        <td class="web-old">Web básica<br><small>Sin blog, sin newsletter</small></td>
+        <td>
+          <span class="tag t-web-old">Web básica</span>
+          <span class="tag t-no-ig">Sin Instagram activo</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-maps">Zona 89101</span>
+          <div class="detail-note">Tiene web pero sin estrategia de contenido, sin email marketing ni redes activas. Zona este de LV con alta competencia.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg5">
+Hola, revisé la web de Nevada Dentistry &amp; Braces — tienen una base sólida pero sin blog, sin email y sin Instagram activo están dejando que la competencia capture los pacientes que ya los visitan.
+
+En Pawzn hacemos email marketing para clínicas dentales: recordatorios de citas, promociones de blanqueamiento, seguimiento post-tratamiento. ¿Les mostramos resultados de clínicas similares?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg5', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- OPORTUNIDAD MEDIA -->
+  <div style="margin-bottom:0.75rem">
+    <span class="section-label label-mid">⚡ Oportunidad media — Tiene web pero carece de digital marketing (Score 6–7)</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Clínica</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje de contacto</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">06</td>
+        <td><span class="score score-7">7</span></td>
+        <td>
+          <div class="biz-name">Care For You Dental</div>
+          <div class="biz-zone">1597 E Windmill Ln, Ste 100, Las Vegas, NV 89123</div>
+          <div class="biz-phone">📞 (702) 765-4018</div>
+          <div class="biz-link"><a href="https://careforyoudental.com" target="_blank">careforyoudental.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin newsletter</small></td>
+        <td>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-ok">Facebook activo</span>
+          <div class="detail-note">4 estrellas en Yelp. Tiene web y Facebook pero sin Instagram ni email marketing. Zona Henderson/Windmill con perfil familiar.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg6">
+Hola, revisé Care For You Dental — tienen web y Facebook pero sin Instagram ni email marketing están perdiendo la oportunidad de retener pacientes y generar referidos.
+
+Gestionamos redes sociales para clínicas dentales con contenido mensual + campañas de email para recordatorios de limpieza y seguimiento post-tratamiento. ¿Les enviamos una propuesta?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg6', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">07</td>
+        <td><span class="score score-7">7</span></td>
+        <td>
+          <div class="biz-name">Flores Family Dental</div>
+          <div class="biz-zone">6536 N Decatur Blvd, Ste 120, Las Vegas, NV 89131</div>
+          <div class="biz-phone">📞 (702) 242-3373</div>
+          <div class="biz-link"><a href="https://floresfamilydental.com" target="_blank">floresfamilydental.com</a></div>
+        </td>
+        <td class="web-old">Web desactualizada<br><small>Formularios desde 2017</small></td>
+        <td>
+          <span class="tag t-web-old">Web 2017</span>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-ok">FB 33 reseñas</span>
+          <div class="detail-note">La web tiene archivos de formularios del 2017. Comunidad hispanohablante — gran oportunidad para contenido bilingüe. Dr. Flores, UNLV graduado cum laude.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg7">
+Hola Dr. Flores, vi Flores Family Dental en línea. Siendo dentista graduado cum laude de la UNLV y atendiendo la comunidad hispanohablante de North Las Vegas, merecen una presencia digital que refleje esa trayectoria.
+
+Rediseñamos su web (la actual tiene contenido del 2017) y arrancamos su Instagram bilingüe. ¿Tienen 20 minutos para ver el borrador de lo que haríamos?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg7', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">08</td>
+        <td><span class="score score-6">6</span></td>
+        <td>
+          <div class="biz-name">Parkview Dental</div>
+          <div class="biz-zone">6615 S Eastern Ave, #106, Las Vegas, NV 89119</div>
+          <div class="biz-phone">📞 (702) 735-3506</div>
+          <div class="biz-link"><a href="https://parkviewdentallv.com" target="_blank">parkviewdentallv.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin blog ni SEO</small></td>
+        <td>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-ok">Facebook básico</span>
+          <div class="detail-note">17 reseñas en Yelp. Horario limitado L-V 7am-4pm. Web presente pero sin estrategia de contenido ni captación de pacientes online.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg8">
+Hola, vi Parkview Dental en la zona de Eastern Ave. Con 17 reseñas en Yelp saben que los pacientes satisfechos comparten su experiencia — pero sin Instagram ni email no están amplificando ese boca a boca digitalmente.
+
+Manejamos la presencia en redes y email para clínicas como la suya. ¿Les compartimos ejemplos de resultado?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg8', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">09</td>
+        <td><span class="score score-6">6</span></td>
+        <td>
+          <div class="biz-name">Desert Springs Dental Care</div>
+          <div class="biz-zone">Las Vegas, NV (zona este)</div>
+          <div class="biz-phone">Ver web para contacto</div>
+          <div class="biz-link"><a href="https://www.dentistlasvegasnevada.com" target="_blank">dentistlasvegasnevada.com</a></div>
+        </td>
+        <td class="web-old">Web antigua<br><small>URL genérica, diseño viejo</small></td>
+        <td>
+          <span class="tag t-web-old">Web desactualizada</span>
+          <span class="tag t-no-ig">Sin Instagram visible</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <div class="detail-note">La URL "dentistlasvegasnevada.com" es una señal de web creada hace más de 10 años. Sin estrategia de contenido ni redes activas detectadas.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg9">
+Hola, revisé Desert Springs Dental Care. Su sitio web tiene todo el potencial para atraer más pacientes pero el diseño y la estrategia digital necesitan una actualización para competir en el Las Vegas de 2026.
+
+Hacemos rediseño web con SEO local incluido + gestión de Instagram para clínicas dentales. ¿Hablamos esta semana?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg9', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">10</td>
+        <td><span class="score score-6">6</span></td>
+        <td>
+          <div class="biz-name">Dental Designs of Las Vegas</div>
+          <div class="biz-zone">3975 S Durango Dr, Ste 102, Las Vegas, NV 89147</div>
+          <div class="biz-phone">📞 (702) 254-1444</div>
+          <div class="biz-link"><a href="https://dentaldesignslasvegas.com" target="_blank">dentaldesignslasvegas.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin email marketing</small></td>
+        <td>
+          <span class="tag t-low-ig">IG: 258 followers</span>
+          <span class="tag t-ok">FB: 548 likes</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <div class="detail-note">32 reseñas Yelp. Instagram existe (@dentaldesignslv) pero con solo 258 seguidores — muy bajo para su zona de Durango. Sin newsletter ni email marketing detectado.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg10">
+Hola, revisé Dental Designs of Las Vegas. Tienen presencia en Instagram pero con 258 seguidores están dejando ir a miles de vecinos de Summerlin que buscan dentista cada mes.
+
+Crecemos cuentas de clínicas dentales en Instagram con contenido mensual y estrategia de email para retener a los pacientes actuales. ¿Les mostramos cómo lo hacemos?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg10', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- OPORTUNIDAD ADICIONAL -->
+  <div style="margin-bottom:0.75rem">
+    <span class="section-label label-low">📋 Oportunidad adicional — Presencia básica, falta estrategia (Score 5)</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Clínica</th>
+        <th>Web</th>
+        <th>Problema principal</th>
+        <th>Mensaje de contacto</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">11</td>
+        <td><span class="score score-6">6</span></td>
+        <td>
+          <div class="biz-name">Sweet Smiles Dentist</div>
+          <div class="biz-zone">Las Vegas, NV (Henderson)</div>
+          <div class="biz-phone">📞 (702) 967-1700</div>
+          <div class="biz-link"><a href="https://www.sweetsmilesdentist.com" target="_blank">sweetsmilesdentist.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin email mkt</small></td>
+        <td>
+          <span class="tag t-low-ig">IG: 309 seguidores</span>
+          <span class="tag t-ok">FB: 759 likes</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <div class="detail-note">Dr. Candy Cong. Instagram (@sweetsmilesdrcandy) activo pero con solo 309 seguidores. Sin estrategia de email marketing para retener pacientes existentes.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg11">
+Hola Dra. Cong, vi Sweet Smiles en Instagram. Con 309 seguidores hay mucho espacio para crecer y convertir esos seguidores en pacientes recurrentes con una estrategia de email marketing post-consulta.
+
+En Pawzn conectamos el Instagram con una lista de email y automatizamos recordatorios de cita, cumpleaños y promociones de temporada. ¿Hablamos?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg11', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">12</td>
+        <td><span class="score score-5">5</span></td>
+        <td>
+          <div class="biz-name">Union Dental LV</div>
+          <div class="biz-zone">7135 W Sahara Ave, Ste 200, Las Vegas, NV 89117</div>
+          <div class="biz-phone">📞 (702) 872-2872</div>
+          <div class="biz-link"><a href="https://www.uniondentallv.net" target="_blank">uniondentallv.net</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin Instagram</small></td>
+        <td>
+          <span class="tag t-no-ig">Sin Instagram</span>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-ok">472 reseñas Birdeye</span>
+          <div class="detail-note">¡472 reseñas! Excelente reputación online. Dr. Annie — práctica muy activa pero sin Instagram ni email marketing para capitalizar su base de clientes.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg12">
+Hola, revisé Union Dental — 472 reseñas con 4.9 estrellas es extraordinario. Pero sin Instagram y sin email marketing están dejando que esa reputación se quede solo en Birdeye en vez de atraer nuevos pacientes activamente.
+
+Transformamos esas reseñas en contenido de Instagram y activamos email marketing para convertir pacientes nuevos en regulares. ¿Les interesa?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg12', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">13</td>
+        <td><span class="score score-5">5</span></td>
+        <td>
+          <div class="biz-name">Advent Dentistry</div>
+          <div class="biz-zone">Las Vegas, NV</div>
+          <div class="biz-phone">Ver web para contacto</div>
+          <div class="biz-link"><a href="https://www.adventdentistry.com" target="_blank">adventdentistry.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Estrategia débil</small></td>
+        <td>
+          <span class="tag t-no-email">Sin email mkt visible</span>
+          <span class="tag t-low-ig">Social media débil</span>
+          <div class="detail-note">Web presente. Sin estrategia clara de captación de pacientes, sin newsletter, sin blog de contenido dental visible.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg13">
+Hola, vi Advent Dentistry en línea. Tienen web pero sin email marketing ni estrategia de redes están dependiendo solo de que los pacientes los encuentren solos — en Las Vegas eso es difícil con tanta competencia.
+
+Podemos diseñar un plan completo de captación digital: SEO local, redes y email. ¿Tienen 20 minutos esta semana?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg13', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">14</td>
+        <td><span class="score score-5">5</span></td>
+        <td>
+          <div class="biz-name">Lake Mead Dental</div>
+          <div class="biz-zone">Summerlin, Las Vegas, NV</div>
+          <div class="biz-phone">Ver web para contacto</div>
+          <div class="biz-link"><a href="https://www.lakemeaddental.com" target="_blank">lakemeaddental.com</a></div>
+        </td>
+        <td class="has-web">Tiene web<br><small>Sin email mkt</small></td>
+        <td>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-low-ig">Redes básicas</span>
+          <div class="detail-note">Clínica en Summerlin (zona premium). Ofrece citas de emergencia mismo día. Potencial alto para email marketing de seguimiento y fidelización.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg14">
+Hola, revisé Lake Mead Dental. Estar en Summerlin es una ventaja enorme — los pacientes de esa zona valoran la comunicación profesional y el seguimiento post-cita.
+
+Manejamos email marketing para clínicas dentales: recordatorios automáticos, seguimiento post-tratamiento y newsletter mensual que mantiene su nombre top of mind. ¿Hablamos?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg14', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="font-weight:700;color:#64748b">15</td>
+        <td><span class="score score-5">5</span></td>
+        <td>
+          <div class="biz-name">i.Smile Dental LV</div>
+          <div class="biz-zone">Las Vegas, NV</div>
+          <div class="biz-phone">Ver web para contacto</div>
+          <div class="biz-link"><a href="https://www.ismiledentallv.com" target="_blank">ismiledentallv.com</a></div>
+        </td>
+        <td class="has-web">Tiene web + citas online<br><small>Sin email mkt</small></td>
+        <td>
+          <span class="tag t-no-email">Sin email mkt</span>
+          <span class="tag t-ok">Citas online</span>
+          <div class="detail-note">Web más desarrollada con citas online. Oportunidad en email marketing y redes sociales para convertir pacientes de cita única en regulares anuales.</div>
+        </td>
+        <td>
+          <div class="msg-box" id="msg15">
+Hola, revisé i.Smile Dental — tienen una de las webs más completas entre las clínicas independientes de Las Vegas. El siguiente paso natural es email marketing para convertir cada paciente nuevo en un cliente de por vida.
+
+Automatizamos secuencias de email post-consulta, recordatorios de limpieza semestral y campañas de temporada. ¿Les compartimos cómo funciona?
+
+📧 contacto@pawznvisualstudio.com
+          </div>
+          <button class="copy-btn" onclick="copyMsg('msg15', this)">Copiar mensaje</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+<div class="footer">
+  <strong>Pawzn Visual Studio</strong> · contacto@pawznvisualstudio.com · Kit de Prospección v1.0 · Las Vegas NV · Junio 2026
+</div>
+
+<script>
+function copyMsg(id, btn) {
+  const box = document.getElementById(id);
+  const text = box.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ ¡Copiado!';
+    btn.style.background = '#16a34a';
+    setTimeout(() => {
+      btn.textContent = 'Copiar mensaje';
+      btn.style.background = '';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

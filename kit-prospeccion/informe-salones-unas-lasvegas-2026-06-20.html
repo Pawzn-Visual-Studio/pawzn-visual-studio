@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Salones de Uñas en Las Vegas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed, #4f46e5); padding: 2rem; text-align: center; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; }
+  .header p { opacity: 0.85; margin-top: 0.5rem; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #111118; flex-wrap: wrap; justify-content: center; }
+  .stat { background: #1a1a2e; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 2rem; text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
+
+  .note { max-width: 1000px; margin: 1.5rem auto 0; background: #1a1400; border: 1px solid #f5c84240; color: #fbbf24; font-size: 0.85rem; padding: 1rem 1.25rem; border-radius: 10px; line-height: 1.6; }
+
+  .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+  .container-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  h2 { font-size: 1.2rem; color: #c4b5fd; }
+  .export-btn { background: #1a1a2e; border: 1px solid #2d2d44; color: #c4b5fd; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.78rem; cursor: pointer; }
+  .export-btn:hover { background: #24243f; }
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 12px; overflow: hidden; }
+  th { background: #1a1a2e; padding: 1rem; text-align: left; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; }
+  td { padding: 1rem; border-bottom: 1px solid #1e1e2e; font-size: 0.9rem; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #16162a; }
+
+  .score { display: inline-block; width: 36px; height: 36px; border-radius: 50%; font-weight: 800; font-size: 0.9rem; line-height: 36px; text-align: center; }
+  .score-high { background: #14532d; color: #4ade80; }
+  .score-mid { background: #713f12; color: #fbbf24; }
+  .score-low { background: #450a0a; color: #f87171; }
+
+  .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; margin: 0.15rem; }
+  .tag-sin { background: #2d1515; color: #f87171; }
+  .tag-critico { background: #450a0a; color: #fca5a5; font-weight: 700; }
+  .tag-ok { background: #0c2a16; color: #4ade80; }
+  .tag-web { background: #1e1b4b; color: #a5b4fc; }
+
+  .msg { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.82rem; line-height: 1.6; color: #cbd5e1; cursor: pointer; }
+  .msg:hover { background: #1e293b; }
+  .copy-btn { display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.72rem; cursor: pointer; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .no-web { color: #f87171; font-size: 0.8rem; }
+
+  .footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
+  .footer .disclaimer { margin-top: 0.5rem; color: #3f3f5c; max-width: 600px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Prospectos — Salones de Uñas en Las Vegas</h1>
+  <p>Generado por Pawzn Visual Studio · 20 de junio de 2026</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Prospectos encontrados</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-label">Sitio caído</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Con muchas reseñas (negocio activo)</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Oportunidad alta (7+)</div></div>
+</div>
+
+<div class="note">
+  <strong>Nota honesta:</strong> este nicho está bastante profesionalizado — la mayoría de salones usa plataformas de reserva (GoCheckIn, Dash Booking, Booknetic, Wix) que vienen con un sitio decente incluido. Solo un caso resalta claramente: <strong>5T Nails & Spa</strong> tiene su sitio completamente caído (conexión rechazada). Es el mismo patrón que vimos en tatuajes y talleres: en nichos saturados, el mejor pitch no es "tu web se ve vieja", es "tu web ni siquiera carga".
+</div>
+
+<div class="container">
+  <div class="container-head">
+    <h2>Prospectos ordenados por oportunidad</h2>
+    <div>
+      <button class="export-btn" onclick="downloadJSON()">Descargar JSON</button>
+      <button class="export-btn" onclick="downloadCSV()">Descargar CSV (Google Sheets)</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Contacto</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Pawzn Visual Studio · contacto@pawznvisualstudio.com · Kit de Prospección
+  <div class="disclaimer">Datos obtenidos de búsqueda pública el 20 de junio de 2026 (Yelp, sitios propios). Verifica cada dato antes de contactar de forma masiva.</div>
+</div>
+
+<script id="prospect-data" type="application/json">
+[
+  {
+    "nombre": "5T Nails & Spa",
+    "direccion": "345 E Silverado Ranch Blvd, Ste 135, Las Vegas, NV 89183",
+    "telefono": "(702) 405-8558",
+    "web": "5tnailsandspa.com (el sitio no carga — conexión rechazada)",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=345+E+Silverado+Ranch+Blvd+Ste+135+Las+Vegas+NV+89183",
+    "score": 3,
+    "problemas": ["CRÍTICO: sitio caído (no carga)"],
+    "verificado": true,
+    "mensaje": "Hola, intentamos entrar al sitio de 5T Nails & Spa (5tnailsandspa.com) y no carga, parece estar caído. Cualquier clienta que los busque después de ver sus fotos en redes va a llegar a una página rota. En Pawzn Visual Studio podemos levantarles un sitio simple y confiable. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Top Nails (Meadows Ln)",
+    "direccion": "4640 Meadows Ln, Ste 140, Las Vegas, NV 89107",
+    "telefono": "(702) 878-9611",
+    "web": "https://topnailslv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=4640+Meadows+Ln+Ste+140+Las+Vegas+NV+89107",
+    "score": 1,
+    "problemas": ["202 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Top Nails en Meadows Ln está bien lograda, con más de 20 años de trayectoria detrás. En Pawzn Visual Studio solemos sumar email marketing o redes para salones que ya tienen buena base web. Si les interesa, contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Nail Forum I",
+    "direccion": "7700 Las Vegas Blvd S, Ste 3, Las Vegas, NV 89123",
+    "telefono": "(702) 834-6619",
+    "web": "https://nailforum1lasvegas.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=7700+Las+Vegas+Blvd+S+Ste+3+Las+Vegas+NV+89123",
+    "score": 1,
+    "problemas": ["275 reseñas en Yelp (negocio muy activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de Nail Forum I se ve profesional y con buen sistema de reservas. En Pawzn Visual Studio trabajamos con salones similares en email marketing y redes para fechas de temporada alta. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Color Splash Nails Wax Lashes",
+    "direccion": "9310 W Sahara Ave, Ste 4, Las Vegas, NV 89117",
+    "telefono": "(702) 405-6765",
+    "web": "https://colorsplashlv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=9310+W+Sahara+Ave+Ste+4+Las+Vegas+NV+89117",
+    "score": 1,
+    "problemas": ["126 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Color Splash está muy bien armada, con reservas online y galería de Instagram integrada. En Pawzn Visual Studio solemos sumar email marketing para salones que ya tienen buena base como la de ustedes. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Golden Hour Nails Spa",
+    "direccion": "384 E Tropicana Ave, Ste 115, Las Vegas, NV 89169",
+    "telefono": "(702) 202-0868",
+    "web": "https://goldenhournailslasvegas.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=384+E+Tropicana+Ave+Ste+115+Las+Vegas+NV+89169",
+    "score": 1,
+    "problemas": ["290 reseñas en Yelp (negocio muy activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Golden Hour Nails Spa se ve cuidada y con buena galería de trabajos. En Pawzn Visual Studio ayudamos a salones similares con campañas de email o redes para fidelizar clientas. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Top Nails LLC",
+    "direccion": "4550 S Maryland Pkwy #22, Las Vegas, NV 89119",
+    "telefono": "(702) 739-3002",
+    "web": "https://topnailsnv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=4550+S+Maryland+Pkwy+%2322+Las+Vegas+NV+89119",
+    "score": 1,
+    "problemas": ["666+ reseñas en Yelp/Google (negocio muy activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Top Nails LLC está muy bien lograda, con casi 800 reseñas en Google respaldando el negocio. En Pawzn Visual Studio solemos sumar email marketing o redes a salones que ya tienen esa base de clientas fieles. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Social Nail Bar",
+    "direccion": "2280 Paseo Verde Pkwy, Ste 120, Henderson, NV 89052",
+    "telefono": "(702) 790-2333",
+    "web": "http://www.socialnailbargvr.com",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2280+Paseo+Verde+Pkwy+Ste+120+Henderson+NV+89052",
+    "score": 1,
+    "problemas": ["272 reseñas en Yelp (negocio muy activo)", "Sitio ya moderno (Wix) — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Social Nail Bar se ve elegante y bien armada en Wix. En Pawzn Visual Studio trabajamos con salones similares en email marketing y redes para mantener clientas recurrentes. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "City Nails",
+    "direccion": "3585 S Maryland Pkwy #H, Las Vegas, NV 89169",
+    "telefono": "(702) 731-3900",
+    "web": "https://citynailsvegas.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3585+S+Maryland+Pkwy+%23H+Las+Vegas+NV+89169",
+    "score": 0,
+    "problemas": ["Sitio moderno y funcional — sin oportunidad clara detectada"],
+    "verificado": true,
+    "mensaje": "Hola, la web de City Nails funciona bien y tiene reserva online clara. No detectamos una oportunidad clara de rediseño, pero quedamos a disposición si en algún momento buscan reforzar redes o email marketing. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Summit Nails Spa",
+    "direccion": "1025 South Rampart Blvd, Las Vegas, NV 89145",
+    "telefono": "(702) 846-5473",
+    "web": "https://summitnailslv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=1025+South+Rampart+Blvd+Las+Vegas+NV+89145",
+    "score": 0,
+    "problemas": ["Sitio moderno y funcional — sin oportunidad clara detectada"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Summit Nails Spa se ve profesional, con programa de puntos y garantía propia. No detectamos una oportunidad clara de rediseño, pero quedamos a disposición si buscan reforzar email marketing o redes. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Once Upon a Nail Salon",
+    "direccion": "25 Via Bel Canto, Ste 110, Henderson, NV 89011",
+    "telefono": "(702) 856-0020",
+    "web": "https://www.onceuponanailsalon.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=25+Via+Bel+Canto+Ste+110+Henderson+NV+89011",
+    "score": 0,
+    "problemas": ["Sitio moderno y con identidad propia — sin oportunidad clara detectada"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Once Upon a Nail Salon tiene una identidad muy linda y bien lograda. No detectamos una oportunidad clara de rediseño, pero quedamos a disposición si buscan reforzar email marketing o redes. contacto@pawznvisualstudio.com"
+  }
+]
+</script>
+
+<script>
+function getProspectData() {
+  return JSON.parse(document.getElementById('prospect-data').textContent);
+}
+
+function scoreClass(score) {
+  if (score >= 7) return 'score-high';
+  if (score >= 3) return 'score-mid';
+  return 'score-low';
+}
+
+function renderTable() {
+  const data = getProspectData().sort((a, b) => b.score - a.score);
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = data.map((p, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><span class="score ${scoreClass(p.score)}">${p.score}</span></td>
+      <td><strong>${p.nombre}</strong><br><small style="color:#64748b">${p.direccion}</small></td>
+      <td>${p.telefono}<br><a href="${p.maps_url}" target="_blank">Ver en Maps</a></td>
+      <td>${p.web.includes('no carga') ? `<span class="no-web">${p.web}</span>` : `<a href="${p.web}" target="_blank">${p.web.replace(/^https?:\/\//, '')}</a>`}</td>
+      <td>${p.problemas.map(pr => `<span class="tag ${tagClass(pr)}">${pr}</span>`).join('')}</td>
+      <td>
+        <div class="msg" onclick="copyMsg(this)">
+          ${p.mensaje}
+          <br><br>
+          <button class="copy-btn">Copiar mensaje</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function tagClass(text) {
+  if (text.includes('CRÍTICO')) return 'tag-critico';
+  if (text.includes('activo')) return 'tag-ok';
+  if (text.includes('sin oportunidad')) return 'tag-web';
+  return 'tag-sin';
+}
+
+function copyMsg(el) {
+  const text = el.innerText.replace('Copiar mensaje', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.querySelector('.copy-btn');
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar mensaje', 2000);
+  });
+}
+
+function triggerDownload(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadJSON() {
+  const data = getProspectData();
+  triggerDownload(JSON.stringify(data, null, 2), 'prospectos-unas-lasvegas.json', 'application/json');
+}
+
+function downloadCSV() {
+  const data = getProspectData();
+  const cols = ['nombre', 'direccion', 'telefono', 'web', 'maps_url', 'score', 'problemas', 'verificado', 'mensaje'];
+  const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+  const rows = [cols.join(',')];
+  data.forEach(p => {
+    rows.push(cols.map(c => esc(c === 'problemas' ? p[c].join('; ') : p[c])).join(','));
+  });
+  triggerDownload(rows.join('\n'), 'prospectos-unas-lasvegas.csv', 'text/csv');
+}
+
+renderTable();
+</script>
+</body>
+</html>

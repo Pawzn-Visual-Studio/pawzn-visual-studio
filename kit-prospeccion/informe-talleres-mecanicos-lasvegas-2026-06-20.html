@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospectos — Talleres Mecánicos en Las Vegas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #7c3aed, #4f46e5); padding: 2rem; text-align: center; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; }
+  .header p { opacity: 0.85; margin-top: 0.5rem; }
+
+  .stats { display: flex; gap: 1rem; padding: 1.5rem 2rem; background: #111118; flex-wrap: wrap; justify-content: center; }
+  .stat { background: #1a1a2e; border: 1px solid #2d2d44; border-radius: 12px; padding: 1rem 2rem; text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+  .stat-label { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
+
+  .note { max-width: 1000px; margin: 1.5rem auto 0; background: #1a1400; border: 1px solid #f5c84240; color: #fbbf24; font-size: 0.85rem; padding: 1rem 1.25rem; border-radius: 10px; line-height: 1.6; }
+
+  .container { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+  .container-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  h2 { font-size: 1.2rem; color: #c4b5fd; }
+  .export-btn { background: #1a1a2e; border: 1px solid #2d2d44; color: #c4b5fd; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.78rem; cursor: pointer; }
+  .export-btn:hover { background: #24243f; }
+  table { width: 100%; border-collapse: collapse; background: #111118; border-radius: 12px; overflow: hidden; }
+  th { background: #1a1a2e; padding: 1rem; text-align: left; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; }
+  td { padding: 1rem; border-bottom: 1px solid #1e1e2e; font-size: 0.9rem; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #16162a; }
+
+  .score { display: inline-block; width: 36px; height: 36px; border-radius: 50%; font-weight: 800; font-size: 0.9rem; line-height: 36px; text-align: center; }
+  .score-high { background: #14532d; color: #4ade80; }
+  .score-mid { background: #713f12; color: #fbbf24; }
+  .score-low { background: #450a0a; color: #f87171; }
+
+  .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; margin: 0.15rem; }
+  .tag-web { background: #1e1b4b; color: #a5b4fc; }
+  .tag-redes { background: #1a0533; color: #e879f9; }
+  .tag-email { background: #0c2a16; color: #4ade80; }
+  .tag-sin { background: #2d1515; color: #f87171; }
+  .tag-unverified { background: #1e1e1e; color: #94a3b8; }
+  .tag-ok { background: #0c2a16; color: #4ade80; }
+
+  .msg { background: #0f172a; border-left: 3px solid #7c3aed; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.82rem; line-height: 1.6; color: #cbd5e1; cursor: pointer; }
+  .msg:hover { background: #1e293b; }
+  .copy-btn { display: inline-block; margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: #7c3aed; color: white; border: none; border-radius: 6px; font-size: 0.72rem; cursor: pointer; }
+
+  a { color: #818cf8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .no-web { color: #f87171; font-size: 0.8rem; }
+
+  .footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
+  .footer .disclaimer { margin-top: 0.5rem; color: #3f3f5c; max-width: 600px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Prospectos — Talleres Mecánicos en Las Vegas</h1>
+  <p>Generado por Pawzn Visual Studio · 20 de junio de 2026</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Prospectos encontrados</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Sin sitio web</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Redes inactivas confirmadas</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Oportunidad alta (7+)</div></div>
+</div>
+
+<div class="note">
+  <strong>Nota honesta sobre este nicho:</strong> a diferencia de barberías o clínicas dentales, la mayoría de talleres mecánicos establecidos en Las Vegas ya tiene un sitio web razonable, muchas veces incluido en plataformas de gestión del rubro (Tekmetric, AutoVitals). Por eso ningún prospecto llegó a "oportunidad alta" — el máximo score real fue 4/10. Los primeros 7 de la lista (sin sitio propio o con plantilla genérica/desactualizada) son los que vale la pena contactar primero; los últimos 7 ya tienen buena presencia y conviene un ángulo distinto (redes/email marketing) en vez de rediseño web.
+</div>
+
+<div class="container">
+  <div class="container-head">
+    <h2>Prospectos ordenados por oportunidad</h2>
+    <div>
+      <button class="export-btn" onclick="downloadJSON()">Descargar JSON</button>
+      <button class="export-btn" onclick="downloadCSV()">Descargar CSV (Google Sheets)</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Negocio</th>
+        <th>Contacto</th>
+        <th>Web</th>
+        <th>Problemas detectados</th>
+        <th>Mensaje personalizado</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Pawzn Visual Studio · contacto@pawznvisualstudio.com · Kit de Prospección
+  <div class="disclaimer">Datos obtenidos de búsqueda pública el 20 de junio de 2026 (Yelp, sitios propios, Facebook/Instagram). Verifica cada dato antes de contactar de forma masiva.</div>
+</div>
+
+<script id="prospect-data" type="application/json">
+[
+  {
+    "nombre": "H-Tech Auto",
+    "direccion": "2069 S Rainbow Blvd, Las Vegas, NV 89146",
+    "telefono": "(702) 685-1400",
+    "web": "No disponible (solo aparece en agregadores como SureCritic/Yelp)",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2069+S+Rainbow+Blvd+Las+Vegas+NV+89146",
+    "score": 4,
+    "problemas": ["Sin sitio web propio", "239 reseñas en Yelp (negocio activo)"],
+    "verificado": true,
+    "mensaje": "Hola, vimos que H-Tech Auto tiene casi 240 reseñas en Yelp pero no encontramos un sitio web propio — solo aparecen en agregadores. Eso significa que dependen 100% de Yelp para que los encuentren. En Pawzn Visual Studio armamos sitios simples que sí posicionan en Google. ¿Hablamos 15 minutos? contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "5 Star Auto Repair",
+    "direccion": "6396 W Sahara Ave, Las Vegas, NV 89146",
+    "telefono": "(702) 304-2000",
+    "web": "https://5starlv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=6396+W+Sahara+Ave+Las+Vegas+NV+89146",
+    "score": 3,
+    "problemas": ["Plantilla genérica de GoDaddy", "130 reseñas en Yelp (negocio activo)"],
+    "verificado": true,
+    "mensaje": "Hola, notamos que el sitio de 5 Star Auto Repair está armado en una plantilla genérica de GoDaddy — funcional, pero sin nada que los diferencie de otro taller. Con 34 años en el rubro, un sitio a medida transmitiría mucho mejor esa confianza. Soy de Pawzn Visual Studio, diseñamos webs para talleres. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "German Motors",
+    "direccion": "3379 Sammy Davis Jr Dr, Las Vegas, NV 89109",
+    "telefono": "(702) 696-0880",
+    "web": "https://germanmotorslv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3379+Sammy+Davis+Jr+Dr+Las+Vegas+NV+89109",
+    "score": 3,
+    "problemas": ["Sitio desactualizado y recargado de información", "268 reseñas en Yelp (negocio activo)"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de German Motors tiene contenido sólido pero se ve recargado y desactualizado frente a otros talleres europeos de Las Vegas. Con más de 40 años de trayectoria, merecen una web que refleje esa autoridad. En Pawzn Visual Studio rediseñamos sitios para que carguen rápido y conviertan más citas. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "U & M Auto Repair",
+    "direccion": "4801 S Pecos Rd, Ste 3D, Las Vegas, NV 89121",
+    "telefono": "(702) 300-0198",
+    "web": "No disponible",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=4801+S+Pecos+Rd+Ste+3D+Las+Vegas+NV+89121",
+    "score": 3,
+    "problemas": ["Sin sitio web", "Página de Facebook sin contenido visible (sin verificar actividad)"],
+    "verificado": true,
+    "mensaje": "Hola, U & M Auto Repair lleva más de 15 años en Las Vegas pero no encontramos un sitio web propio, solo presencia en Facebook. Eso hace que talleres más nuevos con web les ganen terreno en búsquedas de Google. En Pawzn Visual Studio armamos sitios a medida para talleres desde cero. ¿Charlamos un momento? contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Motor City Auto Care",
+    "direccion": "3421 S Decatur Blvd, Ste 1, Las Vegas, NV 89102",
+    "telefono": "(702) 780-4877",
+    "web": "No disponible",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3421+S+Decatur+Blvd+Ste+1+Las+Vegas+NV+89102",
+    "score": 3,
+    "problemas": ["Sin sitio web"],
+    "verificado": true,
+    "mensaje": "Hola, buscamos Motor City Auto Care en Decatur Blvd y no encontramos un sitio propio, solo perfiles en Yelp y Facebook. Eso es tráfico que se pierde frente a talleres que sí aparecen en Google con web propia. En Pawzn armamos webs simples y rápidas para talleres. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Passion Auto Repair",
+    "direccion": "2695 S Decatur Blvd, Ste 300, Las Vegas, NV 89102",
+    "telefono": "(702) 906-2051",
+    "web": "https://passionautorepair.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2695+S+Decatur+Blvd+Ste+300+Las+Vegas+NV+89102",
+    "score": 3,
+    "problemas": ["Plantilla genérica de GoDaddy", "Contenido duplicado (sección de A/C repetida)", "221 reseñas en Yelp"],
+    "verificado": true,
+    "mensaje": "Hola, revisando el sitio de Passion Auto Repair encontramos contenido repetido (la sección de aire acondicionado aparece duplicada) y una plantilla genérica de GoDaddy. Son detalles que un cliente nuevo nota antes de llamar. En Pawzn Visual Studio podemos limpiar y modernizar esa web rápido. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Japanese Car Service",
+    "direccion": "5350 Spring Mountain Rd, Las Vegas, NV 89146",
+    "telefono": "(702) 364-5616",
+    "web": "No disponible",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=5350+Spring+Mountain+Rd+Las+Vegas+NV+89146",
+    "score": 3,
+    "problemas": ["Sin sitio web", "Instagram activo (publicación reciente verificada)"],
+    "verificado": true,
+    "mensaje": "Hola, vemos que Japanese Car Service tiene casi 30 años de trayectoria y un Instagram activo, pero no encontramos un sitio web propio — toda esa reputación queda fuera de Google. En Pawzn podemos construirles una web que capture ese tráfico de búsqueda directa. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Wally's Precision Auto Care",
+    "direccion": "3290 Pinks Pl, Las Vegas, NV 89102",
+    "telefono": "(702) 871-7310",
+    "web": "https://wallysprecisionauto.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=3290+Pinks+Pl+Las+Vegas+NV+89102",
+    "score": 1,
+    "problemas": ["212 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, vimos la web de Wally's Precision Auto Care y está muy bien lograda — felicitaciones. En Pawzn Visual Studio solemos ayudar a talleres en crecimiento con email marketing y redes sociales para traer más recurrencia de clientes. Si en algún momento les interesa, contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Squeaky Brakes LV",
+    "direccion": "Las Vegas, NV 89166 (servicio móvil, sin local fijo)",
+    "telefono": "(725) 300-7700",
+    "web": "https://squeakybrakeslv.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Squeaky+Brakes+LV+Las+Vegas+NV",
+    "score": 1,
+    "problemas": ["188 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de Squeaky Brakes LV está muy bien armado para un mecánico móvil — felicitaciones por la propuesta clara. En Pawzn solemos sumar valor en email marketing o campañas locales para negocios que ya tienen buena base web. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Zenith Auto Care",
+    "direccion": "2563 E Washburn Rd, North Las Vegas, NV 89081",
+    "telefono": "(702) 639-6333",
+    "web": "https://www.zenithautocare.net/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2563+E+Washburn+Rd+North+Las+Vegas+NV+89081",
+    "score": 1,
+    "problemas": ["284 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, el sitio de Zenith Auto Care se ve profesional y con buenas certificaciones destacadas. En Pawzn Visual Studio trabajamos con talleres similares en redes sociales y email marketing para fidelizar clientes existentes. Si les interesa explorarlo, contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Sonny's Auto Repair",
+    "direccion": "1000 Stephanie Pl, Ste 8, Henderson, NV 89014",
+    "telefono": "(702) 564-0033",
+    "web": "https://www.sonnysauto702.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=1000+Stephanie+Pl+Ste+8+Henderson+NV+89014",
+    "score": 1,
+    "problemas": ["175 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Sonny's Auto Repair se ve sólida y profesional. En Pawzn Visual Studio ayudamos a talleres con buena base web a sumar email marketing o gestión de redes para generar más recurrencia. Si les suena útil, contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Miguel's Mobile Mechanic",
+    "direccion": "2255 Marion Dr # 6, Las Vegas, NV 89115",
+    "telefono": "(702) 979-8941",
+    "web": "https://miguelsmobilemechanic.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=2255+Marion+Dr+%236+Las+Vegas+NV+89115",
+    "score": 1,
+    "problemas": ["264 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, vimos la web de Miguel's Mobile Mechanic y está muy bien lograda para un servicio móvil. En Pawzn Visual Studio solemos sumar email marketing o redes sociales a negocios que ya tienen buena base como la de ustedes. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Eurotek Tuning",
+    "direccion": "6250 Banning Creek Dr, Las Vegas, NV 89118",
+    "telefono": "(888) 967-5634",
+    "web": "https://eurotektuning.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=6250+Banning+Creek+Dr+Las+Vegas+NV+89118",
+    "score": 1,
+    "problemas": ["294 reseñas en Yelp (negocio activo)", "Sitio ya moderno — baja prioridad de rediseño"],
+    "verificado": true,
+    "mensaje": "Hola, la web de Eurotek Tuning se ve profesional y bien organizada por servicio. En Pawzn Visual Studio trabajamos con talleres similares en email marketing y redes para aumentar la recurrencia de clientes actuales. contacto@pawznvisualstudio.com"
+  },
+  {
+    "nombre": "Courtesy Auto Repair & Service",
+    "direccion": "7035 W Sahara Ave, Ste 500, Las Vegas, NV 89117",
+    "telefono": "(702) 565-9059",
+    "web": "https://carserviceoflasvegas.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=7035+W+Sahara+Ave+Ste+500+Las+Vegas+NV+89117",
+    "score": 0,
+    "problemas": ["Sitio moderno, personalizado y con buena experiencia de usuario — sin oportunidad clara detectada"],
+    "verificado": true,
+    "mensaje": "Hola, vimos la web de Courtesy Auto Repair & Service y está muy bien lograda — chat en vivo, animaciones, buena historia de marca. No detectamos una oportunidad clara de rediseño, pero quedamos a disposición si en algún momento buscan reforzar redes sociales o email marketing. contacto@pawznvisualstudio.com"
+  }
+]
+</script>
+
+<script>
+function getProspectData() {
+  return JSON.parse(document.getElementById('prospect-data').textContent);
+}
+
+function scoreClass(score) {
+  if (score >= 7) return 'score-high';
+  if (score >= 3) return 'score-mid';
+  return 'score-low';
+}
+
+function renderTable() {
+  const data = getProspectData().sort((a, b) => b.score - a.score);
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = data.map((p, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><span class="score ${scoreClass(p.score)}">${p.score}</span></td>
+      <td><strong>${p.nombre}</strong><br><small style="color:#64748b">${p.direccion}</small></td>
+      <td>${p.telefono}<br><a href="${p.maps_url}" target="_blank">Ver en Maps</a></td>
+      <td>${p.web === 'No disponible' || p.web.startsWith('No disponible') ? `<span class="no-web">${p.web}</span>` : `<a href="${p.web}" target="_blank">${p.web.replace(/^https?:\/\//, '')}</a>`}</td>
+      <td>${p.problemas.map(pr => `<span class="tag ${tagClass(pr)}">${pr}</span>`).join('')}</td>
+      <td>
+        <div class="msg" onclick="copyMsg(this)">
+          ${p.mensaje}
+          <br><br>
+          <button class="copy-btn">Copiar mensaje</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function tagClass(text) {
+  if (text.includes('Sin sitio web')) return 'tag-sin';
+  if (text.includes('moderno') || text.includes('activo')) return 'tag-ok';
+  if (text.includes('sin verificar') || text.includes('sin oportunidad')) return 'tag-unverified';
+  return 'tag-web';
+}
+
+function copyMsg(el) {
+  const text = el.innerText.replace('Copiar mensaje', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.querySelector('.copy-btn');
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar mensaje', 2000);
+  });
+}
+
+function triggerDownload(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadJSON() {
+  const data = getProspectData();
+  triggerDownload(JSON.stringify(data, null, 2), 'prospectos-talleres-lasvegas.json', 'application/json');
+}
+
+function downloadCSV() {
+  const data = getProspectData();
+  const cols = ['nombre', 'direccion', 'telefono', 'web', 'maps_url', 'score', 'problemas', 'verificado', 'mensaje'];
+  const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+  const rows = [cols.join(',')];
+  data.forEach(p => {
+    rows.push(cols.map(c => esc(c === 'problemas' ? p[c].join('; ') : p[c])).join(','));
+  });
+  triggerDownload(rows.join('\n'), 'prospectos-talleres-lasvegas.csv', 'text/csv');
+}
+
+renderTable();
+</script>
+</body>
+</html>
