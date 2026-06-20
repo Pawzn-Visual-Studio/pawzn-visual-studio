@@ -67,6 +67,8 @@ document.querySelectorAll('.faq__question').forEach(btn => {
 /* ===========================
    CONTACT FORM
 =========================== */
+const N8N_WEBHOOK = 'https://mi-n8n-2026.app.n8n.cloud/webhook/pawzn-leads';
+
 const form = document.getElementById('contactForm');
 const feedback = document.getElementById('contactFeedback');
 if (form) {
@@ -81,6 +83,20 @@ if (form) {
     feedback.classList.remove('error');
     btn.textContent = 'Enviando...';
     btn.disabled = true;
+
+    // Enviar a n8n en segundo plano (Sheets + WhatsApp)
+    if (N8N_WEBHOOK) {
+      fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          service: formData.get('service'),
+          message: formData.get('message')
+        })
+      }).catch(() => {});
+    }
 
     try {
       const response = await fetch(form.action, {
